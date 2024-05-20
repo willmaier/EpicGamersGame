@@ -1,6 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://8j6pyft4p6wt"]
+[gd_scene load_steps=16 format=3 uid="uid://8j6pyft4p6wt"]
 
+[ext_resource type="Script" path="res://scripts/playercontroller.gd" id="1_dytxa"]
 [ext_resource type="Texture2D" uid="uid://dacbsybkrdshm" path="res://prefabs/ArrowPlayer.png" id="1_orqjq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dso7y"]
+size = Vector2(26, 26)
 
 [sub_resource type="Animation" id="Animation_xhia7"]
 length = 0.1
@@ -122,9 +126,43 @@ _data = {
 "Up": SubResource("Animation_rc4qx")
 }
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_jliee"]
+animation = &"Left"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_xlyh5"]
+animation = &"Right"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_kuqcl"]
+animation = &"Down"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2x47j"]
+animation = &"Up"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_ngcie"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_jliee")
+blend_point_0/pos = Vector2(-1, 0)
+blend_point_1/node = SubResource("AnimationNodeAnimation_xlyh5")
+blend_point_1/pos = Vector2(1, 0)
+blend_point_2/node = SubResource("AnimationNodeAnimation_kuqcl")
+blend_point_2/pos = Vector2(0, -0.9)
+blend_point_3/node = SubResource("AnimationNodeAnimation_2x47j")
+blend_point_3/pos = Vector2(0, 1)
+blend_mode = 1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qbisc"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_p682w"]
+states/walking/node = SubResource("AnimationNodeBlendSpace2D_ngcie")
+states/walking/position = Vector2(410.667, 78.6667)
+transitions = ["Start", "walking", SubResource("AnimationNodeStateMachineTransition_qbisc")]
+
 [node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_dytxa")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_dso7y")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -132,13 +170,16 @@ libraries = {
 }
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-root_node = NodePath("../AnimationPlayer")
+tree_root = SubResource("AnimationNodeStateMachine_p682w")
+anim_player = NodePath("../AnimationPlayer")
+parameters/walking/blend_position = Vector2(-0.0021112, 0.634218)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
 texture = ExtResource("1_orqjq")
 hframes = 2
 vframes = 2
+frame = 3
 metadata/_aseprite_wizard_config_ = {
 "i_mode": -1,
 "keep_anim_length": false,
