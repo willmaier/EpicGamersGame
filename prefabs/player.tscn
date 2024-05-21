@@ -126,36 +126,35 @@ _data = {
 "Up": SubResource("Animation_rc4qx")
 }
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_jliee"]
-animation = &"Left"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_xlyh5"]
-animation = &"Right"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_kuqcl"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_gmd75"]
 animation = &"Down"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2x47j"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_r2rh8"]
 animation = &"Up"
 
-[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_ngcie"]
-blend_point_0/node = SubResource("AnimationNodeAnimation_jliee")
-blend_point_0/pos = Vector2(-1, 0)
-blend_point_1/node = SubResource("AnimationNodeAnimation_xlyh5")
-blend_point_1/pos = Vector2(1, 0)
-blend_point_2/node = SubResource("AnimationNodeAnimation_kuqcl")
-blend_point_2/pos = Vector2(0, -0.9)
-blend_point_3/node = SubResource("AnimationNodeAnimation_2x47j")
-blend_point_3/pos = Vector2(0, 1)
-blend_mode = 1
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_5k2b3"]
+animation = &"Left"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qbisc"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_oaqmn"]
+animation = &"Right"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_ixj65"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_gmd75")
+blend_point_0/pos = Vector2(0, 1)
+blend_point_1/node = SubResource("AnimationNodeAnimation_r2rh8")
+blend_point_1/pos = Vector2(0, -1)
+blend_point_2/node = SubResource("AnimationNodeAnimation_5k2b3")
+blend_point_2/pos = Vector2(-1, 0)
+blend_point_3/node = SubResource("AnimationNodeAnimation_oaqmn")
+blend_point_3/pos = Vector2(1, 0)
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_4gt6t"]
 advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_p682w"]
-states/walking/node = SubResource("AnimationNodeBlendSpace2D_ngcie")
-states/walking/position = Vector2(410.667, 78.6667)
-transitions = ["Start", "walking", SubResource("AnimationNodeStateMachineTransition_qbisc")]
+states/walking/node = SubResource("AnimationNodeBlendSpace2D_ixj65")
+states/walking/position = Vector2(371.333, 82.6667)
+transitions = ["Start", "walking", SubResource("AnimationNodeStateMachineTransition_4gt6t")]
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_dytxa")
@@ -172,14 +171,14 @@ libraries = {
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource("AnimationNodeStateMachine_p682w")
 anim_player = NodePath("../AnimationPlayer")
-parameters/walking/blend_position = Vector2(-0.0021112, 0.634218)
+parameters/walking/blend_position = Vector2(0, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
 texture = ExtResource("1_orqjq")
 hframes = 2
 vframes = 2
-frame = 3
+frame = 2
 metadata/_aseprite_wizard_config_ = {
 "i_mode": -1,
 "keep_anim_length": false,
