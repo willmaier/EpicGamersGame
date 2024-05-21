@@ -25,15 +25,14 @@ offset_top = 27.0
 offset_right = 44.0
 offset_bottom = 50.0
 
-[node name="Resource" parent="." instance=ExtResource("3_wqlsc")]
+[node name="Rock" parent="." instance=ExtResource("3_wqlsc")]
 position = Vector2(185, 239)
 scale = Vector2(0.25, 0.296875)
+
+[node name="Stick" parent="." instance=ExtResource("3_wqlsc")]
+position = Vector2(367.75, 162.25)
+scale = Vector2(0.222656, 0.207031)
 
 [node name="Spawner" type="Node" parent="."]
 script = ExtResource("4_313v4")
 resource_node = ExtResource("3_wqlsc")
-
-[node name="SpawnTimer" type="Timer" parent="Spawner"]
-autostart = true
-
-[connection signal="timeout" from="Spawner/SpawnTimer" to="Spawner" method="_on_spawn_timer_timeout"]
