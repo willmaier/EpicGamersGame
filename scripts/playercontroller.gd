@@ -5,6 +5,7 @@ const SPEED = 300.0
 @onready var animated_sprite = $AnimationPlayer
 @onready var animated_tree = $AnimationTree
 
+@export var inv: Inv
 # if delta is use just remove the _
 func _physics_process(_delta):
 	# Get the input direction and handle the movement/deceleration.

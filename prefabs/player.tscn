@@ -1,6 +1,7 @@
-[gd_scene load_steps=16 format=3 uid="uid://8j6pyft4p6wt"]
+[gd_scene load_steps=17 format=3 uid="uid://8j6pyft4p6wt"]
 
 [ext_resource type="Script" path="res://scripts/playercontroller.gd" id="1_dytxa"]
+[ext_resource type="Resource" uid="uid://dlw5bbmgwwhia" path="res://prefabs/Inventory/Player_Inv.tres" id="2_hq0js"]
 [ext_resource type="Texture2D" uid="uid://dacbsybkrdshm" path="res://imports/ArrowPlayer.png" id="2_ljvit"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dso7y"]
@@ -158,6 +159,7 @@ transitions = ["Start", "walking", SubResource("AnimationNodeStateMachineTransit
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_dytxa")
+inv = ExtResource("2_hq0js")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, 1)
@@ -169,9 +171,6 @@ libraries = {
 }
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_r7412")
-}
 tree_root = SubResource("AnimationNodeStateMachine_p682w")
 anim_player = NodePath("../AnimationPlayer")
 parameters/walking/blend_position = Vector2(0, 0)

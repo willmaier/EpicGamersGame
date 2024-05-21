@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Inv" load_steps=4 format=3 uid="uid://dlw5bbmgwwhia"]
+
+[ext_resource type="Resource" uid="uid://dxuksj33lmbcp" path="res://prefabs/Inventory/Items/Stick.tres" id="1_1oer1"]
+[ext_resource type="Script" path="res://prefabs/Inventory/Inv_Main.gd" id="2_8xtbq"]
+[ext_resource type="Resource" uid="uid://bi86y2prx8spi" path="res://prefabs/Inventory/Items/Rock.tres" id="2_fjsxw"]
+
+[resource]
+script = ExtResource("2_8xtbq")
+items = Array[Resource("res://prefabs/Inventory/InventoryItem.gd")]([ExtResource("1_1oer1"), null, null, null, ExtResource("1_1oer1"), ExtResource("2_fjsxw"), null, null, null, null])
