@@ -4,13 +4,7 @@ extends Node
 
 var random = RandomNumberGenerator.new()
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass
-	
-func source_type():
-	resource_node.resource_name = "Rock"
-	
+# Creates new instance of resource and sets a random location
 func new_resource():
 	var posx = random.randi_range(20, 1000)
 	var posy = random.randi_range(20, 500)

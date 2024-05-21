@@ -18,14 +18,12 @@ offset_left = 4.0
 offset_top = 6.0
 offset_right = 44.0
 offset_bottom = 29.0
-theme_override_font_sizes/font_size = 30
 
 [node name="Rocks" type="Label" parent="HUD"]
 offset_left = 4.0
-offset_top = 44.0
+offset_top = 27.0
 offset_right = 44.0
-offset_bottom = 86.0
-theme_override_font_sizes/font_size = 30
+offset_bottom = 50.0
 
 [node name="Resource" parent="." instance=ExtResource("3_wqlsc")]
 position = Vector2(185, 239)
