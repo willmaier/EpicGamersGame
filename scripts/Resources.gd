@@ -13,7 +13,7 @@ func _ready():
 	# Resources each have a random value
 	resource_amount = random.randi_range(1, 5)
 	
-	# Gets a random string  from types array
+	# Gets a random string from types array
 	var size = types.size()
 	random_type = types[randi() % size]
 	match random_type:
