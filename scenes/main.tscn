@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://cwurdrhqotynf"]
+[gd_scene load_steps=4 format=3 uid="uid://cwurdrhqotynf"]
 
 [ext_resource type="PackedScene" uid="uid://8j6pyft4p6wt" path="res://prefabs/player.tscn" id="1_ntj77"]
 [ext_resource type="Script" path="res://scripts/HUD.gd" id="2_j5jdw"]
+[ext_resource type="PackedScene" uid="uid://7cw827esn822" path="res://prefabs/ResourceTemplate.tscn" id="3_wqlsc"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -22,3 +23,8 @@ offset_left = 4.0
 offset_top = 27.0
 offset_right = 44.0
 offset_bottom = 50.0
+
+[node name="Rock" parent="." instance=ExtResource("3_wqlsc")]
+
+[node name="Stick" parent="." instance=ExtResource("3_wqlsc")]
+position = Vector2(359, 170)

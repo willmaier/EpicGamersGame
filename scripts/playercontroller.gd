@@ -24,3 +24,5 @@ func _physics_process(delta):
 # Use this when more states are added into the animation tree if we decide to use it
 func set_animation():
 	animated_tree.set("parameters/walking/blend_position", velocity)
+	
+
