@@ -5,7 +5,8 @@ const SPEED = 300.0
 @onready var animated_sprite = $AnimationPlayer
 @onready var animated_tree = $AnimationTree
 
-func _physics_process(delta):
+# if delta is use just remove the _
+func _physics_process(_delta):
 	# Get the input direction and handle the movement/deceleration.
 	# TODO this could use some optimization as it is simply just a placeholder
 	# also there is a snapback issue with animation currently that can be fixed later
