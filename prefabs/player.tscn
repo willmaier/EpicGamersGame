@@ -1,7 +1,8 @@
-[gd_scene load_steps=16 format=3 uid="uid://8j6pyft4p6wt"]
+[gd_scene load_steps=17 format=3 uid="uid://8j6pyft4p6wt"]
 
 [ext_resource type="Script" path="res://scripts/playercontroller.gd" id="1_dytxa"]
 [ext_resource type="Texture2D" uid="uid://dacbsybkrdshm" path="res://imports/ArrowPlayer.png" id="2_ljvit"]
+[ext_resource type="AudioStream" uid="uid://dywwufpg410iw" path="res://globals/LeafFootsteps.mp3" id="3_otf7v"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dso7y"]
 size = Vector2(26, 26)
@@ -195,3 +196,8 @@ metadata/_aseprite_wizard_config_ = {
 "source": "res://imports/ArrowPlayer.aseprite"
 }
 metadata/_aseprite_wizard_source_file_hash_ = "c63b204330f24b1575203f8b50fa022c"
+
+[node name="PlayerWalkSound" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("3_otf7v")
+autoplay = true

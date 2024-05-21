@@ -5,6 +5,8 @@ const SPEED = 300.0
 @onready var animated_sprite = $AnimationPlayer
 @onready var animated_tree = $AnimationTree
 
+@onready var player_walk_sound = $PlayerWalkSound
+
 # if delta is use just remove the _
 func _physics_process(_delta):
 	# Get the input direction and handle the movement/deceleration.
@@ -18,6 +20,7 @@ func _physics_process(_delta):
 	else:
 		velocity.x = move_toward(velocity.normalized().x, 0, SPEED)
 		velocity.y = move_toward(velocity.normalized().y, 0, SPEED)
+		player_walk_sound.play()
 		
 	set_animation()
 	move_and_slide()
