@@ -9,8 +9,8 @@ func _physics_process(delta):
 	# Get the input direction and handle the movement/deceleration.
 	# TODO this could use some optimization as it is simply just a placeholder
 	# also there is a snapback issue with animation currently that can be fixed later
-	var horizontal_direction = Input.get_axis("ui_left", "ui_right")
-	var vertical_direction = Input.get_axis("ui_up", "ui_down")
+	var horizontal_direction = Input.get_axis("move_left", "move_right")
+	var vertical_direction = Input.get_axis("move_up", "move_down")
 	if horizontal_direction || vertical_direction:
 		velocity.x = horizontal_direction * SPEED
 		velocity.y = vertical_direction * SPEED

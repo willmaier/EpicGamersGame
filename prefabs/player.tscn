@@ -1,12 +1,12 @@
 [gd_scene load_steps=16 format=3 uid="uid://8j6pyft4p6wt"]
 
 [ext_resource type="Script" path="res://scripts/playercontroller.gd" id="1_dytxa"]
-[ext_resource type="Texture2D" uid="uid://dacbsybkrdshm" path="res://prefabs/ArrowPlayer.png" id="1_orqjq"]
+[ext_resource type="Texture2D" uid="uid://dacbsybkrdshm" path="res://imports/ArrowPlayer.png" id="2_ljvit"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dso7y"]
 size = Vector2(26, 26)
 
-[sub_resource type="Animation" id="Animation_xhia7"]
+[sub_resource type="Animation" id="Animation_v3ojo"]
 length = 0.1
 loop_mode = 1
 tracks/0/type = "value"
@@ -31,7 +31,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [0]
+"values": [3]
 }
 
 [sub_resource type="Animation" id="Animation_rdkqw"]
@@ -62,6 +62,34 @@ tracks/1/keys = {
 "values": [1]
 }
 
+[sub_resource type="Animation" id="Animation_xhia7"]
+length = 0.1
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
 [sub_resource type="Animation" id="Animation_rc4qx"]
 length = 0.1
 loop_mode = 1
@@ -88,34 +116,6 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [2]
-}
-
-[sub_resource type="Animation" id="Animation_v3ojo"]
-length = 0.1
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = false
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = false
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [3]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_r7412"]
@@ -175,7 +175,7 @@ parameters/walking/blend_position = Vector2(0, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
-texture = ExtResource("1_orqjq")
+texture = ExtResource("2_ljvit")
 hframes = 2
 vframes = 2
 frame = 2
