@@ -1,0 +1,56 @@
+[gd_scene load_steps=4 format=3 uid="uid://bxi0l8i77ckq6"]
+
+[ext_resource type="Script" path="res://prefabs/Crafting/crafting_ui.gd" id="1_68tcj"]
+[ext_resource type="Texture2D" uid="uid://p3da5in4j375" path="res://imports/hammer.png" id="1_hh0o5"]
+[ext_resource type="Script" path="res://prefabs/Crafting/Hammer.gd" id="2_7kuwf"]
+
+[node name="Crafting_UI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_68tcj")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -200.0
+offset_right = 200.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0.603922)
+
+[node name="Hammer" type="Button" parent="Background"]
+layout_mode = 0
+offset_left = 167.0
+offset_top = 167.0
+offset_right = 235.0
+offset_bottom = 235.0
+icon = ExtResource("1_hh0o5")
+script = ExtResource("2_7kuwf")
+
+[node name="Name" type="Label" parent="Background/Hammer"]
+layout_mode = 0
+offset_top = -30.0
+offset_right = 69.0
+offset_bottom = -7.0
+text = "Hammer"
+
+[node name="Cost" type="Label" parent="Background/Hammer"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 70.0
+offset_right = 62.0
+offset_bottom = 119.0
+text = "2 sticks
+1 stone"
+
+[connection signal="pressed" from="Background/Hammer" to="." method="_on_hammer_pressed"]

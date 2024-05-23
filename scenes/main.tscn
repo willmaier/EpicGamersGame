@@ -1,9 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://cwurdrhqotynf"]
+[gd_scene load_steps=9 format=3 uid="uid://cwurdrhqotynf"]
 
 [ext_resource type="PackedScene" uid="uid://8j6pyft4p6wt" path="res://prefabs/player.tscn" id="1_ntj77"]
 [ext_resource type="Script" path="res://scripts/HUD.gd" id="2_j5jdw"]
+[ext_resource type="PackedScene" uid="uid://bxi0l8i77ckq6" path="res://prefabs/Crafting/crafting_ui.tscn" id="3_tewq0"]
 [ext_resource type="PackedScene" uid="uid://7cw827esn822" path="res://ResourceTemplate.tscn" id="3_wqlsc"]
 [ext_resource type="Script" path="res://scripts/Spawner.gd" id="4_313v4"]
+[ext_resource type="Texture2D" uid="uid://ci6bc0krv8eeu" path="res://imports/craftingTable.png" id="6_c8r2q"]
+[ext_resource type="Script" path="res://scripts/CraftingTable.gd" id="7_gi2ll"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k74hb"]
+size = Vector2(146, 134)
 
 [node name="Node2D" type="Node2D"]
 
@@ -27,6 +33,25 @@ offset_right = 44.0
 offset_bottom = 86.0
 theme_override_font_sizes/font_size = 30
 
+[node name="Hammers" type="Label" parent="HUD"]
+offset_left = 4.0
+offset_top = 82.0
+offset_right = 44.0
+offset_bottom = 124.0
+theme_override_font_sizes/font_size = 30
+
+[node name="Crafting_UI" parent="HUD" instance=ExtResource("3_tewq0")]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 498.0
+offset_top = 272.0
+offset_right = 498.0
+offset_bottom = 272.0
+
 [node name="Resource" parent="." instance=ExtResource("3_wqlsc")]
 position = Vector2(185, 239)
 scale = Vector2(0.25, 0.296875)
@@ -38,4 +63,17 @@ resource_node = ExtResource("3_wqlsc")
 [node name="SpawnTimer" type="Timer" parent="Spawner"]
 autostart = true
 
+[node name="CraftingTable" type="Sprite2D" parent="."]
+position = Vector2(649, 72)
+texture = ExtResource("6_c8r2q")
+script = ExtResource("7_gi2ll")
+metadata/_edit_group_ = true
+
+[node name="Area2D" type="Area2D" parent="CraftingTable"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CraftingTable/Area2D"]
+shape = SubResource("RectangleShape2D_k74hb")
+
 [connection signal="timeout" from="Spawner/SpawnTimer" to="Spawner" method="_on_spawn_timer_timeout"]
+[connection signal="body_entered" from="CraftingTable/Area2D" to="CraftingTable" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="CraftingTable/Area2D" to="CraftingTable" method="_on_area_2d_body_exited"]
