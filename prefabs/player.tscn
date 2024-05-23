@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dacbsybkrdshm" path="res://imports/ArrowPlayer.png" id="2_ljvit"]
 [ext_resource type="Resource" uid="uid://dlw5bbmgwwhia" path="res://prefabs/Inventory/Player_Inv.tres" id="2_tuic6"]
 [ext_resource type="AudioStream" uid="uid://dywwufpg410iw" path="res://globals/LeafFootsteps.mp3" id="3_otf7v"]
-[ext_resource type="PackedScene" uid="uid://cf2utc5r7rmnc" path="res://prefabs/Inventory/inv_ui.tscn" id="5_euid1"]
+[ext_resource type="PackedScene" path="res://prefabs/Inventory/inv_ui.tscn" id="5_euid1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dso7y"]
 size = Vector2(26, 26)
@@ -173,9 +173,6 @@ libraries = {
 }
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_r7412")
-}
 tree_root = SubResource("AnimationNodeStateMachine_p682w")
 anim_player = NodePath("../AnimationPlayer")
 parameters/walking/blend_position = Vector2(0, 0)

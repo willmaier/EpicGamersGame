@@ -1,31 +1,41 @@
 extends CharacterBody2D
 
-const SPEED = 300.0
+const speed = 300.0
+const harvest_speed = 5
+var can_harvest
 
+# Player tree animation
 @onready var animated_sprite = $AnimationPlayer
 @onready var animated_tree = $AnimationTree
 
+# Sound handling
 @onready var player_walk_sound = $PlayerWalkSound
+
+# For resource harvesting
+@onready var tree_timer = $"../Tree/HarvestTimer"
+@onready var pb = $"../Tree/ProgressBar" # Experiment with TextureProgressBar later
+@onready var temp_instructions = $"../Tree/RemoveLater"
+
+# Crafting
 @onready var crafting_UI = $"../HUD/Crafting_UI"
-
-@export var inv: Inv
 @export var crafting_table: Sprite2D
-
 var is_crafting: bool = false
 
-# if delta is use just remove the _
+@export var inv: Inv
+
+# TODO if delta is use just remove the _
 func _physics_process(_delta):
-	# Get the input direction and handle the movement/deceleration.
+	# Get the input direction and handle the movement/deceleration
 	# TODO this could use some optimization as it is simply just a placeholder
 	# also there is a snapback issue with animation currently that can be fixed later
 	var horizontal_direction = Input.get_axis("move_left", "move_right")
 	var vertical_direction = Input.get_axis("move_up", "move_down")
 	if horizontal_direction || vertical_direction:
-		velocity.x = horizontal_direction * SPEED
-		velocity.y = vertical_direction * SPEED
+		velocity.x = horizontal_direction * speed
+		velocity.y = vertical_direction * speed
 	else:
-		velocity.x = move_toward(velocity.normalized().x, 0, SPEED)
-		velocity.y = move_toward(velocity.normalized().y, 0, SPEED)
+		velocity.x = move_toward(velocity.normalized().x, 0, speed)
+		velocity.y = move_toward(velocity.normalized().y, 0, speed)
 		player_walk_sound.play()
 	if (is_crafting and Input.is_action_just_pressed("interact")):
 		crafting_UI.visible = false
@@ -33,11 +43,38 @@ func _physics_process(_delta):
 	if (crafting_table.player_present and Input.is_action_just_pressed("interact")):
 		crafting_UI.visible = true
 		is_crafting = true
-	
 	set_animation()
+	try_harvesting()
 	move_and_slide()
 
-# Use this when more states are added into the animation tree if we decide to use it
+# TODO Use this when more states are added into the animation tree if we decide to use it
 func set_animation():
 	animated_tree.set("parameters/walking/blend_position", velocity)
 
+func try_harvesting():
+	pb.value = tree_timer.time_left * 20
+	if Input.is_action_just_pressed("Harvest") && can_harvest: 
+		tree_timer.start()
+	elif Input.is_action_just_released("Harvest") || !can_harvest:
+		tree_timer.stop() 
+
+# Functions used for harvesting interaction
+# TODO Only tree is set up currently and they are hard coded values
+# Player enters harvest area
+func _on_tree_area_body_entered(_body):
+	print("entered harvest area")
+	pb.visible = true
+	temp_instructions.visible = true
+	can_harvest = true
+	
+# Player leaves harvest area
+func _on_tree_area_body_exited(_body):
+	print("exited harvest area")
+	pb.visible = false
+	temp_instructions.visible = false
+	can_harvest = false
+# Restart timer each harvest amd add to globals
+func _on_harvest_timer_timeout():
+	print("harvested")
+	tree_timer.wait_time = harvest_speed 
+	Globals.stick_count+=1

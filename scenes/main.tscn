@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cwurdrhqotynf"]
+[gd_scene load_steps=11 format=3 uid="uid://cwurdrhqotynf"]
 
 [ext_resource type="PackedScene" uid="uid://8j6pyft4p6wt" path="res://prefabs/player.tscn" id="1_ntj77"]
 [ext_resource type="Script" path="res://scripts/HUD.gd" id="2_j5jdw"]
@@ -7,9 +7,13 @@
 [ext_resource type="Script" path="res://scripts/Spawner.gd" id="4_313v4"]
 [ext_resource type="Texture2D" uid="uid://ci6bc0krv8eeu" path="res://imports/craftingTable.png" id="6_c8r2q"]
 [ext_resource type="Script" path="res://scripts/CraftingTable.gd" id="7_gi2ll"]
+[ext_resource type="Texture2D" uid="uid://x3kktmxxmuht" path="res://imports/tree.png" id="8_0b2af"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k74hb"]
 size = Vector2(146, 134)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s60js"]
+size = Vector2(103, 113.5)
 
 [node name="Node2D" type="Node2D"]
 
@@ -75,6 +79,42 @@ metadata/_edit_group_ = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CraftingTable/Area2D"]
 shape = SubResource("RectangleShape2D_k74hb")
 
+[node name="Tree" type="Node" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Tree"]
+position = Vector2(721.25, 233)
+scale = Vector2(0.534921, 0.52)
+texture = ExtResource("8_0b2af")
+
+[node name="TreeArea" type="Area2D" parent="Tree"]
+position = Vector2(719, 236)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tree/TreeArea"]
+position = Vector2(1.50012, -1.75)
+shape = SubResource("RectangleShape2D_s60js")
+
+[node name="HarvestTimer" type="Timer" parent="Tree"]
+wait_time = 5.0
+
+[node name="ProgressBar" type="ProgressBar" parent="Tree"]
+visible = false
+offset_left = 689.0
+offset_top = 151.0
+offset_right = 751.0
+offset_bottom = 178.0
+
+[node name="RemoveLater" type="Label" parent="Tree"]
+visible = false
+offset_left = 647.0
+offset_top = 297.0
+offset_right = 804.0
+offset_bottom = 335.0
+text = "Hold E for 5 seconds
+"
+
 [connection signal="timeout" from="Spawner/SpawnTimer" to="Spawner" method="_on_spawn_timer_timeout"]
 [connection signal="body_entered" from="CraftingTable/Area2D" to="CraftingTable" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="CraftingTable/Area2D" to="CraftingTable" method="_on_area_2d_body_exited"]
+[connection signal="body_entered" from="Tree/TreeArea" to="Player" method="_on_tree_area_body_entered"]
+[connection signal="body_exited" from="Tree/TreeArea" to="Player" method="_on_tree_area_body_exited"]
+[connection signal="timeout" from="Tree/HarvestTimer" to="Player" method="_on_harvest_timer_timeout"]
