@@ -6,7 +6,7 @@ var player_present: bool = false
 
 func _process(_delta):
 	if (Input.is_action_just_pressed("interact") and player_present):
-		print("start crafting")
+		# This does not work
 		$"../HUD/Crafting_UI".visible = true
 		#is_crafting = true
 
@@ -20,7 +20,7 @@ func _on_area_2d_body_entered(_body):
 
 func _on_area_2d_body_exited(body):
 	player_present = false
-	#$"../HUD/Crafting_UI".visible = false
+	$"../HUD/Crafting_UI".visible = false
 	is_crafting = false
 	
 
