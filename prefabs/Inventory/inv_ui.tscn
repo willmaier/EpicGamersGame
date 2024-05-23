@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://cf2utc5r7rmnc"]
+
+[ext_resource type="Script" path="res://prefabs/Inventory/inv_ui.gd" id="1_ounem"]
+
+[node name="Inv_UI" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_ounem")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 242.0
+offset_bottom = 197.0
