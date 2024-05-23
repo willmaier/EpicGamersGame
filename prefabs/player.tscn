@@ -200,4 +200,5 @@ metadata/_aseprite_wizard_source_file_hash_ = "c63b204330f24b1575203f8b50fa022c"
 [node name="PlayerWalkSound" type="AudioStreamPlayer" parent="."]
 process_mode = 3
 stream = ExtResource("3_otf7v")
+volume_db = -18.0
 autoplay = true
