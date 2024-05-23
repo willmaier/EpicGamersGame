@@ -13,8 +13,9 @@ size = Vector2(146, 134)
 
 [node name="Node2D" type="Node2D"]
 
-[node name="Player" parent="." instance=ExtResource("1_ntj77")]
+[node name="Player" parent="." node_paths=PackedStringArray("crafting_table") instance=ExtResource("1_ntj77")]
 position = Vector2(496, 271)
+crafting_table = NodePath("../CraftingTable")
 
 [node name="HUD" type="CanvasGroup" parent="."]
 script = ExtResource("2_j5jdw")

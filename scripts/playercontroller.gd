@@ -5,11 +5,13 @@ const SPEED = 300.0
 @onready var animated_sprite = $AnimationPlayer
 @onready var animated_tree = $AnimationTree
 
-
 @onready var player_walk_sound = $PlayerWalkSound
-
+@onready var crafting_UI = $"../HUD/Crafting_UI"
 
 @export var inv: Inv
+@export var crafting_table: Sprite2D
+
+var is_crafting: bool = false
 
 # if delta is use just remove the _
 func _physics_process(_delta):
@@ -25,12 +27,17 @@ func _physics_process(_delta):
 		velocity.x = move_toward(velocity.normalized().x, 0, SPEED)
 		velocity.y = move_toward(velocity.normalized().y, 0, SPEED)
 		player_walk_sound.play()
-		
+	if (is_crafting and Input.is_action_just_pressed("interact")):
+		crafting_UI.visible = false
+		is_crafting = false
+	if (crafting_table.player_present and Input.is_action_just_pressed("interact")):
+		crafting_UI.visible = true
+		is_crafting = true
+	
 	set_animation()
 	move_and_slide()
 
 # Use this when more states are added into the animation tree if we decide to use it
 func set_animation():
 	animated_tree.set("parameters/walking/blend_position", velocity)
-	
 
