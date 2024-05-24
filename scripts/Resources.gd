@@ -23,7 +23,7 @@ func _ready():
 			texture = stick_texture
 
 # Add values to global and remove instance
-func _on_area_2d_body_entered(body):
+func _on_area_2d_body_entered(_body):
 	#print(random_type)
 	match random_type:
 		"Rock":
