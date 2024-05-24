@@ -1,8 +1,6 @@
 extends CharacterBody2D
 
 const speed = 300.0
-const harvest_speed = 5
-var can_harvest
 
 # Player tree animation
 @onready var animated_sprite = $AnimationPlayer
@@ -10,11 +8,6 @@ var can_harvest
 
 # Sound handling
 @onready var player_walk_sound = $PlayerWalkSound
-
-# For resource harvesting
-@onready var tree_timer = $"../Tree/HarvestTimer"
-@onready var pb = $"../Tree/ProgressBar" # Experiment with TextureProgressBar later
-@onready var temp_instructions = $"../Tree/RemoveLater"
 
 # Crafting
 @onready var crafting_UI = $"../HUD/Crafting_UI"

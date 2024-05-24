@@ -19,7 +19,6 @@ position = Vector2(1.50012, -1.75)
 shape = SubResource("RectangleShape2D_s60js")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-visible = false
 position = Vector2(10.25, 13)
 scale = Vector2(0.534921, 0.52)
 texture = ExtResource("1_j2dd2")
