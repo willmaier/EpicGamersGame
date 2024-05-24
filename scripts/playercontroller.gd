@@ -44,37 +44,8 @@ func _physics_process(_delta):
 		crafting_UI.visible = true
 		is_crafting = true
 	set_animation()
-	try_harvesting()
 	move_and_slide()
 
 # TODO Use this when more states are added into the animation tree if we decide to use it
 func set_animation():
 	animated_tree.set("parameters/walking/blend_position", velocity)
-
-func try_harvesting():
-	pb.value = tree_timer.time_left * 20
-	if Input.is_action_just_pressed("Harvest") && can_harvest: 
-		tree_timer.start()
-	elif Input.is_action_just_released("Harvest") || !can_harvest:
-		tree_timer.stop() 
-
-# Functions used for harvesting interaction
-# TODO Only tree is set up currently and they are hard coded values
-# Player enters harvest area
-func _on_tree_area_body_entered(_body):
-	print("entered harvest area")
-	pb.visible = true
-	temp_instructions.visible = true
-	can_harvest = true
-	
-# Player leaves harvest area
-func _on_tree_area_body_exited(_body):
-	print("exited harvest area")
-	pb.visible = false
-	temp_instructions.visible = false
-	can_harvest = false
-# Restart timer each harvest amd add to globals
-func _on_harvest_timer_timeout():
-	print("harvested")
-	tree_timer.wait_time = harvest_speed 
-	Globals.stick_count+=1
