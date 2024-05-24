@@ -1,0 +1,65 @@
+[gd_scene load_steps=9 format=3 uid="uid://bp0n05lshcymj"]
+
+[ext_resource type="Texture2D" uid="uid://dl8b2mlkougqv" path="res://imports/parallax-forest-preview.png" id="1_dhjax"]
+[ext_resource type="Script" path="res://scenes/main_menu.gd" id="1_giurf"]
+[ext_resource type="Texture2D" uid="uid://cn0ia5l71fy63" path="res://imports/playText.png" id="2_rqg1w"]
+[ext_resource type="Texture2D" uid="uid://dc0ru7t3h216i" path="res://imports/creditsText.png" id="3_3p0eo"]
+[ext_resource type="Texture2D" uid="uid://egi758sph2nd" path="res://imports/quitText.png" id="4_r8p3m"]
+[ext_resource type="Texture2D" uid="uid://dupmxuahg2ojq" path="res://imports/rock.webp" id="5_0d6c3"]
+
+[sub_resource type="Gradient" id="Gradient_l0y7x"]
+colors = PackedColorArray(0.301961, 0.301961, 0.301961, 0.490196, 0.301961, 0.301961, 0.301961, 0.490196)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_vrkpm"]
+gradient = SubResource("Gradient_l0y7x")
+
+[node name="MainMenu" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_giurf")
+
+[node name="BackgroundImage" type="Sprite2D" parent="."]
+position = Vector2(574.4, 322.5)
+scale = Vector2(2.162, 2.142)
+texture = ExtResource("1_dhjax")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 2
+texture = SubResource("GradientTexture1D_vrkpm")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="PlayButton" type="Button" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+icon = ExtResource("2_rqg1w")
+flat = true
+
+[node name="OptionsButton" type="Button" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+icon = ExtResource("3_3p0eo")
+flat = true
+
+[node name="QuitButton" type="Button" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+icon = ExtResource("4_r8p3m")
+flat = true
+
+[node name="CenterContainer" type="CenterContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="Logo" type="TextureRect" parent="HBoxContainer/CenterContainer"]
+layout_mode = 2
+texture = ExtResource("5_0d6c3")
+
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
