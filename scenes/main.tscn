@@ -1,13 +1,32 @@
-[gd_scene load_steps=10 format=3 uid="uid://cwurdrhqotynf"]
+[gd_scene load_steps=13 format=3 uid="uid://cwurdrhqotynf"]
 
 [ext_resource type="PackedScene" uid="uid://8j6pyft4p6wt" path="res://prefabs/player.tscn" id="1_ntj77"]
 [ext_resource type="Script" path="res://scripts/HUD.gd" id="2_j5jdw"]
 [ext_resource type="PackedScene" uid="uid://bxi0l8i77ckq6" path="res://prefabs/Crafting/crafting_ui.tscn" id="3_tewq0"]
-[ext_resource type="PackedScene" uid="uid://7cw827esn822" path="res://ResourceTemplate.tscn" id="3_wqlsc"]
 [ext_resource type="Script" path="res://scripts/Spawner.gd" id="4_313v4"]
+[ext_resource type="Script" path="res://scripts/Resources.gd" id="5_xoluy"]
 [ext_resource type="Texture2D" uid="uid://ci6bc0krv8eeu" path="res://imports/craftingTable.png" id="6_c8r2q"]
 [ext_resource type="Script" path="res://scripts/CraftingTable.gd" id="7_gi2ll"]
-[ext_resource type="PackedScene" uid="uid://bocjanvn67sv5" path="res://tree.tscn" id="8_rsxhu"]
+[ext_resource type="PackedScene" uid="uid://bocjanvn67sv5" path="res://prefabs/ResourceEntity.tscn" id="8_rsxhu"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_tchc0"]
+load_path = "res://.godot/imported/stick.bmp-3ea8faef82bab16183319c6776ff7325.ctex"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e72r5"]
+size = Vector2(907.636, 512)
+
+[sub_resource type="PackedScene" id="PackedScene_007lv"]
+_bundled = {
+"conn_count": 1,
+"conns": PackedInt32Array(1073741827, 1073741826, 13, 12, 2, 0, 0),
+"editable_instances": [],
+"names": PackedStringArray("Resource", "Sprite2D", "position", "scale", "texture", "script", "ResourceArea", "Area2D", "CollisionShape2D", "CollisionShape2D", "position", "shape", "_on_area_2d_body_entered", "body_entered"),
+"node_count": 3,
+"node_paths": [NodePath("."), NodePath("./ResourceArea"), NodePath("."), NodePath("ResourceArea")],
+"nodes": PackedInt32Array(-1, -1, 1, 0, -1, 4, 2, 0, 3, 1, 4, 2, 5, 3, 0, 1073741824, 0, 7, 6, -1, 0, 0, 1073741825, 0, 9, 8, -1, 2, 10, 4, 11, 5, 0),
+"variants": [Vector2(251.946, 220.341), Vector2(0.180111, 0.20579), SubResource("CompressedTexture2D_tchc0"), ExtResource("5_xoluy"), Vector2(-0.000244141, 0), SubResource("RectangleShape2D_e72r5")],
+"version": 3
+}
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k74hb"]
 size = Vector2(146, 134)
@@ -54,13 +73,9 @@ offset_top = 272.0
 offset_right = 498.0
 offset_bottom = 272.0
 
-[node name="Resource" parent="." instance=ExtResource("3_wqlsc")]
-position = Vector2(185, 239)
-scale = Vector2(0.25, 0.296875)
-
 [node name="Spawner" type="Node" parent="."]
 script = ExtResource("4_313v4")
-resource_node = ExtResource("3_wqlsc")
+resource_node = SubResource("PackedScene_007lv")
 
 [node name="SpawnTimer" type="Timer" parent="Spawner"]
 wait_time = 10.0
@@ -85,6 +100,9 @@ position = Vector2(1034, 435)
 
 [node name="Resource4" parent="." instance=ExtResource("8_rsxhu")]
 position = Vector2(136, 478)
+
+[node name="StaticBody2D" parent="." instance=ExtResource("8_rsxhu")]
+position = Vector2(188, 261)
 
 [connection signal="timeout" from="Spawner/SpawnTimer" to="Spawner" method="_on_spawn_timer_timeout"]
 [connection signal="body_entered" from="CraftingTable/Area2D" to="CraftingTable" method="_on_area_2d_body_entered"]

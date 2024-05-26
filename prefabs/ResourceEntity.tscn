@@ -46,6 +46,11 @@ text = "Hold E for 5 seconds
 position = Vector2(10, 55)
 shape = SubResource("RectangleShape2D_t2cw0")
 
+[node name="HarvestCooldown" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
 [connection signal="body_entered" from="TreeArea" to="." method="_on_tree_area_body_entered"]
 [connection signal="body_exited" from="TreeArea" to="." method="_on_tree_area_body_exited"]
 [connection signal="timeout" from="HarvestTimer" to="." method="_on_harvest_timer_timeout"]
+[connection signal="timeout" from="HarvestCooldown" to="." method="_on_harvest_cooldown_timeout"]
