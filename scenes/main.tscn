@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://ci6bc0krv8eeu" path="res://imports/craftingTable.png" id="6_c8r2q"]
 [ext_resource type="Script" path="res://scripts/CraftingTable.gd" id="7_gi2ll"]
 [ext_resource type="Texture2D" uid="uid://x3kktmxxmuht" path="res://imports/tree.png" id="8_0b2af"]
-[ext_resource type="PackedScene" uid="uid://bocjanvn67sv5" path="res://tree.tscn" id="8_rsxhu"]
+[ext_resource type="PackedScene" path="res://tree.tscn" id="8_rsxhu"]
 [ext_resource type="Texture2D" uid="uid://dupmxuahg2ojq" path="res://imports/rock.webp" id="9_mqvac"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k74hb"]
@@ -94,6 +94,12 @@ position = Vector2(225, 494)
 position = Vector2(10, 18)
 scale = Vector2(0.18875, 0.31875)
 texture = ExtResource("9_mqvac")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Rock"]
+position = Vector2(-225, -494)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Rock/StaticBody2D"]
+polygon = PackedVector2Array(-28, -82, 1244, -50, 1240, 730, 1156, 725, -87, 752, -66, -8, 1, 0, 1, 656, 1148, 651, 1153, 7, -65, -6)
 
 [connection signal="timeout" from="Spawner/SpawnTimer" to="Spawner" method="_on_spawn_timer_timeout"]
 [connection signal="body_entered" from="CraftingTable/Area2D" to="CraftingTable" method="_on_area_2d_body_entered"]

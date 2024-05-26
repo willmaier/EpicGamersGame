@@ -173,9 +173,6 @@ libraries = {
 }
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_r7412")
-}
 tree_root = SubResource("AnimationNodeStateMachine_p682w")
 anim_player = NodePath("../AnimationPlayer")
 parameters/walking/blend_position = Vector2(0, 0)
@@ -207,7 +204,7 @@ volume_db = -18.0
 autoplay = true
 
 [node name="Inv_UI" parent="." instance=ExtResource("5_euid1")]
-offset_left = 39.0
-offset_top = 26.0
-offset_right = 79.0
-offset_bottom = 66.0
+offset_left = -53.0
+offset_top = -65.0
+offset_right = 51.0
+offset_bottom = -19.0
