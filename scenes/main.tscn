@@ -83,6 +83,9 @@ position = Vector2(815, 198)
 [node name="Resource3" parent="." instance=ExtResource("8_rsxhu")]
 position = Vector2(225, 494)
 
+[node name="Resource4" parent="." instance=ExtResource("8_rsxhu")]
+position = Vector2(796, 474)
+
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
