@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cwurdrhqotynf"]
+[gd_scene load_steps=10 format=3 uid="uid://cwurdrhqotynf"]
 
 [ext_resource type="PackedScene" uid="uid://8j6pyft4p6wt" path="res://prefabs/player.tscn" id="1_ntj77"]
 [ext_resource type="Script" path="res://scripts/HUD.gd" id="2_j5jdw"]
@@ -7,9 +7,7 @@
 [ext_resource type="Script" path="res://scripts/Spawner.gd" id="4_313v4"]
 [ext_resource type="Texture2D" uid="uid://ci6bc0krv8eeu" path="res://imports/craftingTable.png" id="6_c8r2q"]
 [ext_resource type="Script" path="res://scripts/CraftingTable.gd" id="7_gi2ll"]
-[ext_resource type="Texture2D" uid="uid://x3kktmxxmuht" path="res://imports/tree.png" id="8_0b2af"]
 [ext_resource type="PackedScene" uid="uid://bocjanvn67sv5" path="res://tree.tscn" id="8_rsxhu"]
-[ext_resource type="Texture2D" uid="uid://dupmxuahg2ojq" path="res://imports/rock.webp" id="9_mqvac"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k74hb"]
 size = Vector2(146, 134)
@@ -79,21 +77,14 @@ metadata/_edit_group_ = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CraftingTable/Area2D"]
 shape = SubResource("RectangleShape2D_k74hb")
 
-[node name="Tree" parent="." instance=ExtResource("8_rsxhu")]
+[node name="Resource2" parent="." instance=ExtResource("8_rsxhu")]
 position = Vector2(815, 198)
 
-[node name="TreeSprite" type="Sprite2D" parent="Tree"]
-position = Vector2(10, 11)
-scale = Vector2(0.566667, 0.6)
-texture = ExtResource("8_0b2af")
+[node name="Resource3" parent="." instance=ExtResource("8_rsxhu")]
+position = Vector2(1034, 435)
 
-[node name="Rock" parent="." instance=ExtResource("8_rsxhu")]
-position = Vector2(225, 494)
-
-[node name="RockSprite" type="Sprite2D" parent="Rock"]
-position = Vector2(10, 18)
-scale = Vector2(0.18875, 0.31875)
-texture = ExtResource("9_mqvac")
+[node name="Resource4" parent="." instance=ExtResource("8_rsxhu")]
+position = Vector2(136, 478)
 
 [connection signal="timeout" from="Spawner/SpawnTimer" to="Spawner" method="_on_spawn_timer_timeout"]
 [connection signal="body_entered" from="CraftingTable/Area2D" to="CraftingTable" method="_on_area_2d_body_entered"]

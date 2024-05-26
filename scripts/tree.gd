@@ -10,16 +10,27 @@ var can_harvest
 @onready var sprite = $Sprite2D
 
 # For harvesting other resources
-#var stick_texture = preload("res://imports/stick.bmp")
+var tree_texture = preload("res://imports/tree.png")
 var rock_texture = preload("res://imports/rock.webp")
+var random_type
+var resource_amount
+var random = RandomNumberGenerator.new()
+var types = ["Rock", "Stick"]# Array can't be file locations as preload() requires a constant string
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	pb.visible = false
 	temp_instructions.visible = false
-	# Testing when harvesting other resources
-	#if get_tree().get_root().name == "rock":
-		#sprite.texture = rock_texture
+	# Resources each have a random value
+	resource_amount = random.randi_range(1, 5)
+	
+	# Gets a random string from types array
+	var size = types.size()
+	random_type = types[randi() % size]
+	match random_type:
+		"Rock":
+			sprite.texture = rock_texture
+		"Stick":
+			sprite.texture = tree_texture
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
@@ -51,4 +62,8 @@ func _on_tree_area_body_exited(body):
 func _on_harvest_timer_timeout():
 	print("harvested")
 	tree_timer.wait_time = harvest_speed 
-	Globals.stick_count+=1
+	match random_type:
+		"Rock":
+			Globals.rock_count+=1
+		"Stick":
+			Globals.stick_count+=1
