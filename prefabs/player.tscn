@@ -173,6 +173,9 @@ libraries = {
 }
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_r7412")
+}
 tree_root = SubResource("AnimationNodeStateMachine_p682w")
 anim_player = NodePath("../AnimationPlayer")
 parameters/walking/blend_position = Vector2(0, 0)
@@ -208,3 +211,5 @@ offset_left = -53.0
 offset_top = -65.0
 offset_right = 51.0
 offset_bottom = -19.0
+
+[node name="Camera2D" type="Camera2D" parent="."]
