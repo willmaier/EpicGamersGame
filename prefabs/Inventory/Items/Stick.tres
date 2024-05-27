@@ -1,9 +1,9 @@
 [gd_resource type="Resource" script_class="Inv_Item" load_steps=3 format=3 uid="uid://dxuksj33lmbcp"]
 
 [ext_resource type="Script" path="res://prefabs/Inventory/InventoryItem.gd" id="1_yu22h"]
-[ext_resource type="Texture2D" uid="uid://dik0sycagmykn" path="res://imports/stick.bmp" id="2_7swm6"]
+[ext_resource type="Texture2D" uid="uid://doxky0rdh5evn" path="res://imports/stick16x16.png" id="2_fxjs1"]
 
 [resource]
 script = ExtResource("1_yu22h")
 name = "Stick"
-texture = ExtResource("2_7swm6")
+texture = ExtResource("2_fxjs1")
