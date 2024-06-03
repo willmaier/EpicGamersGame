@@ -207,9 +207,10 @@ volume_db = -18.0
 autoplay = true
 
 [node name="Inv_UI" parent="." instance=ExtResource("5_euid1")]
-offset_left = -53.0
-offset_top = -65.0
-offset_right = 51.0
-offset_bottom = -19.0
+offset_left = -207.0
+offset_top = -204.0
+offset_right = -103.0
+offset_bottom = -158.0
+scale = Vector2(4, 4)
 
 [node name="Camera2D" type="Camera2D" parent="."]
