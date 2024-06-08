@@ -1,7 +1,48 @@
-[gd_resource type="Resource" script_class="Inv" load_steps=2 format=3 uid="uid://dlw5bbmgwwhia"]
+[gd_resource type="Resource" script_class="Inv" load_steps=13 format=3 uid="uid://dlw5bbmgwwhia"]
 
+[ext_resource type="Script" path="res://Inv_Slot.gd" id="1_vsogf"]
 [ext_resource type="Script" path="res://prefabs/Inventory/Inv_Main.gd" id="2_8xtbq"]
+
+[sub_resource type="Resource" id="Resource_0ax1f"]
+script = ExtResource("1_vsogf")
+amount = 0
+
+[sub_resource type="Resource" id="Resource_wrg5x"]
+script = ExtResource("1_vsogf")
+amount = 0
+
+[sub_resource type="Resource" id="Resource_p0p1h"]
+script = ExtResource("1_vsogf")
+amount = 0
+
+[sub_resource type="Resource" id="Resource_b7xm1"]
+script = ExtResource("1_vsogf")
+amount = 0
+
+[sub_resource type="Resource" id="Resource_8br3m"]
+script = ExtResource("1_vsogf")
+amount = 0
+
+[sub_resource type="Resource" id="Resource_34din"]
+script = ExtResource("1_vsogf")
+amount = 0
+
+[sub_resource type="Resource" id="Resource_j35g5"]
+script = ExtResource("1_vsogf")
+amount = 0
+
+[sub_resource type="Resource" id="Resource_2ntr2"]
+script = ExtResource("1_vsogf")
+amount = 0
+
+[sub_resource type="Resource" id="Resource_ficji"]
+script = ExtResource("1_vsogf")
+amount = 0
+
+[sub_resource type="Resource" id="Resource_wafg4"]
+script = ExtResource("1_vsogf")
+amount = 0
 
 [resource]
 script = ExtResource("2_8xtbq")
-items = Array[Resource("res://Inv_Slot.gd")]([])
+items = Array[ExtResource("1_vsogf")]([SubResource("Resource_0ax1f"), SubResource("Resource_wrg5x"), SubResource("Resource_p0p1h"), SubResource("Resource_b7xm1"), SubResource("Resource_8br3m"), SubResource("Resource_34din"), SubResource("Resource_j35g5"), SubResource("Resource_2ntr2"), SubResource("Resource_ficji"), SubResource("Resource_wafg4")])

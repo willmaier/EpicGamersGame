@@ -15,11 +15,11 @@ func _process(_delta):
 			close()
 		else:
 			open()
-
+# update visible inventory slots
 func update_slots():
 	for i in range(min(inv.items.size(), slots.size())):
 		slots[i].update(inv.items[i])
-
+# inventory UI toggle
 func open():
 	visible = true
 	is_open = true
