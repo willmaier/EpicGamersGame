@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cwurdrhqotynf"]
+[gd_scene load_steps=11 format=3 uid="uid://cwurdrhqotynf"]
 
 [ext_resource type="PackedScene" uid="uid://8j6pyft4p6wt" path="res://prefabs/player.tscn" id="1_ntj77"]
 [ext_resource type="Script" path="res://scripts/HUD.gd" id="2_j5jdw"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://ci6bc0krv8eeu" path="res://imports/craftingTable.png" id="6_c8r2q"]
 [ext_resource type="Script" path="res://scripts/CraftingTable.gd" id="7_gi2ll"]
 [ext_resource type="PackedScene" uid="uid://bocjanvn67sv5" path="res://prefabs/ResourceEntity.tscn" id="8_rsxhu"]
+[ext_resource type="PackedScene" uid="uid://ct2fdedob7khf" path="res://prefabs/minimap.tscn" id="9_ry8mk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k74hb"]
 size = Vector2(146, 134)
@@ -18,6 +19,12 @@ size = Vector2(146, 134)
 position = Vector2(496, 271)
 crafting_table = NodePath("../CraftingTable")
 
+[node name="Minimap" parent="Player" instance=ExtResource("9_ry8mk")]
+offset_left = 377.0
+offset_top = -323.0
+offset_right = 377.0
+offset_bottom = -323.0
+
 [node name="HUD" type="CanvasGroup" parent="."]
 script = ExtResource("2_j5jdw")
 
@@ -27,6 +34,7 @@ offset_top = 6.0
 offset_right = 44.0
 offset_bottom = 29.0
 theme_override_font_sizes/font_size = 30
+metadata/_edit_use_anchors_ = true
 
 [node name="Rocks" type="Label" parent="HUD"]
 offset_left = 4.0
@@ -34,6 +42,7 @@ offset_top = 44.0
 offset_right = 44.0
 offset_bottom = 86.0
 theme_override_font_sizes/font_size = 30
+metadata/_edit_use_anchors_ = true
 
 [node name="Hammers" type="Label" parent="HUD"]
 offset_left = 4.0
@@ -41,6 +50,7 @@ offset_top = 82.0
 offset_right = 44.0
 offset_bottom = 124.0
 theme_override_font_sizes/font_size = 30
+metadata/_edit_use_anchors_ = true
 
 [node name="Crafting_UI" parent="HUD" instance=ExtResource("3_tewq0")]
 visible = false
@@ -77,19 +87,21 @@ metadata/_edit_group_ = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CraftingTable/Area2D"]
 shape = SubResource("RectangleShape2D_k74hb")
 
-[node name="Resource2" parent="." instance=ExtResource("8_rsxhu")]
-position = Vector2(815, 198)
-
-[node name="Resource3" parent="." instance=ExtResource("8_rsxhu")]
-position = Vector2(225, 494)
-
-[node name="Resource4" parent="." instance=ExtResource("8_rsxhu")]
-position = Vector2(796, 474)
-
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
 polygon = PackedVector2Array(-28, -82, 1244, -50, 1240, 730, 1156, 725, -87, 752, -66, -8, 1, 0, 1, 656, 1148, 651, 1153, 7, -65, -6)
+
+[node name="Resources" type="Node" parent="."]
+
+[node name="Resource2" parent="Resources" instance=ExtResource("8_rsxhu")]
+position = Vector2(815, 198)
+
+[node name="Resource3" parent="Resources" instance=ExtResource("8_rsxhu")]
+position = Vector2(225, 494)
+
+[node name="Resource4" parent="Resources" instance=ExtResource("8_rsxhu")]
+position = Vector2(796, 474)
 
 [connection signal="timeout" from="Spawner/SpawnTimer" to="Spawner" method="_on_spawn_timer_timeout"]
 [connection signal="body_entered" from="CraftingTable/Area2D" to="CraftingTable" method="_on_area_2d_body_entered"]
