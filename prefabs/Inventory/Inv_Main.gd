@@ -7,3 +7,4 @@ class_name Inv
 
 func insert(item: Inv_Item):
 	pass
+

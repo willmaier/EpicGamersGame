@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/playercontroller.gd" id="1_dytxa"]
 [ext_resource type="Texture2D" uid="uid://dacbsybkrdshm" path="res://imports/ArrowPlayer.png" id="2_ljvit"]
-[ext_resource type="Resource" uid="uid://dlw5bbmgwwhia" path="res://prefabs/Inventory/Player_Inv.tres" id="2_tuic6"]
+[ext_resource type="Resource" uid="uid://dlw5bbmgwwhia" path="res://prefabs/Inventory/Slot_data/Player_Inv.tres" id="2_tuic6"]
 [ext_resource type="AudioStream" uid="uid://dywwufpg410iw" path="res://globals/LeafFootsteps.mp3" id="3_otf7v"]
 [ext_resource type="PackedScene" uid="uid://cf2utc5r7rmnc" path="res://prefabs/Inventory/inv_ui.tscn" id="5_euid1"]
 

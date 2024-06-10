@@ -43,5 +43,7 @@ func _physics_process(_delta):
 func set_animation():
 	animated_tree.set("parameters/walking/blend_position", velocity)
 # Gives player access to the inventory
+
+
 func collect(item):
 	inv.insert(item)

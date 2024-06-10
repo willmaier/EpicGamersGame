@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bp0n05lshcymj"]
+[gd_scene load_steps=9 format=3 uid="uid://btgo1j00uqt1l"]
 
 [ext_resource type="Texture2D" uid="uid://dl8b2mlkougqv" path="res://imports/parallax-forest-preview.png" id="1_dhjax"]
 [ext_resource type="Script" path="res://scenes/main_menu.gd" id="1_giurf"]
