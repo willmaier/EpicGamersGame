@@ -14,7 +14,7 @@ var off_cooldown : bool = true
 var tree_texture = preload("res://imports/tree.png")
 var rock_texture = preload("res://imports/rock.webp")
 # TODO add new resources to this
-@export_enum("Tree", "Rock", "Random") var _type: String
+@export_enum("Stick", "Rock", "Random") var _type: String
 var types = ["Rock", "Stick"]# Array can't be file locations as preload() requires a constant string
 var resource_amount
 var random = RandomNumberGenerator.new()
