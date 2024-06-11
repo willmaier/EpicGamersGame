@@ -1,10 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://cwurdrhqotynf"]
+[gd_scene load_steps=9 format=3 uid="uid://cwurdrhqotynf"]
 
 [ext_resource type="PackedScene" uid="uid://8j6pyft4p6wt" path="res://prefabs/player.tscn" id="1_ntj77"]
 [ext_resource type="Script" path="res://scripts/HUD.gd" id="2_j5jdw"]
 [ext_resource type="PackedScene" uid="uid://bxi0l8i77ckq6" path="res://prefabs/Crafting/crafting_ui.tscn" id="3_tewq0"]
-[ext_resource type="PackedScene" uid="uid://br773wwhytjna" path="res://prefabs/ResourceTemplate.tscn" id="3_wqlsc"]
-[ext_resource type="Script" path="res://scripts/Spawner.gd" id="4_313v4"]
 [ext_resource type="Texture2D" uid="uid://ci6bc0krv8eeu" path="res://imports/craftingTable.png" id="6_c8r2q"]
 [ext_resource type="Script" path="res://scripts/CraftingTable.gd" id="7_gi2ll"]
 [ext_resource type="PackedScene" uid="uid://bocjanvn67sv5" path="res://prefabs/ResourceEntity.tscn" id="8_rsxhu"]
@@ -65,18 +63,6 @@ offset_top = 272.0
 offset_right = 498.0
 offset_bottom = 272.0
 
-[node name="Resource" parent="." instance=ExtResource("3_wqlsc")]
-position = Vector2(185, 239)
-scale = Vector2(0.25, 0.296875)
-
-[node name="Spawner" type="Node" parent="."]
-script = ExtResource("4_313v4")
-resource_node = ExtResource("3_wqlsc")
-
-[node name="SpawnTimer" type="Timer" parent="Spawner"]
-wait_time = 10.0
-autostart = true
-
 [node name="CraftingTable" type="Sprite2D" parent="."]
 position = Vector2(649, 72)
 texture = ExtResource("6_c8r2q")
@@ -104,6 +90,5 @@ position = Vector2(225, 494)
 [node name="Resource4" parent="Resources" instance=ExtResource("8_rsxhu")]
 position = Vector2(796, 474)
 
-[connection signal="timeout" from="Spawner/SpawnTimer" to="Spawner" method="_on_spawn_timer_timeout"]
 [connection signal="body_entered" from="CraftingTable/Area2D" to="CraftingTable" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="CraftingTable/Area2D" to="CraftingTable" method="_on_area_2d_body_exited"]
