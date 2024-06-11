@@ -13,16 +13,6 @@ size = Vector2(146, 134)
 
 [node name="Node2D" type="Node2D"]
 
-[node name="Player" parent="." node_paths=PackedStringArray("crafting_table") instance=ExtResource("1_ntj77")]
-position = Vector2(496, 271)
-crafting_table = NodePath("../CraftingTable")
-
-[node name="UI" parent="Player" instance=ExtResource("9_ry8mk")]
-offset_left = -577.0
-offset_top = -328.0
-offset_right = -577.0
-offset_bottom = -328.0
-
 [node name="HUD" type="CanvasGroup" parent="."]
 visible = false
 script = ExtResource("2_j5jdw")
@@ -92,6 +82,17 @@ _type = "Stick"
 [node name="Rock1" parent="Resources" instance=ExtResource("8_rsxhu")]
 position = Vector2(796, 474)
 _type = "Rock"
+
+[node name="Player" parent="." node_paths=PackedStringArray("crafting_table") instance=ExtResource("1_ntj77")]
+top_level = true
+position = Vector2(496, 271)
+crafting_table = NodePath("../CraftingTable")
+
+[node name="UI" parent="Player" instance=ExtResource("9_ry8mk")]
+offset_left = -577.0
+offset_top = -328.0
+offset_right = -577.0
+offset_bottom = -328.0
 
 [connection signal="body_entered" from="CraftingTable/Area2D" to="CraftingTable" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="CraftingTable/Area2D" to="CraftingTable" method="_on_area_2d_body_exited"]
