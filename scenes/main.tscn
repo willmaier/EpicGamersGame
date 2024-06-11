@@ -81,14 +81,17 @@ polygon = PackedVector2Array(-65, -53, 1244, -50, 1240, 730, 1156, 725, -75, 722
 
 [node name="Resources" type="Node" parent="."]
 
-[node name="Resource2" parent="Resources" instance=ExtResource("8_rsxhu")]
+[node name="Tree1" parent="Resources" instance=ExtResource("8_rsxhu")]
 position = Vector2(815, 198)
+_type = "Tree"
 
-[node name="Resource3" parent="Resources" instance=ExtResource("8_rsxhu")]
+[node name="Tree2" parent="Resources" instance=ExtResource("8_rsxhu")]
 position = Vector2(225, 494)
+_type = "Tree"
 
-[node name="Resource4" parent="Resources" instance=ExtResource("8_rsxhu")]
+[node name="Rock1" parent="Resources" instance=ExtResource("8_rsxhu")]
 position = Vector2(796, 474)
+_type = "Rock"
 
 [connection signal="body_entered" from="CraftingTable/Area2D" to="CraftingTable" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="CraftingTable/Area2D" to="CraftingTable" method="_on_area_2d_body_exited"]

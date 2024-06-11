@@ -13,10 +13,11 @@ var off_cooldown : bool = true
 # For harvesting other resources
 var tree_texture = preload("res://imports/tree.png")
 var rock_texture = preload("res://imports/rock.webp")
-var random_type
+# TODO add new resources to this
+@export_enum("Tree", "Rock", "Random") var _type: String
+var types = ["Rock", "Stick"]# Array can't be file locations as preload() requires a constant string
 var resource_amount
 var random = RandomNumberGenerator.new()
-var types = ["Rock", "Stick"]# Array can't be file locations as preload() requires a constant string
 
 func _ready():
 	pb.visible = false
@@ -26,8 +27,10 @@ func _ready():
 	
 	# Gets a random string from types array
 	var size = types.size()
-	random_type = types[randi() % size]
-	match random_type:
+	# User did not enter type in inspector
+	if _type == "Random":
+		_type = types[randi() % size]
+	match _type:
 		"Rock":
 			sprite.texture = rock_texture
 		"Stick":
@@ -77,7 +80,7 @@ func _on_harvest_timer_timeout():
 	tree_timer.wait_time = harvest_speed 
 	
 	# TODO there might be a better way to do this but this works for now
-	match random_type:
+	match _type:
 		"Rock":
 			Globals.rock_count+=1
 		"Stick":
