@@ -14,11 +14,14 @@ func _ready():
 # Also when a BG is added we can add it here too
 func updateMap():
 	var resource_entity_path = get_tree().get_root().get_node("Node2D/Resources")
+	# For all instances in the Resources node
 	for i in resource_entity_path.get_child_count():
 		if resource_entity_path.get_child(i)._type == "Stick":
 			entity = tree_texture.instantiate()
 		if resource_entity_path.get_child(i)._type == "Rock":
 			entity = rock_texture.instantiate()
+		else:
+			entity = tree_texture.instantiate()
 		add_child(entity)
 		entity.position = resource_entity_path.get_child(i).position
 
