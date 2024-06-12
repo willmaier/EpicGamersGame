@@ -6,10 +6,11 @@ extends Node
 @onready var pb = $ProgressBar # Experiment with TextureProgressBar later
 @onready var temp_instructions = $RemoveLater
 @onready var sprite = $Sprite2D
+@export var item: Inv_Item
 const harvest_speed = 5
 var can_harvest
 var off_cooldown : bool = true
-
+var player = null
 # For harvesting other resources
 var tree_texture = preload("res://imports/tree.png")
 var rock_texture = preload("res://imports/rock.webp")
@@ -54,6 +55,7 @@ func try_harvesting():
 func _on_tree_area_body_entered(body):
 	if body.name == "Player":
 		print("entered harvest area")
+		player = body
 		pb.visible = true # Show progress bar
 		can_harvest = true
 		temp_instructions.visible = true # TODO Can remove or change these later
@@ -68,7 +70,8 @@ func _on_tree_area_body_exited(body):
 # Restart timer each harvest and add to globals
 func _on_harvest_timer_timeout():
 	print("harvested")
-	
+
+	player.collect(item) #sends signal to the inventory 
 	# TODO add a visual cue so players no they can't harvest
 	harvest_cooldown.start()
 	off_cooldown = false
