@@ -5,5 +5,7 @@
 
 [resource]
 script = ExtResource("1_yu22h")
-name = "Stick"
+item_name = "Stick"
+description = "makes a great cane"
 texture = ExtResource("2_fxjs1")
+item_path = "res://prefabs/Inventory/Items/Stick.tres"

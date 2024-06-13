@@ -1,7 +1,6 @@
-[gd_resource type="Resource" script_class="Inv" load_steps=2 format=3 uid="uid://dlw5bbmgwwhia"]
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://ral8ir0y4byu"]
 
 [ext_resource type="Script" path="res://prefabs/Inventory/Inv_Main.gd" id="2_8xtbq"]
 
 [resource]
 script = ExtResource("2_8xtbq")
-items = Array[Resource("res://Inv_Slot.gd")]([])

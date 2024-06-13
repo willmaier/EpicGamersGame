@@ -5,5 +5,7 @@
 
 [resource]
 script = ExtResource("1_yemyi")
-name = "Rock"
+item_name = "Rock"
+description = "beats scissors "
 texture = ExtResource("2_k343v")
+item_path = "res://prefabs/Inventory/Items/Rock.tres"

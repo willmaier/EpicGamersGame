@@ -14,7 +14,7 @@ const speed = 300.0
 @export var crafting_table: Sprite2D
 var is_crafting: bool = false
 
-@export var inv: Inv
+#@export var inv: Inv
 
 # TODO if delta is use just remove the _
 func _physics_process(_delta):
@@ -43,5 +43,5 @@ func _physics_process(_delta):
 func set_animation():
 	animated_tree.set("parameters/walking/blend_position", velocity)
 # Gives player access to the inventory
-func collect(item):
-	inv.insert(item)
+#func collect(item):
+#	inv.insert(item)
