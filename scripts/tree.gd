@@ -79,12 +79,19 @@ func _on_harvest_timer_timeout():
 	# Restart harvesting timer
 	tree_timer.wait_time = harvest_speed 
 	
+	if (Globals.hammer_count > 0):
+			match _type:
+				"Rock":
+					Globals.rock_count+=3
+				"Stick":
+					Globals.stick_count+=3
 	# TODO there might be a better way to do this but this works for now
-	match _type:
-		"Rock":
-			Globals.rock_count+=1
-		"Stick":
-			Globals.stick_count+=1
+	else: 
+		match _type:
+			"Rock":
+				Globals.rock_count+=1
+			"Stick":
+				Globals.stick_count+=1
 
 # Players must wait to harvest again
 func _on_harvest_cooldown_timeout():
