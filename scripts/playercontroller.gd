@@ -11,7 +11,7 @@ const speed = 300.0
 
 # Crafting
 @onready var crafting_UI = $"../HUD/Crafting_UI"
-@export var crafting_table: Sprite2D
+@export var crafting_table: StaticBody2D
 var is_crafting: bool = false
 
 @export var inv: Inv
@@ -30,12 +30,10 @@ func _physics_process(_delta):
 		velocity.x = move_toward(velocity.normalized().x, 0, speed)
 		velocity.y = move_toward(velocity.normalized().y, 0, speed)
 		player_walk_sound.play()
-	if (is_crafting and Input.is_action_just_pressed("interact")):
-		crafting_UI.visible = false
-		is_crafting = false
+	
 	if (crafting_table.player_present and Input.is_action_just_pressed("interact")):
-		crafting_UI.visible = true
-		is_crafting = true
+		toggle_crafting()
+
 	set_animation()
 	move_and_slide()
 
@@ -44,6 +42,10 @@ func set_animation():
 	animated_tree.set("parameters/walking/blend_position", velocity)
 # Gives player access to the inventory
 
-
 func collect(item):
 	inv.insert(item)
+
+func toggle_crafting():
+	print("toggled crafting")
+	#crafting_UI.visible = !crafting_UI.visible
+	Globals.is_crafting = !Globals.is_crafting
