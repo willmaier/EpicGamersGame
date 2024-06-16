@@ -45,9 +45,6 @@ func set_animation():
 #func collect(item):
 #	inv.insert(item)
 
-func collect(item):
-	inv.insert(item)
-
 func toggle_crafting():
 	print("toggled crafting")
 	#crafting_UI.visible = !crafting_UI.visible
