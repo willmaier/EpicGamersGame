@@ -1,7 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://bocjanvn67sv5"]
+[gd_scene load_steps=7 format=3 uid="uid://bocjanvn67sv5"]
 
 [ext_resource type="Texture2D" uid="uid://x3kktmxxmuht" path="res://imports/tree.png" id="1_j2dd2"]
 [ext_resource type="Script" path="res://scripts/tree.gd" id="1_lgjix"]
+[ext_resource type="AudioStream" uid="uid://1vb74hobartf" path="res://globals/ChoppingWood.mp3" id="3_j34nb"]
+[ext_resource type="AudioStream" uid="uid://cm7ul2g30qwwo" path="res://globals/MiningStone.mp3" id="4_cd5nm"]
 [ext_resource type="Resource" uid="uid://dxuksj33lmbcp" path="res://prefabs/Inventory/Items/Stick.tres" id="2_80wwl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s60js"]
@@ -51,6 +53,12 @@ shape = SubResource("RectangleShape2D_t2cw0")
 [node name="HarvestCooldown" type="Timer" parent="."]
 wait_time = 5.0
 one_shot = true
+
+[node name="TreeSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_j34nb")
+
+[node name="MiningSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_cd5nm")
 
 [connection signal="body_entered" from="TreeArea" to="." method="_on_tree_area_body_entered"]
 [connection signal="body_exited" from="TreeArea" to="." method="_on_tree_area_body_exited"]

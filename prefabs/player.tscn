@@ -173,7 +173,7 @@ libraries = {
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource("AnimationNodeStateMachine_p682w")
 anim_player = NodePath("../AnimationPlayer")
-parameters/walking/blend_position = Vector2(0, 0)
+parameters/walking/blend_position = Vector2(0.000368595, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
