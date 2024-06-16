@@ -9,6 +9,11 @@ var types = ["Rock", "Stick"]
 var stick_texture = preload("res://imports/stick.bmp")
 var rock_texture = preload("res://imports/rock.bmp")
 
+var rock = preload("res://prefabs/Inventory/Items/Rock.tres")
+var stick = preload("res://prefabs/Inventory/Items/Stick.tres")
+
+var inventory = preload("res://prefabs/Inventory/Player_Inv.tres")
+
 func _ready():
 	# Resources each have a random value
 	resource_amount = random.randi_range(1, 5)
@@ -28,6 +33,11 @@ func _on_area_2d_body_entered(_body):
 	match random_type:
 		"Rock":
 			Globals.rock_count+=resource_amount
+			inventory.add_item(rock.item_path,1)
+			inventory.print_inventory()
+			
 		"Stick":
 			Globals.stick_count+=resource_amount
+			inventory.add_item(stick.item_path,[1,2].pick_random())
+			inventory.print_inventory()
 	queue_free()
