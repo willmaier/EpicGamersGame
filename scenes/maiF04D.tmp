@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://c61xx52jye7kg" path="res://prefabs/Crafting/crafting_table.tscn" id="8_1nnd7"]
 [ext_resource type="AudioStream" uid="uid://cwgugsrwpwh6q" path="res://assets/sounds/Bears_1_No_Piano.mp3" id="8_3ry6t"]
 [ext_resource type="PackedScene" uid="uid://bocjanvn67sv5" path="res://prefabs/ResourceEntity.tscn" id="8_rsxhu"]
-[ext_resource type="PackedScene" uid="uid://cbthdsoex6qpd" path="res://prefabs/minimap.tscn" id="9_ry8mk"]
+[ext_resource type="PackedScene" uid="uid://ct2fdedob7khf" path="res://prefabs/minimap.tscn" id="9_ry8mk"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j26ip"]
 texture = ExtResource("3_i5j52")
@@ -3070,6 +3070,22 @@ sources/0 = SubResource("TileSetAtlasSource_j26ip")
 
 [node name="Node2D" type="Node2D"]
 
+[node name="Player" parent="." node_paths=PackedStringArray("crafting_table") instance=ExtResource("1_ntj77")]
+position = Vector2(496, 271)
+crafting_table = NodePath("../CraftingTable")
+
+[node name="UI" parent="Player" instance=ExtResource("9_ry8mk")]
+offset_left = -577.0
+offset_top = -328.0
+offset_right = -577.0
+offset_bottom = -328.0
+
+[node name="UI2" parent="Player" instance=ExtResource("9_ry8mk")]
+offset_left = -577.0
+offset_top = -328.0
+offset_right = -577.0
+offset_bottom = -328.0
+
 [node name="HUD" type="CanvasGroup" parent="."]
 visible = false
 script = ExtResource("2_j5jdw")
@@ -3157,21 +3173,5 @@ position = Vector2(796, 474)
 [node name="StartingTrack" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("8_3ry6t")
 autoplay = true
-
-[node name="Player" parent="." node_paths=PackedStringArray("crafting_table") instance=ExtResource("1_ntj77")]
-position = Vector2(496, 271)
-crafting_table = NodePath("../CraftingTable2")
-
-[node name="UI" parent="Player" instance=ExtResource("9_ry8mk")]
-offset_left = -577.0
-offset_top = -328.0
-offset_right = -577.0
-offset_bottom = -328.0
-
-[node name="UI2" parent="Player" instance=ExtResource("9_ry8mk")]
-offset_left = -577.0
-offset_top = -328.0
-offset_right = -577.0
-offset_bottom = -328.0
 
 [connection signal="timeout" from="Spawner/SpawnTimer" to="Spawner" method="_on_spawn_timer_timeout"]

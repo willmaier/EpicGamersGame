@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://cnrcovch1e47h"]
-
-[ext_resource type="Texture2D" uid="uid://dupmxuahg2ojq" path="res://imports/rock.webp" id="1_cqc04"]
-
-[node name="rock" type="Sprite2D"]
-texture = ExtResource("1_cqc04")
