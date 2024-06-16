@@ -3147,12 +3147,15 @@ polygon = PackedVector2Array(-65, -53, 1244, -50, 1240, 730, 1156, 725, -75, 722
 
 [node name="Resource2" parent="Resources" instance=ExtResource("8_rsxhu")]
 position = Vector2(815, 198)
+_type = "Stick"
 
 [node name="Resource3" parent="Resources" instance=ExtResource("8_rsxhu")]
 position = Vector2(225, 494)
+_type = "Stick"
 
 [node name="Resource4" parent="Resources" instance=ExtResource("8_rsxhu")]
 position = Vector2(796, 474)
+_type = "Rock"
 
 [node name="StartingTrack" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("8_3ry6t")
