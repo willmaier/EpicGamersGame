@@ -6,9 +6,13 @@ extends Node
 @onready var pb = $ProgressBar # Experiment with TextureProgressBar later
 @onready var temp_instructions = $RemoveLater
 @onready var sprite = $Sprite2D
+@onready var chop_sound = $TreeSound
+@onready var mine_sound = $MiningSound
+
 const harvest_speed = 5
 var can_harvest
 var off_cooldown : bool = true
+
 
 # For harvesting other resources
 var tree_texture = preload("res://imports/tree.png")
@@ -51,8 +55,15 @@ func try_harvesting():
 	pb.value = tree_timer.time_left * 20
 	if Input.is_action_just_pressed("interact") && can_harvest: 
 		tree_timer.start()
+		match _type:
+			"Rock":
+				mine_sound.play()
+			"Stick":
+				chop_sound.play()
 	elif Input.is_action_just_released("interact") || !can_harvest:
-		tree_timer.stop() 
+		tree_timer.stop()
+		mine_sound.stop() 
+		chop_sound.stop()
 
 func _on_tree_area_body_entered(body):
 	if body.name == "Player":
@@ -71,7 +82,8 @@ func _on_tree_area_body_exited(body):
 # Restart timer each harvest and add to globals
 func _on_harvest_timer_timeout():
 	print("harvested")
-	
+	chop_sound.stop()
+	mine_sound.stop()
 	# TODO add a visual cue so players no they can't harvest
 	harvest_cooldown.start()
 	off_cooldown = false
@@ -79,12 +91,19 @@ func _on_harvest_timer_timeout():
 	# Restart harvesting timer
 	tree_timer.wait_time = harvest_speed 
 	
+	if (Globals.hammer_count > 0):
+			match _type:
+				"Rock":
+					Globals.rock_count+=3
+				"Stick":
+					Globals.stick_count+=3
 	# TODO there might be a better way to do this but this works for now
-	match _type:
-		"Rock":
-			Globals.rock_count+=1
-		"Stick":
-			Globals.stick_count+=1
+	else: 
+		match _type:
+			"Rock":
+				Globals.rock_count+=1
+			"Stick":
+				Globals.stick_count+=1
 
 # Players must wait to harvest again
 func _on_harvest_cooldown_timeout():
