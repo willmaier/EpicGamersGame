@@ -6,18 +6,25 @@ extends Node
 @onready var pb = $ProgressBar # Experiment with TextureProgressBar later
 @onready var temp_instructions = $RemoveLater
 @onready var sprite = $Sprite2D
-@export var item: Inv_Item
 const harvest_speed = 5
 var can_harvest
 var off_cooldown : bool = true
-var player = null
+
 # For harvesting other resources
 var tree_texture = preload("res://imports/tree.png")
 var rock_texture = preload("res://imports/rock.webp")
-var random_type
-var resource_amount
-var random = RandomNumberGenerator.new()
+
+# For adding images to inventory
+var rock_inventory = preload("res://prefabs/Inventory/Items/Rock.tres")
+var stick_inventory = preload("res://prefabs/Inventory/Items/Stick.tres")
+var inventory = preload("res://prefabs/Inventory/Player_Inv.tres")
+
+
+# TODO add new resources to this
+@export_enum("Stick", "Rock", "Random") var _type: String
 var types = ["Rock", "Stick"]# Array can't be file locations as preload() requires a constant string
+var resource_amount = 1
+var random = RandomNumberGenerator.new()
 
 func _ready():
 	pb.visible = false
@@ -27,8 +34,10 @@ func _ready():
 	
 	# Gets a random string from types array
 	var size = types.size()
-	random_type = types[randi() % size]
-	match random_type:
+	# User did not enter type in inspector
+	if _type == "Random":
+		_type = types[randi() % size]
+	match _type:
 		"Rock":
 			sprite.texture = rock_texture
 		"Stick":
@@ -54,25 +63,23 @@ func try_harvesting():
 
 func _on_tree_area_body_entered(body):
 	if body.name == "Player":
-		print("entered harvest area")
-		player = body
+		#print("entered harvest area")
 		pb.visible = true # Show progress bar
 		can_harvest = true
 		temp_instructions.visible = true # TODO Can remove or change these later
 
 func _on_tree_area_body_exited(body):
 	if body.name == "Player":
-		print("exited harvest area")
+		#print("exited harvest area")
 		pb.visible = false
 		can_harvest = false
 		temp_instructions.visible = false # TODO Can remove or change these later
 
 # Restart timer each harvest and add to globals
 func _on_harvest_timer_timeout():
-	print("harvested")
-
-	player.collect(item) #sends signal to the inventory 
-	# TODO add a visual cue so players no they can't harvest
+	#print("harvested")
+	
+	# TODO add a visual cue so players know they can't harvest
 	harvest_cooldown.start()
 	off_cooldown = false
 	
@@ -80,11 +87,16 @@ func _on_harvest_timer_timeout():
 	tree_timer.wait_time = harvest_speed 
 	
 	# TODO there might be a better way to do this but this works for now
-	match random_type:
+	match _type:
 		"Rock":
-			Globals.rock_count+=1
+			Globals.rock_count+=resource_amount
+			inventory.add_item(rock_inventory.item_path,[1,2].pick_random())
+			inventory.print_inventory()
 		"Stick":
 			Globals.stick_count+=1
+			Globals.stick_count+=resource_amount
+			inventory.add_item(stick_inventory.item_path,[1,2].pick_random())
+			inventory.print_inventory()
 
 # Players must wait to harvest again
 func _on_harvest_cooldown_timeout():

@@ -1,7 +1,7 @@
 [gd_scene load_steps=18 format=3 uid="uid://8j6pyft4p6wt"]
 
 [ext_resource type="Script" path="res://scripts/playercontroller.gd" id="1_dytxa"]
-[ext_resource type="Texture2D" uid="uid://dacbsybkrdshm" path="res://imports/ArrowPlayer.png" id="2_ljvit"]
+[ext_resource type="Texture2D" uid="uid://dcc1m8t5eo8dj" path="res://assets/art/BearSpritesheetSq64x64.png" id="2_re0o4"]
 [ext_resource type="AudioStream" uid="uid://dywwufpg410iw" path="res://globals/LeafFootsteps.mp3" id="3_otf7v"]
 [ext_resource type="PackedScene" uid="uid://cf2utc5r7rmnc" path="res://prefabs/Inventory/inv_ui.tscn" id="5_euid1"]
 
@@ -149,6 +149,7 @@ blend_point_2/node = SubResource("AnimationNodeAnimation_5k2b3")
 blend_point_2/pos = Vector2(-1, 0)
 blend_point_3/node = SubResource("AnimationNodeAnimation_oaqmn")
 blend_point_3/pos = Vector2(1, 0)
+blend_mode = 1
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_4gt6t"]
 advance_mode = 2
@@ -173,14 +174,14 @@ libraries = {
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource("AnimationNodeStateMachine_p682w")
 anim_player = NodePath("../AnimationPlayer")
-parameters/walking/blend_position = Vector2(0, 0)
+parameters/walking/blend_position = Vector2(-0.640988, 0.157143)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
-texture = ExtResource("2_ljvit")
+texture = ExtResource("2_re0o4")
 hframes = 2
 vframes = 2
-frame = 2
+frame = 1
 metadata/_aseprite_wizard_config_ = {
 "i_mode": -1,
 "keep_anim_length": false,
