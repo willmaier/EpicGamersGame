@@ -63,23 +63,23 @@ func try_harvesting():
 
 func _on_tree_area_body_entered(body):
 	if body.name == "Player":
-		print("entered harvest area")
+		#print("entered harvest area")
 		pb.visible = true # Show progress bar
 		can_harvest = true
 		temp_instructions.visible = true # TODO Can remove or change these later
 
 func _on_tree_area_body_exited(body):
 	if body.name == "Player":
-		print("exited harvest area")
+		#print("exited harvest area")
 		pb.visible = false
 		can_harvest = false
 		temp_instructions.visible = false # TODO Can remove or change these later
 
 # Restart timer each harvest and add to globals
 func _on_harvest_timer_timeout():
-	print("harvested")
+	#print("harvested")
 	
-	# TODO add a visual cue so players no they can't harvest
+	# TODO add a visual cue so players know they can't harvest
 	harvest_cooldown.start()
 	off_cooldown = false
 	
