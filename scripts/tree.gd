@@ -15,8 +15,8 @@ var tree_texture = preload("res://imports/tree.png")
 var rock_texture = preload("res://imports/rock.webp")
 
 # For adding images to inventory
-var rock_inventory = preload("res://prefabs/Inventory/Items/Rock.tres")
-var stick_inventory = preload("res://prefabs/Inventory/Items/Stick.tres")
+var rock_inventory = load("res://prefabs/Inventory/Items/Rock.tres")
+var stick_inventory = load("res://prefabs/Inventory/Items/Stick.tres")
 var inventory = preload("res://prefabs/Inventory/Player_Inv.tres")
 
 
@@ -89,11 +89,12 @@ func _on_harvest_timer_timeout():
 	# TODO there might be a better way to do this but this works for now
 	match _type:
 		"Rock":
+			print("harvested Rock")
 			Globals.rock_count+=resource_amount
-			inventory.add_item(rock_inventory.item_path,[1,2].pick_random())
+			inventory.add_item(rock_inventory.item_path,1)
 			inventory.print_inventory()
 		"Stick":
-			Globals.stick_count+=1
+			print("harvested Stick")
 			Globals.stick_count+=resource_amount
 			inventory.add_item(stick_inventory.item_path,[1,2].pick_random())
 			inventory.print_inventory()
