@@ -13,10 +13,17 @@ var off_cooldown : bool = true
 # For harvesting other resources
 var tree_texture = preload("res://imports/tree.png")
 var rock_texture = preload("res://imports/rock.webp")
+
+# For adding images to inventory
+var rock_inventory = preload("res://prefabs/Inventory/Items/Rock.tres")
+var stick_inventory = preload("res://prefabs/Inventory/Items/Stick.tres")
+var inventory = preload("res://prefabs/Inventory/Player_Inv.tres")
+
+
 # TODO add new resources to this
 @export_enum("Stick", "Rock", "Random") var _type: String
 var types = ["Rock", "Stick"]# Array can't be file locations as preload() requires a constant string
-var resource_amount
+var resource_amount = 1
 var random = RandomNumberGenerator.new()
 
 func _ready():
@@ -82,9 +89,14 @@ func _on_harvest_timer_timeout():
 	# TODO there might be a better way to do this but this works for now
 	match _type:
 		"Rock":
-			Globals.rock_count+=1
+			Globals.rock_count+=resource_amount
+			inventory.add_item(rock_inventory.item_path,[1,2].pick_random())
+			inventory.print_inventory()
 		"Stick":
 			Globals.stick_count+=1
+			Globals.stick_count+=resource_amount
+			inventory.add_item(stick_inventory.item_path,[1,2].pick_random())
+			inventory.print_inventory()
 
 # Players must wait to harvest again
 func _on_harvest_cooldown_timeout():

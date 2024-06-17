@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("1_yu22h")
-name = "Stick,Rock"
+name = "Stick"
 texture = ExtResource("2_fxjs1")
 quantity = 1
 description = "makes a great cane"
