@@ -27,7 +27,7 @@ scale = Vector2(0.534921, 0.52)
 texture = ExtResource("1_j2dd2")
 
 [node name="HarvestTimer" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 3.0
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
 visible = false

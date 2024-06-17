@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/playercontroller.gd" id="1_dytxa"]
 [ext_resource type="Resource" uid="uid://dlw5bbmgwwhia" path="res://prefabs/Inventory/Slot_data/Player_Inv.tres" id="2_tuic6"]
 [ext_resource type="Texture2D" uid="uid://boolsuhsov3xb" path="res://assets/art/Bear_Sprite_POST_DIGITIZATION-WALK.png" id="3_immpf"]
-[ext_resource type="AudioStream" uid="uid://dywwufpg410iw" path="res://globals/LeafFootsteps.mp3" id="3_otf7v"]
+[ext_resource type="AudioStream" uid="uid://yu87kqpokjiy" path="res://assets/sounds/LeafFootsteps2.mp3" id="4_m7a6p"]
 [ext_resource type="PackedScene" uid="uid://cf2utc5r7rmnc" path="res://prefabs/Inventory/inv_ui.tscn" id="5_euid1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dso7y"]
@@ -310,7 +310,7 @@ metadata/_aseprite_wizard_source_file_hash_ = "c63b204330f24b1575203f8b50fa022c"
 
 [node name="PlayerWalkSound" type="AudioStreamPlayer" parent="."]
 process_mode = 3
-stream = ExtResource("3_otf7v")
+stream = ExtResource("4_m7a6p")
 volume_db = -18.0
 autoplay = true
 

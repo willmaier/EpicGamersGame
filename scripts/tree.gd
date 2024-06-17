@@ -52,7 +52,7 @@ func _process(_delta):
 		temp_instructions.text = "Can't harvest for" + "%2d seconds" % [int(harvest_cooldown.time_left) % 60]
 
 func try_harvesting():
-	pb.value = tree_timer.time_left * 20
+	pb.value = tree_timer.time_left * (33.33)
 	if Input.is_action_just_pressed("interact") && can_harvest: 
 		tree_timer.start()
 		match _type:
