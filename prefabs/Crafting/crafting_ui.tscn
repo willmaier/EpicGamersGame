@@ -26,9 +26,10 @@ offset_right = 200.0
 offset_bottom = 200.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(1, 1, 1, 0.603922)
+color = Color(0.145098, 0.145098, 0.145098, 0.960784)
 
 [node name="Hammer" type="Button" parent="Background"]
+visible = false
 layout_mode = 0
 offset_left = 167.0
 offset_top = 167.0
@@ -52,5 +53,145 @@ offset_right = 62.0
 offset_bottom = 119.0
 text = "2 sticks
 1 stone"
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -200.0
+offset_right = 200.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Materials" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Materials Heading" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/Materials"]
+layout_mode = 2
+text = "Materials"
+horizontal_alignment = 1
+
+[node name="Material1" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/Materials"]
+layout_mode = 2
+
+[node name="Sprite2D" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer/Materials/Material1"]
+layout_mode = 2
+texture = ExtResource("1_hh0o5")
+
+[node name="Description" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/Materials/Material1"]
+layout_mode = 2
+text = "Material 1 
+description"
+horizontal_alignment = 1
+
+[node name="Material2" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/Materials"]
+layout_mode = 2
+
+[node name="Sprite2D" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer/Materials/Material2"]
+layout_mode = 2
+texture = ExtResource("1_hh0o5")
+
+[node name="Description" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/Materials/Material2"]
+layout_mode = 2
+text = "Material 2 
+description"
+horizontal_alignment = 1
+
+[node name="Tools" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Tools Heading" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/Tools"]
+layout_mode = 2
+text = "Tools"
+horizontal_alignment = 1
+
+[node name="Tool1" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/Tools"]
+layout_mode = 2
+
+[node name="Sprite2D" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer/Tools/Tool1"]
+layout_mode = 2
+texture = ExtResource("1_hh0o5")
+
+[node name="Description" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/Tools/Tool1"]
+layout_mode = 2
+text = "Tool 1 
+description"
+horizontal_alignment = 1
+
+[node name="Tool2" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/Tools"]
+layout_mode = 2
+
+[node name="Sprite2D" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer/Tools/Tool2"]
+layout_mode = 2
+texture = ExtResource("1_hh0o5")
+
+[node name="Description" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/Tools/Tool2"]
+layout_mode = 2
+text = "Tool 2 
+description"
+horizontal_alignment = 1
+
+[node name="Structures" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Structures Heading" type="Label" parent="MarginContainer/VBoxContainer/Structures"]
+layout_mode = 2
+text = "Structures"
+horizontal_alignment = 1
+
+[node name="Structure1" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Structures"]
+layout_mode = 2
+
+[node name="Name" type="Label" parent="MarginContainer/VBoxContainer/Structures/Structure1"]
+custom_minimum_size = Vector2(50, 25)
+layout_mode = 2
+text = "Bridge"
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/Structures/Structure1"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("1_hh0o5")
+
+[node name="Description" type="Label" parent="MarginContainer/VBoxContainer/Structures/Structure1"]
+layout_mode = 2
+text = "Creates a blockage in the 
+stream. Maybe this will 
+bring back some creatures"
+
+[node name="Structure2" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Structures"]
+layout_mode = 2
+
+[node name="Name" type="Label" parent="MarginContainer/VBoxContainer/Structures/Structure2"]
+custom_minimum_size = Vector2(50, 25)
+layout_mode = 2
+text = "Dam"
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/Structures/Structure2"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("1_hh0o5")
+
+[node name="Description" type="Label" parent="MarginContainer/VBoxContainer/Structures/Structure2"]
+layout_mode = 2
+text = "Creates a blockage in the 
+stream. Maybe this will 
+bring back some creatures"
 
 [connection signal="pressed" from="Background/Hammer" to="." method="_on_hammer_pressed"]
