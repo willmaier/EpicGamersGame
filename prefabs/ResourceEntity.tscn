@@ -93,4 +93,5 @@ texture = ExtResource("3_eulpu")
 [connection signal="body_exited" from="TreeArea" to="." method="_on_tree_area_body_exited"]
 [connection signal="body_exited" from="TreeArea" to="SubViewportContainer/SubViewport/RhythmGame" method="_on_tree_area_body_exited"]
 [connection signal="timeout" from="HarvestTimer" to="." method="_on_harvest_timer_timeout"]
+[connection signal="timeout" from="HarvestTimer" to="SubViewportContainer/SubViewport/RhythmGame" method="_on_harvest_timer_timeout"]
 [connection signal="timeout" from="HarvestCooldown" to="." method="_on_harvest_cooldown_timeout"]
