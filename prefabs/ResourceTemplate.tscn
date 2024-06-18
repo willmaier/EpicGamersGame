@@ -1,9 +1,53 @@
-[gd_scene load_steps=4 format=3 uid="uid://br773wwhytjna"]
-
-[ext_resource type="Script" path="res://scripts/Resources.gd" id="2_e31lk"]
+[gd_scene load_steps=4 format=3 uid="uid://bcc8q3fmijt0h"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_tchc0"]
 load_path = "res://.godot/imported/stick.bmp-3ea8faef82bab16183319c6776ff7325.ctex"
+
+[sub_resource type="GDScript" id="GDScript_2mhj1"]
+script/source = "extends Sprite2D
+
+var random = RandomNumberGenerator.new()
+var resource_amount
+var random_type
+
+# Array can't be file locations as preload() requires a constant string
+var types = [\"Rock\", \"Stick\"]
+var stick_texture = preload(\"res://imports/stick.bmp\")
+var rock_texture = preload(\"res://imports/rock.bmp\")
+
+var rock = preload(\"res://prefabs/Inventory/Items/Rock.tres\")
+var stick = preload(\"res://prefabs/Inventory/Items/Stick.tres\")
+
+var inventory = preload(\"res://prefabs/Inventory/Player_Inv.tres\")
+
+func _ready():
+	# Resources each have a random value
+	resource_amount = random.randi_range(1, 5)
+	
+	# Gets a random string from types array
+	var size = types.size()
+	random_type = types[randi() % size]
+	match random_type:
+		\"Rock\":
+			texture = rock_texture
+		\"Stick\":
+			texture = stick_texture
+
+# Add values to global and remove instance
+func _on_area_2d_body_entered(_body):
+	#print(random_type)
+	match random_type:
+		\"Rock\":
+			Globals.rock_count+=resource_amount
+			inventory.add_item(rock.item_path,1)
+			inventory.print_inventory()
+			
+		\"Stick\":
+			Globals.stick_count+=resource_amount
+			inventory.add_item(stick.item_path,[1,2].pick_random())
+			inventory.print_inventory()
+	queue_free()
+"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e72r5"]
 size = Vector2(907.636, 512)
@@ -12,7 +56,7 @@ size = Vector2(907.636, 512)
 position = Vector2(251.946, 220.341)
 scale = Vector2(0.180111, 0.20579)
 texture = SubResource("CompressedTexture2D_tchc0")
-script = ExtResource("2_e31lk")
+script = SubResource("GDScript_2mhj1")
 
 [node name="ResourceArea" type="Area2D" parent="."]
 

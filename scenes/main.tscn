@@ -1,10 +1,9 @@
-[gd_scene load_steps=16 format=3 uid="uid://cwurdrhqotynf"]
+[gd_scene load_steps=19 format=3 uid="uid://cwurdrhqotynf"]
 
 [ext_resource type="PackedScene" uid="uid://8j6pyft4p6wt" path="res://prefabs/player.tscn" id="1_ntj77"]
 [ext_resource type="Script" path="res://scripts/HUD.gd" id="2_j5jdw"]
 [ext_resource type="Texture2D" uid="uid://de68p522gxcsn" path="res://imports/RPGpack_sheet.png" id="3_i5j52"]
 [ext_resource type="PackedScene" uid="uid://bxi0l8i77ckq6" path="res://prefabs/Crafting/crafting_ui.tscn" id="3_tewq0"]
-[ext_resource type="PackedScene" uid="uid://br773wwhytjna" path="res://prefabs/ResourceTemplate.tscn" id="3_wqlsc"]
 [ext_resource type="Script" path="res://scripts/Spawner.gd" id="4_313v4"]
 [ext_resource type="Texture2D" uid="uid://ci6bc0krv8eeu" path="res://imports/craftingTable.png" id="6_c8r2q"]
 [ext_resource type="Script" path="res://scripts/CraftingTable.gd" id="7_gi2ll"]
@@ -282,6 +281,71 @@ texture_region_size = Vector2i(64, 64)
 tile_size = Vector2i(64, 64)
 sources/0 = SubResource("TileSetAtlasSource_j26ip")
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_tchc0"]
+load_path = "res://.godot/imported/stick.bmp-3ea8faef82bab16183319c6776ff7325.ctex"
+
+[sub_resource type="GDScript" id="GDScript_2mhj1"]
+script/source = "extends Sprite2D
+
+var random = RandomNumberGenerator.new()
+var resource_amount
+var random_type
+
+# Array can't be file locations as preload() requires a constant string
+var types = [\"Rock\", \"Stick\"]
+var stick_texture = preload(\"res://imports/stick.bmp\")
+var rock_texture = preload(\"res://imports/rock.bmp\")
+
+var rock = preload(\"res://prefabs/Inventory/Items/Rock.tres\")
+var stick = preload(\"res://prefabs/Inventory/Items/Stick.tres\")
+
+var inventory = preload(\"res://prefabs/Inventory/Player_Inv.tres\")
+
+func _ready():
+	# Resources each have a random value
+	resource_amount = random.randi_range(1, 5)
+	
+	# Gets a random string from types array
+	var size = types.size()
+	random_type = types[randi() % size]
+	match random_type:
+		\"Rock\":
+			texture = rock_texture
+		\"Stick\":
+			texture = stick_texture
+
+# Add values to global and remove instance
+func _on_area_2d_body_entered(_body):
+	#print(random_type)
+	match random_type:
+		\"Rock\":
+			Globals.rock_count+=resource_amount
+			inventory.add_item(rock.item_path,1)
+			inventory.print_inventory()
+			
+		\"Stick\":
+			Globals.stick_count+=resource_amount
+			inventory.add_item(stick.item_path,[1,2].pick_random())
+			inventory.print_inventory()
+	queue_free()
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e72r5"]
+size = Vector2(907.636, 512)
+
+[sub_resource type="PackedScene" id="PackedScene_ibbb4"]
+_bundled = {
+"conn_count": 1,
+"conns": PackedInt32Array(1, 0, 11, 10, 2, 0, 0),
+"editable_instances": [],
+"names": PackedStringArray("Resource", "position", "scale", "texture", "script", "Sprite2D", "ResourceArea", "Area2D", "CollisionShape2D", "shape", "_on_area_2d_body_entered", "body_entered"),
+"node_count": 3,
+"node_paths": [],
+"nodes": PackedInt32Array(-1, -1, 5, 0, -1, 4, 1, 0, 2, 1, 3, 2, 4, 3, 0, 0, 0, 7, 6, -1, 0, 0, 1, 0, 8, 8, -1, 2, 1, 4, 9, 5, 0),
+"variants": [Vector2(251.946, 220.341), Vector2(0.180111, 0.20579), SubResource("CompressedTexture2D_tchc0"), SubResource("GDScript_2mhj1"), Vector2(-0.000244141, 0), SubResource("RectangleShape2D_e72r5")],
+"version": 3
+}
+
 [node name="Node2D" type="Node2D"]
 
 [node name="HUD" type="CanvasGroup" parent="."]
@@ -333,7 +397,7 @@ layer_0/tile_data = PackedInt32Array(65537, 65536, 1, 131073, 65536, 1, 196609, 
 
 [node name="Spawner" type="Node" parent="."]
 script = ExtResource("4_313v4")
-resource_node = ExtResource("3_wqlsc")
+resource_node = SubResource("PackedScene_ibbb4")
 
 [node name="SpawnTimer" type="Timer" parent="Spawner"]
 wait_time = 10.0
