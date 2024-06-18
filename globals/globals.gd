@@ -12,3 +12,6 @@ var stick_count: int = 0
 var rock_count: int = 0
 var hammer_tool = false
 var pickaxe_tool = false
+
+# Music control
+var structure_count: int = 0

@@ -26,6 +26,6 @@ func updateMap():
 		entity.position = resource_entity_path.get_child(i).position
 
 # TODO may need to fix this to follow the camera instead but the behavior wonky
-func _process(delta):
+func _process(_delta):
 	var CameraPath = get_tree().get_root().get_node("Main/Player")
 	camera.position = CameraPath.position

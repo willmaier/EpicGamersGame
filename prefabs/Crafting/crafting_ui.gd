@@ -41,7 +41,9 @@ func _on_tool_2_button_pressed():
 
 
 func _on_structure_1_button_pressed():
-	if (Globals.stick_count >= 0):
+	if (Globals.stick_count >= 25 and Globals.rock_count >= 25):
+		Globals.stick_count -= 25
+		Globals.rock_count -= 25
 		crafting_bg.visible = false
 		crafting_window.visible = false
 		game_bg.visible = true
@@ -58,3 +60,4 @@ func _on_game_timer_timeout():
 		game_window.visible = false
 		struct1.queue_free()
 		Globals.is_playing = false
+		Globals.structure_count += 1
