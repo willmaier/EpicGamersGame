@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cwurdrhqotynf"]
+[gd_scene load_steps=16 format=3 uid="uid://cwurdrhqotynf"]
 
 [ext_resource type="PackedScene" uid="uid://8j6pyft4p6wt" path="res://prefabs/player.tscn" id="1_ntj77"]
 [ext_resource type="Script" path="res://scripts/HUD.gd" id="2_j5jdw"]
@@ -385,6 +385,7 @@ offset_left = -577.0
 offset_top = -328.0
 offset_right = -577.0
 offset_bottom = -328.0
+
 [node name="Music" type="Node" parent="." node_paths=PackedStringArray("first_layer")]
 script = ExtResource("8_jfc4f")
 first_layer = NodePath("StartingTrack")
