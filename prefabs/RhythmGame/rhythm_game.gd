@@ -12,6 +12,8 @@ func _ready():
 	click_area = $VBoxContainer/NinePatchRect/GameBar/ClickArea/ClickArea2D/CollisionShape2D
 	dead_area = $VBoxContainer/NinePatchRect/GameBar/DeadArea/DeadArea2D/CollisionShape2D
 	timer = $SpawnTimer
+
+func game_start():
 	timer.start()
 
 func _on_spawn_timer_timeout():
@@ -27,3 +29,5 @@ func _on_click_area_2d_area_exited(area):
 
 func _on_dead_area_2d_area_entered(area):
 	area.get_parent().queue_free()
+	print("game over")
+

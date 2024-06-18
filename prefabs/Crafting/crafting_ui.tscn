@@ -1,12 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://bxi0l8i77ckq6"]
+[gd_scene load_steps=8 format=3 uid="uid://bxi0l8i77ckq6"]
 
 [ext_resource type="Script" path="res://prefabs/Crafting/crafting_ui.gd" id="1_68tcj"]
 [ext_resource type="Texture2D" uid="uid://p3da5in4j375" path="res://imports/hammer.png" id="1_hh0o5"]
 [ext_resource type="Script" path="res://prefabs/Crafting/Hammer.gd" id="2_7kuwf"]
 [ext_resource type="Texture2D" uid="uid://ds47w5q8cofqb" path="res://assets/art/Hammer1.png" id="4_h5wxx"]
 [ext_resource type="Texture2D" uid="uid://dlmkv37nqypid" path="res://assets/art/Pickaxe1.png" id="5_wqbid"]
+[ext_resource type="Texture2D" uid="uid://4elhv5t6wjuh" path="res://assets/art/Bridge1.png" id="6_kb1d5"]
+[ext_resource type="PackedScene" uid="uid://cc73s84erwdak" path="res://prefabs/RhythmGame/rhythm_game.tscn" id="7_2m6hp"]
 
-[node name="Crafting_UI" type="Control" node_paths=PackedStringArray("tool1", "tool2")]
+[node name="Crafting_UI" type="Control" node_paths=PackedStringArray("crafting_bg", "crafting_window", "game_bg", "game_window", "tool1", "tool2", "struct1", "struct2", "game_timer")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -14,10 +16,17 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_68tcj")
-tool1 = NodePath("MarginContainer/VBoxContainer/HBoxContainer/Tools/Tool1")
-tool2 = NodePath("MarginContainer/VBoxContainer/HBoxContainer/Tools/Tool2")
+crafting_bg = NodePath("CraftingBackground")
+crafting_window = NodePath("CraftingWindow")
+game_bg = NodePath("RhythmBackground")
+game_window = NodePath("RhythmGame")
+tool1 = NodePath("CraftingWindow/VBoxContainer/HBoxContainer/Tools/Tool1")
+tool2 = NodePath("CraftingWindow/VBoxContainer/HBoxContainer/Tools/Tool2")
+struct1 = NodePath("CraftingWindow/VBoxContainer/Structures/Structure1")
+struct2 = NodePath("CraftingWindow/VBoxContainer/Structures/Structure2")
+game_timer = NodePath("GameTimer")
 
-[node name="Background" type="ColorRect" parent="."]
+[node name="CraftingBackground" type="ColorRect" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -32,7 +41,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.145098, 0.145098, 0.145098, 0.960784)
 
-[node name="Hammer" type="Button" parent="Background"]
+[node name="Hammer" type="Button" parent="CraftingBackground"]
 visible = false
 layout_mode = 0
 offset_left = 167.0
@@ -42,14 +51,14 @@ offset_bottom = 235.0
 icon = ExtResource("1_hh0o5")
 script = ExtResource("2_7kuwf")
 
-[node name="Name" type="Label" parent="Background/Hammer"]
+[node name="Name" type="Label" parent="CraftingBackground/Hammer"]
 layout_mode = 0
 offset_top = -30.0
 offset_right = 69.0
 offset_bottom = -7.0
 text = "Hammer"
 
-[node name="Cost" type="Label" parent="Background/Hammer"]
+[node name="Cost" type="Label" parent="CraftingBackground/Hammer"]
 layout_mode = 0
 offset_left = 5.0
 offset_top = 70.0
@@ -58,7 +67,7 @@ offset_bottom = 119.0
 text = "2 sticks
 1 stone"
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="CraftingWindow" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -76,150 +85,222 @@ theme_override_constants/margin_top = 32
 theme_override_constants/margin_right = 32
 theme_override_constants/margin_bottom = 32
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CraftingWindow"]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CraftingWindow/VBoxContainer"]
 layout_mode = 2
 
-[node name="Materials" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="Materials" type="VBoxContainer" parent="CraftingWindow/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 
-[node name="Materials Heading" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/Materials"]
+[node name="Materials Heading" type="Label" parent="CraftingWindow/VBoxContainer/HBoxContainer/Materials"]
 layout_mode = 2
 text = "Materials"
 horizontal_alignment = 1
 
-[node name="Material1" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/Materials"]
+[node name="Material1" type="HBoxContainer" parent="CraftingWindow/VBoxContainer/HBoxContainer/Materials"]
 layout_mode = 2
 
-[node name="Sprite2D" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer/Materials/Material1"]
+[node name="Sprite2D" type="TextureRect" parent="CraftingWindow/VBoxContainer/HBoxContainer/Materials/Material1"]
 layout_mode = 2
 texture = ExtResource("1_hh0o5")
 
-[node name="Description" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/Materials/Material1"]
+[node name="Description" type="Label" parent="CraftingWindow/VBoxContainer/HBoxContainer/Materials/Material1"]
 layout_mode = 2
 text = "Material 1 
 description"
 horizontal_alignment = 1
 
-[node name="Material2" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/Materials"]
+[node name="Material2" type="HBoxContainer" parent="CraftingWindow/VBoxContainer/HBoxContainer/Materials"]
 layout_mode = 2
 
-[node name="Sprite2D" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer/Materials/Material2"]
+[node name="Sprite2D" type="TextureRect" parent="CraftingWindow/VBoxContainer/HBoxContainer/Materials/Material2"]
 layout_mode = 2
 texture = ExtResource("1_hh0o5")
 
-[node name="Description" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/Materials/Material2"]
+[node name="Description" type="Label" parent="CraftingWindow/VBoxContainer/HBoxContainer/Materials/Material2"]
 layout_mode = 2
 text = "Material 2 
 description"
 horizontal_alignment = 1
 
-[node name="Tools" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="Tools" type="VBoxContainer" parent="CraftingWindow/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 
-[node name="Tools Heading" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/Tools"]
+[node name="Tools Heading" type="Label" parent="CraftingWindow/VBoxContainer/HBoxContainer/Tools"]
 layout_mode = 2
 text = "Tools"
 horizontal_alignment = 1
 
-[node name="Tool1" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/Tools"]
+[node name="Tool1" type="HBoxContainer" parent="CraftingWindow/VBoxContainer/HBoxContainer/Tools"]
 layout_mode = 2
 
-[node name="Tool1Button" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/Tools/Tool1"]
+[node name="Tool1Button" type="Button" parent="CraftingWindow/VBoxContainer/HBoxContainer/Tools/Tool1"]
 layout_mode = 2
 icon = ExtResource("4_h5wxx")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/Tools/Tool1"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CraftingWindow/VBoxContainer/HBoxContainer/Tools/Tool1"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Description" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/Tools/Tool1/VBoxContainer"]
+[node name="Description" type="Label" parent="CraftingWindow/VBoxContainer/HBoxContainer/Tools/Tool1/VBoxContainer"]
 layout_mode = 2
 text = "Reduces harvest
 time!
 "
 horizontal_alignment = 1
 
-[node name="Cost" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/Tools/Tool1/VBoxContainer"]
+[node name="Cost" type="Label" parent="CraftingWindow/VBoxContainer/HBoxContainer/Tools/Tool1/VBoxContainer"]
 layout_mode = 2
 text = "2 sticks 1 rock"
 horizontal_alignment = 1
 uppercase = true
 
-[node name="Tool2" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/Tools"]
+[node name="Tool2" type="HBoxContainer" parent="CraftingWindow/VBoxContainer/HBoxContainer/Tools"]
 layout_mode = 2
 
-[node name="Tool2Button" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/Tools/Tool2"]
+[node name="Tool2Button" type="Button" parent="CraftingWindow/VBoxContainer/HBoxContainer/Tools/Tool2"]
 layout_mode = 2
 icon = ExtResource("5_wqbid")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/Tools/Tool2"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CraftingWindow/VBoxContainer/HBoxContainer/Tools/Tool2"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Description" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/Tools/Tool2/VBoxContainer"]
+[node name="Description" type="Label" parent="CraftingWindow/VBoxContainer/HBoxContainer/Tools/Tool2/VBoxContainer"]
 layout_mode = 2
 text = "Gains more 
 sticks and rocks
 "
 horizontal_alignment = 1
 
-[node name="Description2" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/Tools/Tool2/VBoxContainer"]
+[node name="Description2" type="Label" parent="CraftingWindow/VBoxContainer/HBoxContainer/Tools/Tool2/VBoxContainer"]
 layout_mode = 2
 text = "10 sticks 10 rocks"
 horizontal_alignment = 1
 uppercase = true
 
-[node name="Structures" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+[node name="Structures" type="VBoxContainer" parent="CraftingWindow/VBoxContainer"]
 layout_mode = 2
 
-[node name="Structures Heading" type="Label" parent="MarginContainer/VBoxContainer/Structures"]
+[node name="Structures Heading" type="Label" parent="CraftingWindow/VBoxContainer/Structures"]
 layout_mode = 2
 text = "Structures"
 horizontal_alignment = 1
 
-[node name="Structure1" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Structures"]
+[node name="Structure1" type="HBoxContainer" parent="CraftingWindow/VBoxContainer/Structures"]
 layout_mode = 2
 
-[node name="Name" type="Label" parent="MarginContainer/VBoxContainer/Structures/Structure1"]
+[node name="Name" type="Label" parent="CraftingWindow/VBoxContainer/Structures/Structure1"]
 custom_minimum_size = Vector2(50, 25)
 layout_mode = 2
 text = "Bridge"
 horizontal_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/Structures/Structure1"]
+[node name="Structure1Button" type="Button" parent="CraftingWindow/VBoxContainer/Structures/Structure1"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
-texture = ExtResource("1_hh0o5")
+icon = ExtResource("6_kb1d5")
 
-[node name="Description" type="Label" parent="MarginContainer/VBoxContainer/Structures/Structure1"]
-layout_mode = 2
-text = "Creates a blockage in the 
-stream. Maybe this will 
-bring back some creatures"
-
-[node name="Structure2" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Structures"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CraftingWindow/VBoxContainer/Structures/Structure1"]
 layout_mode = 2
 
-[node name="Name" type="Label" parent="MarginContainer/VBoxContainer/Structures/Structure2"]
+[node name="Description" type="Label" parent="CraftingWindow/VBoxContainer/Structures/Structure1/VBoxContainer"]
+layout_mode = 2
+text = "Restores the destroyed bridge 
+"
+horizontal_alignment = 1
+
+[node name="Description2" type="Label" parent="CraftingWindow/VBoxContainer/Structures/Structure1/VBoxContainer"]
+layout_mode = 2
+text = "50 sticks 50 rocks
+"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="Structure2" type="HBoxContainer" parent="CraftingWindow/VBoxContainer/Structures"]
+layout_mode = 2
+
+[node name="Name" type="Label" parent="CraftingWindow/VBoxContainer/Structures/Structure2"]
 custom_minimum_size = Vector2(50, 25)
 layout_mode = 2
 text = "Dam"
 horizontal_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/Structures/Structure2"]
+[node name="TextureRect" type="TextureRect" parent="CraftingWindow/VBoxContainer/Structures/Structure2"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 texture = ExtResource("1_hh0o5")
 
-[node name="Description" type="Label" parent="MarginContainer/VBoxContainer/Structures/Structure2"]
+[node name="Description" type="Label" parent="CraftingWindow/VBoxContainer/Structures/Structure2"]
 layout_mode = 2
 text = "Creates a blockage in the 
 stream. Maybe this will 
 bring back some creatures"
 
-[connection signal="pressed" from="Background/Hammer" to="." method="_on_hammer_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/Tools/Tool1/Tool1Button" to="." method="_on_tool_1_button_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/Tools/Tool2/Tool2Button" to="." method="_on_tool_2_button_pressed"]
+[node name="RhythmBackground" type="ColorRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -400.0
+offset_top = -200.0
+offset_right = 400.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.254902, 0.254902, 0.254902, 0.960784)
+
+[node name="Hammer" type="Button" parent="RhythmBackground"]
+visible = false
+layout_mode = 0
+offset_left = 167.0
+offset_top = 167.0
+offset_right = 235.0
+offset_bottom = 235.0
+icon = ExtResource("1_hh0o5")
+script = ExtResource("2_7kuwf")
+
+[node name="Name" type="Label" parent="RhythmBackground/Hammer"]
+layout_mode = 0
+offset_top = -30.0
+offset_right = 69.0
+offset_bottom = -7.0
+text = "Hammer"
+
+[node name="Cost" type="Label" parent="RhythmBackground/Hammer"]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 70.0
+offset_right = 62.0
+offset_bottom = 119.0
+text = "2 sticks
+1 stone"
+
+[node name="RhythmGame" parent="." instance=ExtResource("7_2m6hp")]
+visible = false
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = -187.0
+offset_top = -98.0
+offset_right = 153.0
+offset_bottom = -45.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="GameTimer" type="Timer" parent="."]
+wait_time = 15.0
+one_shot = true
+
+[connection signal="pressed" from="CraftingBackground/Hammer" to="." method="_on_hammer_pressed"]
+[connection signal="pressed" from="CraftingWindow/VBoxContainer/HBoxContainer/Tools/Tool1/Tool1Button" to="." method="_on_tool_1_button_pressed"]
+[connection signal="pressed" from="CraftingWindow/VBoxContainer/HBoxContainer/Tools/Tool2/Tool2Button" to="." method="_on_tool_2_button_pressed"]
+[connection signal="pressed" from="CraftingWindow/VBoxContainer/Structures/Structure1/Structure1Button" to="." method="_on_structure_1_button_pressed"]
+[connection signal="pressed" from="RhythmBackground/Hammer" to="." method="_on_hammer_pressed"]
+[connection signal="timeout" from="GameTimer" to="." method="_on_game_timer_timeout"]
