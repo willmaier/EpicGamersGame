@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://ds47w5q8cofqb" path="res://assets/art/Hammer1.png" id="4_h5wxx"]
 [ext_resource type="Texture2D" uid="uid://dlmkv37nqypid" path="res://assets/art/Pickaxe1.png" id="5_wqbid"]
 
-[node name="Crafting_UI" type="Control"]
+[node name="Crafting_UI" type="Control" node_paths=PackedStringArray("tool1", "tool2")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -14,6 +14,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_68tcj")
+tool1 = NodePath("MarginContainer/VBoxContainer/HBoxContainer/Tools/Tool1")
+tool2 = NodePath("MarginContainer/VBoxContainer/HBoxContainer/Tools/Tool2")
 
 [node name="Background" type="ColorRect" parent="."]
 layout_mode = 1
