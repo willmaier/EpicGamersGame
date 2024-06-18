@@ -31,16 +31,16 @@ func _physics_process(_delta):
 		#velocity.x = move_toward(velocity.normalized().x, 0, speed)
 		#velocity.y = move_toward(velocity.normalized().y, 0, speed)
 		#player_walk_sound.play()
+	if(!Input.is_action_pressed("interact")):
+		var input_direction = Vector2(
+			Input.get_action_strength("move_right") - Input.get_action_strength("move_left"),
+			Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
+		)
+		set_animation(input_direction)
+		velocity = input_direction * speed
 	
-	var input_direction = Vector2(
-		Input.get_action_strength("move_right") - Input.get_action_strength("move_left"),
-		Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
-	)
-	set_animation(input_direction)
-	velocity = input_direction * speed
-	
-	if input_direction == Vector2.ZERO:
-		player_walk_sound.play()
+		if input_direction == Vector2.ZERO:
+			player_walk_sound.play()
 	
 	if (crafting_table.player_present and Input.is_action_just_pressed("interact")):
 		toggle_crafting()
