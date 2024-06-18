@@ -9,7 +9,7 @@ extends Node
 @onready var chop_sound = $TreeSound
 @onready var mine_sound = $MiningSound
 
-const harvest_speed = 5
+#var harvest_speed = 3
 var can_harvest
 var off_cooldown : bool = true
 
@@ -52,7 +52,8 @@ func _process(_delta):
 		temp_instructions.text = "Can't harvest for" + "%2d seconds" % [int(harvest_cooldown.time_left) % 60]
 
 func try_harvesting():
-	pb.value = tree_timer.time_left * (33.33)
+	tree_timer.wait_time = Globals.harvest_speed
+	pb.value = tree_timer.time_left * (100/Globals.harvest_speed)
 	if Input.is_action_just_pressed("interact") && can_harvest: 
 		tree_timer.start()
 		match _type:
@@ -89,9 +90,9 @@ func _on_harvest_timer_timeout():
 	off_cooldown = false
 	
 	# Restart harvesting timer
-	tree_timer.wait_time = harvest_speed 
+	tree_timer.wait_time = Globals.harvest_speed
 	
-	if (Globals.hammer_count > 0):
+	if (Globals.pickaxe_tool == true):
 			match _type:
 				"Rock":
 					Globals.rock_count+=3

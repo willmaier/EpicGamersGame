@@ -6,10 +6,17 @@ func _process(_delta):
 	else:
 		visible = false
 
-
-func _on_hammer_pressed():
+func _on_tool_1_button_pressed():
 	if (Globals.stick_count >= 2 && Globals.rock_count >= 1):
 		Globals.stick_count -= 2
 		Globals.rock_count -= 1
-		Globals.hammer_count += 1
+		Globals.hammer_tool = true
+		Globals.harvest_speed = 3
 		print("hammer made")
+
+func _on_tool_2_button_pressed():
+	if (Globals.stick_count >= 10 and Globals.rock_count >= 10):
+		Globals.stick_count -= 10
+		Globals.rock_count -= 10
+		Globals.pickaxe_tool = true
+		print("Pickaxe made")

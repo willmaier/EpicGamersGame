@@ -123,27 +123,29 @@ horizontal_alignment = 1
 [node name="Tool1" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/Tools"]
 layout_mode = 2
 
-[node name="Sprite2D" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer/Tools/Tool1"]
+[node name="Tool1Button" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/Tools/Tool1"]
 layout_mode = 2
-texture = ExtResource("1_hh0o5")
+icon = ExtResource("1_hh0o5")
 
 [node name="Description" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/Tools/Tool1"]
 layout_mode = 2
-text = "Tool 1 
-description"
+text = "Reduces harvest
+time!
+2 sticks 1 rock"
 horizontal_alignment = 1
 
 [node name="Tool2" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/Tools"]
 layout_mode = 2
 
-[node name="Sprite2D" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer/Tools/Tool2"]
+[node name="Tool2Button" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/Tools/Tool2"]
 layout_mode = 2
-texture = ExtResource("1_hh0o5")
+icon = ExtResource("1_hh0o5")
 
 [node name="Description" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/Tools/Tool2"]
 layout_mode = 2
-text = "Tool 2 
-description"
+text = "Gains more 
+sticks and rocks
+10 sticks 10 rocks"
 horizontal_alignment = 1
 
 [node name="Structures" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
@@ -195,3 +197,5 @@ stream. Maybe this will
 bring back some creatures"
 
 [connection signal="pressed" from="Background/Hammer" to="." method="_on_hammer_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/Tools/Tool1/Tool1Button" to="." method="_on_tool_1_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/Tools/Tool2/Tool2Button" to="." method="_on_tool_2_button_pressed"]
