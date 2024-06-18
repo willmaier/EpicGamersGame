@@ -15,7 +15,7 @@ const speed = 300.0
 @export var crafting_table: StaticBody2D
 var is_crafting: bool = false
 
-@export var inv: Inv
+#@export var inv: Inv
 
 # TODO if delta is use just remove the _
 func _physics_process(_delta):
@@ -62,8 +62,8 @@ func pick_new_state():
 		state_machine.travel("idle")
 
 # Gives player access to the inventory
-func collect(item):
-	inv.insert(item)
+#func collect(item):
+#	inv.insert(item)
 
 func toggle_crafting():
 	print("toggled crafting")

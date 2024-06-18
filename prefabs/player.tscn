@@ -1,6 +1,8 @@
 [gd_scene load_steps=30 format=3 uid="uid://8j6pyft4p6wt"]
 
 [ext_resource type="Script" path="res://scripts/playercontroller.gd" id="1_dytxa"]
+[ext_resource type="Texture2D" uid="uid://dcc1m8t5eo8dj" path="res://assets/art/BearSpritesheetSq64x64.png" id="2_re0o4"]
+[ext_resource type="AudioStream" uid="uid://dywwufpg410iw" path="res://globals/LeafFootsteps.mp3" id="3_otf7v"]
 [ext_resource type="Resource" uid="uid://dlw5bbmgwwhia" path="res://prefabs/Inventory/Slot_data/Player_Inv.tres" id="2_tuic6"]
 [ext_resource type="Texture2D" uid="uid://boolsuhsov3xb" path="res://assets/art/Bear_Sprite_POST_DIGITIZATION-WALK.png" id="3_immpf"]
 [ext_resource type="AudioStream" uid="uid://yu87kqpokjiy" path="res://assets/sounds/LeafFootsteps2.mp3" id="4_m7a6p"]
@@ -251,6 +253,7 @@ blend_point_2/node = SubResource("AnimationNodeAnimation_5k2b3")
 blend_point_2/pos = Vector2(-1, 0)
 blend_point_3/node = SubResource("AnimationNodeAnimation_oaqmn")
 blend_point_3/pos = Vector2(1, 0)
+blend_mode = 1
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8ti1f"]
 advance_mode = 2
@@ -268,7 +271,6 @@ transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_dytxa")
-inv = ExtResource("2_tuic6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, 1)
@@ -285,11 +287,15 @@ libraries = {
 }
 tree_root = SubResource("AnimationNodeStateMachine_p682w")
 anim_player = NodePath("../AnimationPlayer")
+parameters/walking/blend_position = Vector2(-0.640988, 0.157143)
 parameters/idle/blend_position = Vector2(-0.378284, -0.198678)
-parameters/walking/blend_position = Vector2(-0.394046, -0.265306)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
+texture = ExtResource("2_re0o4")
+hframes = 2
+vframes = 2
+frame = 1
 texture = ExtResource("3_immpf")
 hframes = 4
 vframes = 5

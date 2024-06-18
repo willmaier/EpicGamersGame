@@ -1,6 +1,6 @@
 extends Resource
 
-class_name Inv_Item
+class_name Slot_data
 
 
 @export var name: String = "Stick,Rock"
