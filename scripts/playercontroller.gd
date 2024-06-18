@@ -42,6 +42,8 @@ func _physics_process(_delta):
 	
 		if input_direction == Vector2.ZERO:
 			player_walk_sound.play()
+	else:
+		velocity = Vector2.ZERO
 	
 	if (crafting_table.player_present and Input.is_action_just_pressed("interact")):
 		toggle_crafting()

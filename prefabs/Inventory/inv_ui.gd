@@ -57,8 +57,8 @@ func _process(_delta):
 func update_slots():
 	for i in range(len(inventory.inventory)):
 		var item = inventory.inventory[i]
-		inv_slots[i][0].texture =  item[0].texture
-		inv_slots[i][1].text = str(item[1])
+		#inv_slots[i][0].texture =  item[0].texture
+		#inv_slots[i][1].text = str(item[1])
 		#print(inv_slots[i][1])
 				
 			
