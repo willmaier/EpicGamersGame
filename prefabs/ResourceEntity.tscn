@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://bocjanvn67sv5"]
+[gd_scene load_steps=8 format=3 uid="uid://bocjanvn67sv5"]
 
 [ext_resource type="Texture2D" uid="uid://x3kktmxxmuht" path="res://imports/tree.png" id="1_j2dd2"]
 [ext_resource type="Script" path="res://scripts/tree.gd" id="1_lgjix"]
 [ext_resource type="AudioStream" uid="uid://1vb74hobartf" path="res://globals/ChoppingWood.mp3" id="3_j34nb"]
 [ext_resource type="AudioStream" uid="uid://cm7ul2g30qwwo" path="res://globals/MiningStone.mp3" id="4_cd5nm"]
+[ext_resource type="PackedScene" uid="uid://cc73s84erwdak" path="res://prefabs/RhythmGame/rhythm_game.tscn" id="5_rouqv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s60js"]
 size = Vector2(101, 114.5)
@@ -57,7 +58,24 @@ stream = ExtResource("3_j34nb")
 [node name="MiningSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_cd5nm")
 
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+visible = false
+offset_left = -247.0
+offset_top = -588.0
+offset_right = 265.0
+offset_bottom = -76.0
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+handle_input_locally = false
+render_target_update_mode = 0
+
+[node name="RhythmGame" parent="SubViewportContainer/SubViewport" instance=ExtResource("5_rouqv")]
+offset_left = -57.0
+offset_right = -57.0
+
 [connection signal="body_entered" from="TreeArea" to="." method="_on_tree_area_body_entered"]
+[connection signal="body_entered" from="TreeArea" to="SubViewportContainer/SubViewport/RhythmGame" method="_on_tree_area_body_entered"]
 [connection signal="body_exited" from="TreeArea" to="." method="_on_tree_area_body_exited"]
+[connection signal="body_exited" from="TreeArea" to="SubViewportContainer/SubViewport/RhythmGame" method="_on_tree_area_body_exited"]
 [connection signal="timeout" from="HarvestTimer" to="." method="_on_harvest_timer_timeout"]
 [connection signal="timeout" from="HarvestCooldown" to="." method="_on_harvest_cooldown_timeout"]
