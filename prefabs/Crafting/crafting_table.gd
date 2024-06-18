@@ -7,6 +7,10 @@ var instructions: Label
 func _ready():
 	instructions = $Instructions
 
+func _process(_delta):
+	if (Globals.is_crafting):
+		instructions.visible = false
+
 func _on_crafting_area_body_entered(body):
 	if body.name == "Player":
 		print("entered crafting area")

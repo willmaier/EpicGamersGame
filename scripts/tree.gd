@@ -6,6 +6,9 @@ extends Node
 @onready var pb = $ProgressBar # Experiment with TextureProgressBar later
 @onready var temp_instructions = $RemoveLater
 @onready var sprite = $Sprite2D
+@onready var chop_sound = $TreeSound
+@onready var mine_sound = $MiningSound
+
 const harvest_speed = 5
 var can_harvest
 var off_cooldown : bool = true
@@ -15,8 +18,8 @@ var tree_texture = preload("res://imports/tree.png")
 var rock_texture = preload("res://imports/rock.webp")
 
 # For adding images to inventory
-var rock_inventory = preload("res://prefabs/Inventory/Items/Rock.tres")
-var stick_inventory = preload("res://prefabs/Inventory/Items/Stick.tres")
+var rock_inventory = load("res://prefabs/Inventory/Items/Rock.tres")
+var stick_inventory = load("res://prefabs/Inventory/Items/Stick.tres")
 var inventory = preload("res://prefabs/Inventory/Player_Inv.tres")
 
 
@@ -55,7 +58,8 @@ func _process(_delta):
 		temp_instructions.text = "Can't harvest for" + "%2d seconds" % [int(harvest_cooldown.time_left) % 60]
 
 func try_harvesting():
-	pb.value = tree_timer.time_left * 20
+	tree_timer.wait_time = Globals.harvest_speed
+	pb.value = tree_timer.time_left * (100/Globals.harvest_speed)
 	if Input.is_action_just_pressed("interact") && can_harvest: 
 		tree_timer.start()
 	elif Input.is_action_just_released("interact") || !can_harvest:
@@ -84,16 +88,23 @@ func _on_harvest_timer_timeout():
 	off_cooldown = false
 	
 	# Restart harvesting timer
-	tree_timer.wait_time = harvest_speed 
+	tree_timer.wait_time = Globals.harvest_speed
 	
+	if (Globals.pickaxe_tool == true):
+			match _type:
+				"Rock":
+					Globals.rock_count+=3
+				"Stick":
+					Globals.stick_count+=3
 	# TODO there might be a better way to do this but this works for now
 	match _type:
 		"Rock":
+			print("harvested Rock")
 			Globals.rock_count+=resource_amount
-			inventory.add_item(rock_inventory.item_path,[1,2].pick_random())
+			inventory.add_item(rock_inventory.item_path,1)
 			inventory.print_inventory()
 		"Stick":
-			Globals.stick_count+=1
+			print("harvested Stick")
 			Globals.stick_count+=resource_amount
 			inventory.add_item(stick_inventory.item_path,[1,2].pick_random())
 			inventory.print_inventory()
