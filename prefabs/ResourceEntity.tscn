@@ -1,10 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://bocjanvn67sv5"]
+[gd_scene load_steps=10 format=3 uid="uid://bocjanvn67sv5"]
 
 [ext_resource type="Texture2D" uid="uid://x3kktmxxmuht" path="res://imports/tree.png" id="1_j2dd2"]
 [ext_resource type="Script" path="res://scripts/tree.gd" id="1_lgjix"]
+[ext_resource type="Texture2D" uid="uid://baclvdxhilqw6" path="res://imports/Rock1.png" id="3_eulpu"]
 [ext_resource type="AudioStream" uid="uid://1vb74hobartf" path="res://globals/ChoppingWood.mp3" id="3_j34nb"]
 [ext_resource type="AudioStream" uid="uid://cm7ul2g30qwwo" path="res://globals/MiningStone.mp3" id="4_cd5nm"]
 [ext_resource type="PackedScene" uid="uid://cc73s84erwdak" path="res://prefabs/RhythmGame/rhythm_game.tscn" id="5_rouqv"]
+[ext_resource type="Texture2D" uid="uid://b1aclea0vlbsa" path="res://imports/beehive1.png" id="6_q45qn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s60js"]
 size = Vector2(101, 114.5)
@@ -20,11 +22,6 @@ position = Vector2(8.00006, 16)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TreeArea"]
 position = Vector2(1.50012, -1.75)
 shape = SubResource("RectangleShape2D_s60js")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(10.25, 13)
-scale = Vector2(0.534921, 0.52)
-texture = ExtResource("1_j2dd2")
 
 [node name="HarvestTimer" type="Timer" parent="."]
 
@@ -73,9 +70,28 @@ render_target_update_mode = 0
 offset_left = -57.0
 offset_right = -57.0
 
+[node name="Tree" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(10.25, 13)
+scale = Vector2(0.534921, 0.52)
+texture = ExtResource("1_j2dd2")
+
+[node name="Beehive" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(27, 33)
+scale = Vector2(0.0185547, 0.0185547)
+texture = ExtResource("6_q45qn")
+
+[node name="Rock" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(8, 15)
+scale = Vector2(1.88074, 1.36938)
+texture = ExtResource("3_eulpu")
+
 [connection signal="body_entered" from="TreeArea" to="." method="_on_tree_area_body_entered"]
 [connection signal="body_entered" from="TreeArea" to="SubViewportContainer/SubViewport/RhythmGame" method="_on_tree_area_body_entered"]
 [connection signal="body_exited" from="TreeArea" to="." method="_on_tree_area_body_exited"]
 [connection signal="body_exited" from="TreeArea" to="SubViewportContainer/SubViewport/RhythmGame" method="_on_tree_area_body_exited"]
 [connection signal="timeout" from="HarvestTimer" to="." method="_on_harvest_timer_timeout"]
+[connection signal="timeout" from="HarvestTimer" to="SubViewportContainer/SubViewport/RhythmGame" method="_on_harvest_timer_timeout"]
 [connection signal="timeout" from="HarvestCooldown" to="." method="_on_harvest_cooldown_timeout"]

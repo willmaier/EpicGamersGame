@@ -14,12 +14,16 @@ var can_harvest
 var off_cooldown : bool = true
 
 # For harvesting other resources
-var tree_texture = preload("res://imports/tree.png")
-var rock_texture = preload("res://imports/rock.webp")
+@onready var tree_node = $Tree
+@onready  var rock_node = $Rock
+@onready var beehive = $Beehive
+var has_hive = false
+
 
 # For adding images to inventory
 var rock_inventory = load("res://prefabs/Inventory/Items/Rock.tres")
 var stick_inventory = load("res://prefabs/Inventory/Items/Stick.tres")
+var beehive_inventory = preload("res://prefabs/Inventory/Items/Beehive.tres")
 var inventory = preload("res://prefabs/Inventory/Player_Inv.tres")
 
 
@@ -28,6 +32,7 @@ var inventory = preload("res://prefabs/Inventory/Player_Inv.tres")
 var types = ["Rock", "Stick"]# Array can't be file locations as preload() requires a constant string
 var resource_amount = 1
 var random = RandomNumberGenerator.new()
+
 
 func _ready():
 	pb.visible = false
@@ -42,9 +47,13 @@ func _ready():
 		_type = types[randi() % size]
 	match _type:
 		"Rock":
-			sprite.texture = rock_texture
+			rock_node.visible = true
 		"Stick":
-			sprite.texture = tree_texture
+			tree_node.visible = true
+			# For beehives in trees
+			if random.randi() % 2:
+				has_hive = true
+				beehive.visible = true
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
@@ -108,6 +117,9 @@ func _on_harvest_timer_timeout():
 			Globals.stick_count+=resource_amount
 			inventory.add_item(stick_inventory.item_path,[1,2].pick_random())
 			inventory.print_inventory()
+			# TODO Works but image needs to be smaller
+			#if has_hive:
+				#inventory.add_item(beehive_inventory.item_path,1)
 
 # Players must wait to harvest again
 func _on_harvest_cooldown_timeout():
