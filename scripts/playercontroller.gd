@@ -31,6 +31,7 @@ func _physics_process(_delta):
 		#velocity.x = move_toward(velocity.normalized().x, 0, speed)
 		#velocity.y = move_toward(velocity.normalized().y, 0, speed)
 		#player_walk_sound.play()
+	# When player is interacting movement is disabled
 	if(!Input.is_action_pressed("interact")):
 		var input_direction = Vector2(
 			Input.get_action_strength("move_right") - Input.get_action_strength("move_left"),
