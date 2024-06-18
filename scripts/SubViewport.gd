@@ -13,7 +13,7 @@ func _ready():
 # what gets diplayed and what doesn't.
 # Also when a BG is added we can add it here too
 func updateMap():
-	var resource_entity_path = get_tree().get_root().get_node("Node2D/Resources")
+	var resource_entity_path = get_tree().get_root().get_node("Main/Resources")
 	# For all instances in the Resources node
 	for i in resource_entity_path.get_child_count():
 		if resource_entity_path.get_child(i)._type == "Stick":
@@ -27,5 +27,5 @@ func updateMap():
 
 # TODO may need to fix this to follow the camera instead but the behavior wonky
 func _process(delta):
-	var CameraPath = get_tree().get_root().get_node("Node2D/Player")
+	var CameraPath = get_tree().get_root().get_node("Main/Player")
 	camera.position = CameraPath.position
