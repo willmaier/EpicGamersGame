@@ -1,9 +1,10 @@
-[gd_scene load_steps=29 format=3 uid="uid://8j6pyft4p6wt"]
+[gd_scene load_steps=30 format=3 uid="uid://8j6pyft4p6wt"]
 
 [ext_resource type="Script" path="res://scripts/playercontroller.gd" id="1_dytxa"]
 [ext_resource type="Texture2D" uid="uid://boolsuhsov3xb" path="res://assets/art/Bear_Sprite_POST_DIGITIZATION-WALK.png" id="3_immpf"]
 [ext_resource type="AudioStream" uid="uid://yu87kqpokjiy" path="res://assets/sounds/LeafFootsteps2.mp3" id="4_m7a6p"]
 [ext_resource type="PackedScene" uid="uid://cf2utc5r7rmnc" path="res://prefabs/Inventory/inv_ui.tscn" id="5_euid1"]
+[ext_resource type="PackedScene" uid="uid://cc73s84erwdak" path="res://prefabs/RhythmGame/rhythm_game.tscn" id="5_vdeh0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dso7y"]
 size = Vector2(26, 26)
@@ -318,3 +319,18 @@ offset_bottom = -204.0
 scale = Vector2(4, 4)
 
 [node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+visible = false
+offset_left = -254.0
+offset_top = -557.0
+offset_right = 258.0
+offset_bottom = -45.0
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+handle_input_locally = false
+render_target_update_mode = 0
+
+[node name="RhythmGame" parent="SubViewportContainer/SubViewport" instance=ExtResource("5_vdeh0")]
+offset_left = -57.0
+offset_right = -57.0
