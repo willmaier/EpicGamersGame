@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cyuvfhh3s0v1"
-path="res://.godot/imported/BearSpritesheet64x64.png-b466aea0215c787a49f8829102353ce1.ctex"
+uid="uid://dcc1m8t5eo8dj"
+path="res://.godot/imported/BearSpritesheetSq64x64.png-ee14aac0d18b0a5f28e9eaf39bb25fe8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/BearSpritesheet64x64.png"
-dest_files=["res://.godot/imported/BearSpritesheet64x64.png-b466aea0215c787a49f8829102353ce1.ctex"]
+source_file="res://assets/art/Bear/BearSpritesheetSq64x64.png"
+dest_files=["res://.godot/imported/BearSpritesheetSq64x64.png-ee14aac0d18b0a5f28e9eaf39bb25fe8.ctex"]
 
 [params]
 

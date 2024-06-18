@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://bxi0l8i77ckq6"]
+[gd_scene load_steps=6 format=3 uid="uid://bxi0l8i77ckq6"]
 
 [ext_resource type="Script" path="res://prefabs/Crafting/crafting_ui.gd" id="1_68tcj"]
 [ext_resource type="Texture2D" uid="uid://p3da5in4j375" path="res://imports/hammer.png" id="1_hh0o5"]
 [ext_resource type="Script" path="res://prefabs/Crafting/Hammer.gd" id="2_7kuwf"]
+[ext_resource type="Texture2D" uid="uid://ds47w5q8cofqb" path="res://assets/art/Hammer1.png" id="4_h5wxx"]
+[ext_resource type="Texture2D" uid="uid://dlmkv37nqypid" path="res://assets/art/Pickaxe1.png" id="5_wqbid"]
 
 [node name="Crafting_UI" type="Control"]
 layout_mode = 3
@@ -125,28 +127,48 @@ layout_mode = 2
 
 [node name="Tool1Button" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/Tools/Tool1"]
 layout_mode = 2
-icon = ExtResource("1_hh0o5")
+icon = ExtResource("4_h5wxx")
 
-[node name="Description" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/Tools/Tool1"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/Tools/Tool1"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Description" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/Tools/Tool1/VBoxContainer"]
 layout_mode = 2
 text = "Reduces harvest
 time!
-2 sticks 1 rock"
+"
 horizontal_alignment = 1
+
+[node name="Cost" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/Tools/Tool1/VBoxContainer"]
+layout_mode = 2
+text = "2 sticks 1 rock"
+horizontal_alignment = 1
+uppercase = true
 
 [node name="Tool2" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/Tools"]
 layout_mode = 2
 
 [node name="Tool2Button" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/Tools/Tool2"]
 layout_mode = 2
-icon = ExtResource("1_hh0o5")
+icon = ExtResource("5_wqbid")
 
-[node name="Description" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/Tools/Tool2"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer/Tools/Tool2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Description" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/Tools/Tool2/VBoxContainer"]
 layout_mode = 2
 text = "Gains more 
 sticks and rocks
-10 sticks 10 rocks"
+"
 horizontal_alignment = 1
+
+[node name="Description2" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/Tools/Tool2/VBoxContainer"]
+layout_mode = 2
+text = "10 sticks 10 rocks"
+horizontal_alignment = 1
+uppercase = true
 
 [node name="Structures" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
