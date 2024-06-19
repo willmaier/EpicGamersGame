@@ -57,6 +57,7 @@ func _process(_delta):
 	else:
 		tree_timer.stop() 
 		tree_node.visible = false
+		beehive.visible = false
 		# For larger cooldown times
 		# "%d:%02d" % [floor(harvest_cooldown.time_left / 60), int(harvest_cooldown.time_left) % 60]
 		temp_instructions.text = "Can't harvest for" + "%2d seconds" % [int(harvest_cooldown.time_left) % 60]

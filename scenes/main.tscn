@@ -11,7 +11,7 @@
 [ext_resource type="AudioStream" uid="uid://cwgugsrwpwh6q" path="res://assets/sounds/Bears_1_No_Piano.mp3" id="8_3ry6t"]
 [ext_resource type="Script" path="res://scenes/Music.gd" id="8_jfc4f"]
 [ext_resource type="PackedScene" uid="uid://bocjanvn67sv5" path="res://prefabs/ResourceEntity.tscn" id="8_rsxhu"]
-[ext_resource type="PackedScene" uid="uid://cbthdsoex6qpd" path="res://prefabs/minimap.tscn" id="9_ry8mk"]
+[ext_resource type="PackedScene" uid="uid://ct2fdedob7khf" path="res://prefabs/minimap.tscn" id="9_ry8mk"]
 [ext_resource type="Texture2D" uid="uid://dcgvg0teor7k1" path="res://imports/bridgetemporary.png" id="11_diu4x"]
 [ext_resource type="AudioStream" uid="uid://coh4vcnqprn4l" path="res://assets/sounds/Bears_1_All.mp3" id="11_epcsa"]
 [ext_resource type="AudioStream" uid="uid://bx30idrbacg80" path="res://imports/Wood Crash Sound Effects.mp3" id="12_ixoiq"]
