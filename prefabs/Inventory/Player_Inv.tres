@@ -1,0 +1,7 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://b86ueju5s3al3"]
+
+[ext_resource type="Script" path="res://prefabs/Inventory/Inv_Main.gd" id="2_8xtbq"]
+
+[resource]
+script = ExtResource("2_8xtbq")
+inventory = []

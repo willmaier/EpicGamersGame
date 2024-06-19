@@ -15,7 +15,7 @@ const speed = 300.0
 @export var crafting_table: StaticBody2D
 var is_crafting: bool = false
 
-@export var inv: Inv
+#@export var inv: Inv
 
 # TODO if delta is use just remove the _
 func _physics_process(_delta):
@@ -31,19 +31,25 @@ func _physics_process(_delta):
 		#velocity.x = move_toward(velocity.normalized().x, 0, speed)
 		#velocity.y = move_toward(velocity.normalized().y, 0, speed)
 		#player_walk_sound.play()
-	
-	var input_direction = Vector2(
-		Input.get_action_strength("move_right") - Input.get_action_strength("move_left"),
-		Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
-	)
-	set_animation(input_direction)
-	if (!Globals.is_crafting):
+	# When player is interacting movement is disabled
+	if(!Input.is_action_pressed("interact")):
+		var input_direction = Vector2(
+			Input.get_action_strength("move_right") - Input.get_action_strength("move_left"),
+			Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
+		)
+		set_animation(input_direction)
 		velocity = input_direction * speed
 	
-	if input_direction == Vector2.ZERO:
-		player_walk_sound.play()
+	    var input_direction = Vector2(
+		    Input.get_action_strength("move_right") - Input.get_action_strength("move_left"),
+		    Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
+	    )
+	    set_animation(input_direction)
+        player_walk_sound.play()
+        if (!Globals.is_crafting):
+                velocity = input_direction * speed
 	
-	if (crafting_table.player_present and Input.is_action_just_pressed("interact") and !Globals.is_playing):
+	if (crafting_table.player_present and Input.is_action_just_pressed("interact") and !Globals.is_playing):		
 		toggle_crafting()
 
 	
@@ -63,8 +69,8 @@ func pick_new_state():
 		state_machine.travel("idle")
 
 # Gives player access to the inventory
-func collect(item):
-	inv.insert(item)
+#func collect(item):
+#	inv.insert(item)
 
 func toggle_crafting():
 	print("toggled crafting")
