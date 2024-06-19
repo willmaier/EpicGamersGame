@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://scripts/HUD.gd" id="2_3lqd5"]
 [ext_resource type="Texture2D" uid="uid://de68p522gxcsn" path="res://imports/RPGpack_sheet.png" id="2_ytbvw"]
 [ext_resource type="PackedScene" uid="uid://bxi0l8i77ckq6" path="res://prefabs/Crafting/crafting_ui.tscn" id="3_kjw3f"]
-[ext_resource type="Texture2D" uid="uid://dcc1m8t5eo8dj" path="res://assets/art/BearSpritesheetSq64x64.png" id="5_k2upm"]
+[ext_resource type="Texture2D" uid="uid://dcc1m8t5eo8dj" path="res://assets/art/Bear/BearSpritesheetSq64x64.png" id="5_k2upm"]
 
 [sub_resource type="Theme" id="Theme_8g2mi"]
 
