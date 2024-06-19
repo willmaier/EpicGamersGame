@@ -17,6 +17,8 @@ var off_cooldown : bool = true
 @onready var tree_node = $Tree
 @onready  var rock_node = $Rock
 @onready var beehive = $Beehive
+@onready var dirt = $Dirt
+
 var has_hive = false
 
 
@@ -45,15 +47,7 @@ func _ready():
 	# User did not enter type in inspector
 	if _type == "Random":
 		_type = types[randi() % size]
-	match _type:
-		"Rock":
-			rock_node.visible = true
-		"Stick":
-			tree_node.visible = true
-			# For beehives in trees
-			if random.randi() % 2:
-				has_hive = true
-				beehive.visible = true
+	display(_type)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
@@ -62,6 +56,7 @@ func _process(_delta):
 		temp_instructions.text = "Hold E for 5 seconds"
 	else:
 		tree_timer.stop() 
+		tree_node.visible = false
 		# For larger cooldown times
 		# "%d:%02d" % [floor(harvest_cooldown.time_left / 60), int(harvest_cooldown.time_left) % 60]
 		temp_instructions.text = "Can't harvest for" + "%2d seconds" % [int(harvest_cooldown.time_left) % 60]
@@ -124,3 +119,16 @@ func _on_harvest_timer_timeout():
 # Players must wait to harvest again
 func _on_harvest_cooldown_timeout():
 	off_cooldown = true
+	display(_type)
+	
+func display(_type):
+	match _type:
+		"Rock":
+			rock_node.visible = true
+		"Stick":
+			tree_node.visible = true
+			dirt.visible = true
+			# For beehives in trees
+			if random.randi() % 2:
+				has_hive = true
+				beehive.visible = true

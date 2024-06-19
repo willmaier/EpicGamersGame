@@ -42,6 +42,8 @@ func _physics_process(_delta):
 		velocity = input_direction * speed
 		if (!Globals.is_crafting):
 				velocity = input_direction * speed
+	else:
+		velocity = Vector2.ZERO
 	
 	if (crafting_table.player_present and Input.is_action_just_pressed("interact") and !Globals.is_playing):		
 		toggle_crafting()

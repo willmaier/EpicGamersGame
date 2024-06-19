@@ -32,8 +32,8 @@ func _on_click_area_2d_area_exited(area):
 
 func _on_dead_area_2d_area_entered(area):
 	#sub_viewport_container.visible = false
-	harvest_timer.stop()
-	harvest_timer.start()
+	#harvest_timer.stop()
+	#harvest_timer.start()
 	area.get_parent().queue_free()
 	print("game over")
 

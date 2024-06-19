@@ -356,6 +356,10 @@ _type = "Stick"
 position = Vector2(530, 115)
 _type = "Stick"
 
+[node name="Resource7" parent="Resources" instance=ExtResource("8_rsxhu")]
+position = Vector2(-746, 971)
+_type = "Stick"
+
 [node name="StartingTrack" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("8_3ry6t")
 autoplay = true
