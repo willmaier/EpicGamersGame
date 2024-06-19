@@ -39,18 +39,21 @@ func _on_dead_area_2d_area_entered(area):
 
 
 func _on_tree_area_body_entered(body):
-	if body.name == "Player":
-		sub_viewport_container.visible = true
-		timer.start()
+	#if body.name == "Player":
+		#sub_viewport_container.visible = true
+		#timer.start()
+	pass
 
 
 func _on_tree_area_body_exited(body):
-	if body.name == "Player":
-		sub_viewport_container.visible = false
-		timer.stop()
+	#if body.name == "Player":
+		#sub_viewport_container.visible = false
+		#timer.stop()
+	pass
 
 
 func _on_harvest_timer_timeout():
-	sub_viewport_container.visible = false
-	timer.stop()
+	#sub_viewport_container.visible = false
+	#timer.stop()
+	pass
 
