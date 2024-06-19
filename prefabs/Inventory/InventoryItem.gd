@@ -1,6 +1,6 @@
 extends Resource
 
-class_name Inv_Item
+class_name InvItem
 
 @export var item_name: String 
 @export var description: String

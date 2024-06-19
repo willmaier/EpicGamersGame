@@ -2,6 +2,8 @@ extends SubViewport
 
 @onready var camera = $Camera2D
 var tree_texture = preload("res://prefabs/tree.tscn")
+var rock_texture = preload("res://prefabs/rock.tscn")
+var entity
 
 func _ready():
 	updateMap()
