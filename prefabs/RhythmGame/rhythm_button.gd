@@ -16,7 +16,7 @@ func _ready():
 		dir = "move_down"
 	print(dir)
 
-func _process(delta):
+func _process(_delta):
 	position.x -= speed
 	if (Input.is_action_just_pressed(dir) and isPressable):
 		#create global variable to track how many are pressed for each minigame?

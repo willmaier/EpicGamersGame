@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://prefabs/Inventory/inv_ui.gd" id="1_ounem"]
 [ext_resource type="Texture2D" uid="uid://c7t4yh2qlimnc" path="res://imports/inventory-background.png" id="2_g7nyj"]
-[ext_resource type="PackedScene" uid="uid://crelnuyhoj3lb" path="res://prefabs/Inventory/Slot_data/inventory_panel.tscn" id="3_dtrfe"]
+[ext_resource type="PackedScene" uid="uid://crelnuyhoj3lb" path="res://prefabs/Inventory/inventory_slot.tscn" id="3_dtrfe"]
 
 [node name="Inv_UI" type="Control"]
 layout_mode = 3

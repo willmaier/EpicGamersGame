@@ -15,7 +15,9 @@ func _ready():
 	click_area = $VBoxContainer/NinePatchRect/GameBar/ClickArea/ClickArea2D/CollisionShape2D
 	dead_area = $VBoxContainer/NinePatchRect/GameBar/DeadArea/DeadArea2D/CollisionShape2D
 	timer = $SpawnTimer
-	#timer.start()
+
+func game_start():
+	timer.start()
 
 func _on_spawn_timer_timeout():
 	var instance = button.instantiate()
@@ -33,20 +35,25 @@ func _on_dead_area_2d_area_entered(area):
 	harvest_timer.stop()
 	harvest_timer.start()
 	area.get_parent().queue_free()
+	print("game over")
 
 
 func _on_tree_area_body_entered(body):
-	if body.name == "Player":
-		sub_viewport_container.visible = true
-		timer.start()
+	#if body.name == "Player":
+		#sub_viewport_container.visible = true
+		#timer.start()
+	pass
 
 
 func _on_tree_area_body_exited(body):
-	if body.name == "Player":
-		sub_viewport_container.visible = false
-		timer.stop()
+	#if body.name == "Player":
+		#sub_viewport_container.visible = false
+		#timer.stop()
+	pass
 
 
 func _on_harvest_timer_timeout():
-	sub_viewport_container.visible = false
-	timer.stop()
+	#sub_viewport_container.visible = false
+	#timer.stop()
+	pass
+

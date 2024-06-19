@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://btgo1j00uqt1l"]
 
-[ext_resource type="Texture2D" uid="uid://dl8b2mlkougqv" path="res://imports/parallax-forest-preview.png" id="1_dhjax"]
 [ext_resource type="Script" path="res://scenes/main_menu.gd" id="1_giurf"]
+[ext_resource type="Texture2D" uid="uid://cipm46yoyujf6" path="res://assets/art/New_Test_Environments_3.jpg" id="2_imhw7"]
 [ext_resource type="Texture2D" uid="uid://cn0ia5l71fy63" path="res://imports/playText.png" id="2_rqg1w"]
 [ext_resource type="Texture2D" uid="uid://dc0ru7t3h216i" path="res://imports/creditsText.png" id="3_3p0eo"]
 [ext_resource type="Texture2D" uid="uid://egi758sph2nd" path="res://imports/quitText.png" id="4_r8p3m"]
@@ -22,9 +22,9 @@ grow_vertical = 2
 script = ExtResource("1_giurf")
 
 [node name="BackgroundImage" type="Sprite2D" parent="."]
-position = Vector2(574.4, 322.5)
-scale = Vector2(2.162, 2.142)
-texture = ExtResource("1_dhjax")
+position = Vector2(568, 312)
+scale = Vector2(1.2096, 1.19841)
+texture = ExtResource("2_imhw7")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 2

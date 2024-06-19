@@ -2,6 +2,8 @@ extends SubViewport
 
 @onready var camera = $Camera2D
 var tree_texture = preload("res://prefabs/tree.tscn")
+var rock_texture = preload("res://prefabs/rock.tscn")
+var entity
 
 func _ready():
 	updateMap()
@@ -11,13 +13,19 @@ func _ready():
 # what gets diplayed and what doesn't.
 # Also when a BG is added we can add it here too
 func updateMap():
-	var tree_path = get_tree().get_root().get_node("Node2D/Resources")
-	for i in tree_path.get_child_count():
-		var tree = tree_texture.instantiate()
-		add_child(tree)
-		tree.position = tree_path.get_child(i).position
+	var resource_entity_path = get_tree().get_root().get_node("Main/Resources")
+	# For all instances in the Resources node
+	for i in resource_entity_path.get_child_count():
+		if resource_entity_path.get_child(i)._type == "Stick":
+			entity = tree_texture.instantiate()
+		if resource_entity_path.get_child(i)._type == "Rock":
+			entity = rock_texture.instantiate()
+		else:
+			entity = tree_texture.instantiate()
+		add_child(entity)
+		entity.position = resource_entity_path.get_child(i).position
 
 # TODO may need to fix this to follow the camera instead but the behavior wonky
-func _process(delta):
-	var CameraPath = get_tree().get_root().get_node("Node2D/Player")
+func _process(_delta):
+	var CameraPath = get_tree().get_root().get_node("Main/Player")
 	camera.position = CameraPath.position
