@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://bocjanvn67sv5"]
+[gd_scene load_steps=11 format=3 uid="uid://bocjanvn67sv5"]
 
 [ext_resource type="Texture2D" uid="uid://x3kktmxxmuht" path="res://imports/tree.png" id="1_j2dd2"]
 [ext_resource type="Script" path="res://scripts/tree.gd" id="1_lgjix"]
+[ext_resource type="Texture2D" uid="uid://8o1xycg2udx2" path="res://imports/dirt.jpg" id="2_pwq8q"]
 [ext_resource type="Texture2D" uid="uid://baclvdxhilqw6" path="res://imports/Rock1.png" id="3_eulpu"]
 [ext_resource type="AudioStream" uid="uid://1vb74hobartf" path="res://globals/ChoppingWood.mp3" id="3_j34nb"]
 [ext_resource type="AudioStream" uid="uid://cm7ul2g30qwwo" path="res://globals/MiningStone.mp3" id="4_cd5nm"]
@@ -15,6 +16,12 @@ size = Vector2(101, 114.5)
 
 [node name="StaticBody2D" type="StaticBody2D"]
 script = ExtResource("1_lgjix")
+
+[node name="Dirt" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(12, 62)
+scale = Vector2(0.1875, 0.0703125)
+texture = ExtResource("2_pwq8q")
 
 [node name="TreeArea" type="Area2D" parent="."]
 position = Vector2(8.00006, 16)
