@@ -5,11 +5,11 @@ extends Node
 @onready var harvest_cooldown = $HarvestCooldown
 @onready var pb = $ProgressBar # Experiment with TextureProgressBar later
 @onready var temp_instructions = $RemoveLater
-@onready var sprite = $Sprite2D
 @onready var chop_sound = $TreeSound
 @onready var mine_sound = $MiningSound
 
 const harvest_speed = 5
+var harvest_amount = 1
 var can_harvest
 var off_cooldown : bool = true
 
@@ -18,14 +18,17 @@ var off_cooldown : bool = true
 @onready  var rock_node = $Rock
 @onready var beehive = $Beehive
 @onready var dirt = $Dirt
+@onready var gem = $Gem
 
 var has_hive = false
+var has_gem = true
 
 
 # For adding images to inventory
 var rock_inventory = load("res://prefabs/Inventory/Items/Rock.tres")
 var stick_inventory = load("res://prefabs/Inventory/Items/Stick.tres")
 var beehive_inventory = preload("res://prefabs/Inventory/Items/Beehive.tres")
+var gem_inventory = preload("res://prefabs/Inventory/Items/Gem.tres")
 var inventory = preload("res://prefabs/Inventory/Player_Inv.tres")
 
 
@@ -57,6 +60,10 @@ func _process(_delta):
 	else:
 		tree_timer.stop() 
 		tree_node.visible = false
+		beehive.visible = false
+		if _type == "Rock" and gem != null and has_gem:
+			rock_node.visible = false
+			gem.visible = true
 		# For larger cooldown times
 		# "%d:%02d" % [floor(harvest_cooldown.time_left / 60), int(harvest_cooldown.time_left) % 60]
 		temp_instructions.text = "Can't harvest for" + "%2d seconds" % [int(harvest_cooldown.time_left) % 60]
@@ -95,26 +102,24 @@ func _on_harvest_timer_timeout():
 	tree_timer.wait_time = Globals.harvest_speed
 	
 	if (Globals.pickaxe_tool == true):
-			match _type:
-				"Rock":
-					Globals.rock_count+=3
-				"Stick":
-					Globals.stick_count+=3
+		harvest_amount = 5
 	# TODO there might be a better way to do this but this works for now
 	match _type:
 		"Rock":
 			print("harvested Rock")
 			Globals.rock_count+=resource_amount
-			inventory.add_item(rock_inventory.item_path,1)
+			inventory.add_item(rock_inventory.item_path,harvest_amount)
 			inventory.print_inventory()
+			
 		"Stick":
 			print("harvested Stick")
 			Globals.stick_count+=resource_amount
-			inventory.add_item(stick_inventory.item_path,[1,2].pick_random())
+			inventory.add_item(stick_inventory.item_path,harvest_amount)
 			inventory.print_inventory()
 			# TODO Works but image needs to be smaller
-			#if has_hive:
-				#inventory.add_item(beehive_inventory.item_path,1)
+			if has_hive:
+				print("harvested hive")
+				inventory.add_item(beehive_inventory.item_path,1)
 
 # Players must wait to harvest again
 func _on_harvest_cooldown_timeout():
@@ -132,3 +137,9 @@ func display(_type):
 			if random.randi() % 2:
 				has_hive = true
 				beehive.visible = true
+
+func collect_gem():
+	if gem.visible == true:
+		has_gem = false
+		gem.visible = false
+		inventory.add_item(gem_inventory.item_path,1)

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Inv_Item" load_steps=3 format=3 uid="uid://f5re7dub0q2b"]
+
+[ext_resource type="Script" path="res://prefabs/Inventory/InventoryItem.gd" id="1_vwiha"]
+[ext_resource type="Texture2D" uid="uid://184gxmpgv4lv" path="res://imports/gem16.png" id="2_atwgm"]
+
+[resource]
+script = ExtResource("1_vwiha")
+item_name = "Gem"
+description = ""
+texture = ExtResource("2_atwgm")
+item_path = "res://prefabs/Inventory/Items/Gem.tres"

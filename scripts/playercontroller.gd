@@ -20,17 +20,6 @@ var is_crafting: bool = false
 # TODO if delta is use just remove the _
 func _physics_process(_delta):
 	# Get the input direction and handle the movement/deceleration
-	# TODO this could use some optimization as it is simply just a placeholder
-	# also there is a snapback issue with animation currently that can be fixed later
-	#var horizontal_direction = Input.get_axis("move_left", "move_right")
-	#var vertical_direction = Input.get_axis("move_up", "move_down")
-	#if horizontal_direction || vertical_direction:
-		#velocity.x = horizontal_direction * speed
-		#velocity.y = vertical_direction * speed
-	#else:
-		#velocity.x = move_toward(velocity.normalized().x, 0, speed)
-		#velocity.y = move_toward(velocity.normalized().y, 0, speed)
-		#player_walk_sound.play()
 	# When player is interacting movement is disabled
 	if(!Input.is_action_pressed("interact")):
 		var input_direction = Vector2(
@@ -42,13 +31,11 @@ func _physics_process(_delta):
 		velocity = input_direction * speed
 		if (!Globals.is_crafting):
 				velocity = input_direction * speed
+	# Player is pressing e
 	else:
 		velocity = Vector2.ZERO
-	
-	if (crafting_table.player_present and Input.is_action_just_pressed("interact") and !Globals.is_playing):		
+	if (crafting_table.player_present and Input.is_action_just_pressed("interact") and !Globals.is_playing):
 		toggle_crafting()
-
-	
 	move_and_slide()
 	pick_new_state()
 
