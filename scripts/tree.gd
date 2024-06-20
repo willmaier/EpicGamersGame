@@ -111,9 +111,9 @@ func _on_harvest_timer_timeout():
 			inventory.add_item(stick_inventory.item_path,harvest_amount)
 			inventory.print_inventory()
 			# TODO Works but image needs to be smaller
-			#if has_hive:
-				#print("harvested hive")
-				#inventory.add_item(beehive_inventory.item_path,1)
+			if has_hive:
+				print("harvested hive")
+				inventory.add_item(beehive_inventory.item_path,1)
 
 # Players must wait to harvest again
 func _on_harvest_cooldown_timeout():

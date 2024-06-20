@@ -8,5 +8,6 @@ class_name Inv_Item
 
 @export var item_path: String
 
+
 func print_desc():
 	print(description)
