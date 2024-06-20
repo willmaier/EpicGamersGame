@@ -143,4 +143,3 @@ func collect_gem():
 		has_gem = false
 		gem.visible = false
 		inventory.add_item(gem_inventory.item_path,1)
-		#get_tree().call_group("Resources","remove_gem")
