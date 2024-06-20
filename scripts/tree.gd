@@ -5,7 +5,6 @@ extends Node
 @onready var harvest_cooldown = $HarvestCooldown
 @onready var pb = $ProgressBar # Experiment with TextureProgressBar later
 @onready var temp_instructions = $RemoveLater
-@onready var sprite = $Sprite2D
 @onready var chop_sound = $TreeSound
 @onready var mine_sound = $MiningSound
 
@@ -140,5 +139,8 @@ func display(_type):
 				beehive.visible = true
 
 func collect_gem():
-	inventory.add_item(gem_inventory.item_path,1)
-	gem.queue_free()
+	if gem.visible == true:
+		has_gem = false
+		gem.visible = false
+		inventory.add_item(gem_inventory.item_path,1)
+		#get_tree().call_group("Resources","remove_gem")
