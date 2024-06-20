@@ -10,6 +10,7 @@ extends Node
 @onready var mine_sound = $MiningSound
 
 const harvest_speed = 5
+var harvest_amount = 1
 var can_harvest
 var off_cooldown : bool = true
 
@@ -96,25 +97,22 @@ func _on_harvest_timer_timeout():
 	tree_timer.wait_time = Globals.harvest_speed
 	
 	if (Globals.pickaxe_tool == true):
-			match _type:
-				"Rock":
-					Globals.rock_count+=3
-				"Stick":
-					Globals.stick_count+=3
+		harvest_amount = 5
 	# TODO there might be a better way to do this but this works for now
 	match _type:
 		"Rock":
 			print("harvested Rock")
 			Globals.rock_count+=resource_amount
-			inventory.add_item(rock_inventory.item_path,1)
+			inventory.add_item(rock_inventory.item_path,harvest_amount)
 			inventory.print_inventory()
 		"Stick":
 			print("harvested Stick")
 			Globals.stick_count+=resource_amount
-			inventory.add_item(stick_inventory.item_path,[1,2].pick_random())
+			inventory.add_item(stick_inventory.item_path,harvest_amount)
 			inventory.print_inventory()
 			# TODO Works but image needs to be smaller
 			#if has_hive:
+				#print("harvested hive")
 				#inventory.add_item(beehive_inventory.item_path,1)
 
 # Players must wait to harvest again
