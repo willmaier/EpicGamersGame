@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://cwurdrhqotynf"]
+[gd_scene load_steps=22 format=3 uid="uid://cwurdrhqotynf"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_f36um"]
 [ext_resource type="PackedScene" uid="uid://8j6pyft4p6wt" path="res://prefabs/player.tscn" id="1_ntj77"]
@@ -15,7 +15,6 @@
 [ext_resource type="AudioStream" uid="uid://coh4vcnqprn4l" path="res://assets/sounds/Bears_1_All.mp3" id="11_epcsa"]
 [ext_resource type="AudioStream" uid="uid://bx30idrbacg80" path="res://imports/Wood Crash Sound Effects.mp3" id="12_ixoiq"]
 [ext_resource type="Texture2D" uid="uid://r211le2s4yeg" path="res://imports/pixel-art-blank-wood-sign-plate-4-png.webp" id="13_25376"]
-[ext_resource type="PackedScene" uid="uid://xfnx8gdcb5mo" path="res://prefabs/Inventory/Items/gem.tscn" id="16_843va"]
 
 [sub_resource type="GDScript" id="GDScript_4u1jf"]
 script/source = "extends CanvasGroup
@@ -371,7 +370,7 @@ _type = "Stick"
 
 [node name="Resource7" parent="Resources" instance=ExtResource("8_rsxhu")]
 position = Vector2(-746, 971)
-_type = "Stick"
+_type = "Rock"
 
 [node name="StartingTrack" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("8_3ry6t")
@@ -452,9 +451,6 @@ offset_right = 100.0
 offset_bottom = -29.0
 text = "The forest has lost all of its sound so all the wildlife has fled. Is there anyway to restore it?"
 autowrap_mode = 2
-
-[node name="Gem" parent="." instance=ExtResource("16_843va")]
-position = Vector2(-251, 1093)
 
 [connection signal="body_entered" from="BridgeBreak" to="." method="_on_bridge_break_body_entered"]
 [connection signal="body_entered" from="TutorialArea" to="." method="_on_tutorial_area_body_entered"]

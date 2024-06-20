@@ -19,14 +19,17 @@ var off_cooldown : bool = true
 @onready  var rock_node = $Rock
 @onready var beehive = $Beehive
 @onready var dirt = $Dirt
+@onready var gem = $Gem
 
 var has_hive = false
+var has_gem = true
 
 
 # For adding images to inventory
 var rock_inventory = load("res://prefabs/Inventory/Items/Rock.tres")
 var stick_inventory = load("res://prefabs/Inventory/Items/Stick.tres")
 var beehive_inventory = preload("res://prefabs/Inventory/Items/Beehive.tres")
+var gem_inventory = preload("res://prefabs/Inventory/Items/Gem.tres")
 var inventory = preload("res://prefabs/Inventory/Player_Inv.tres")
 
 
@@ -59,6 +62,9 @@ func _process(_delta):
 		tree_timer.stop() 
 		tree_node.visible = false
 		beehive.visible = false
+		if _type == "Rock" and gem != null and has_gem:
+			rock_node.visible = false
+			gem.visible = true
 		# For larger cooldown times
 		# "%d:%02d" % [floor(harvest_cooldown.time_left / 60), int(harvest_cooldown.time_left) % 60]
 		temp_instructions.text = "Can't harvest for" + "%2d seconds" % [int(harvest_cooldown.time_left) % 60]
@@ -105,6 +111,7 @@ func _on_harvest_timer_timeout():
 			Globals.rock_count+=resource_amount
 			inventory.add_item(rock_inventory.item_path,harvest_amount)
 			inventory.print_inventory()
+			
 		"Stick":
 			print("harvested Stick")
 			Globals.stick_count+=resource_amount
@@ -131,3 +138,7 @@ func display(_type):
 			if random.randi() % 2:
 				has_hive = true
 				beehive.visible = true
+
+func collect_gem():
+	inventory.add_item(gem_inventory.item_path,1)
+	gem.queue_free()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bocjanvn67sv5"]
+[gd_scene load_steps=12 format=3 uid="uid://bocjanvn67sv5"]
 
 [ext_resource type="Texture2D" uid="uid://x3kktmxxmuht" path="res://imports/tree.png" id="1_j2dd2"]
 [ext_resource type="Script" path="res://scripts/tree.gd" id="1_lgjix"]
@@ -8,13 +8,14 @@
 [ext_resource type="AudioStream" uid="uid://cm7ul2g30qwwo" path="res://globals/MiningStone.mp3" id="4_cd5nm"]
 [ext_resource type="PackedScene" uid="uid://cc73s84erwdak" path="res://prefabs/RhythmGame/rhythm_game.tscn" id="5_rouqv"]
 [ext_resource type="Texture2D" uid="uid://b1aclea0vlbsa" path="res://imports/beehive1.png" id="6_q45qn"]
+[ext_resource type="PackedScene" uid="uid://xfnx8gdcb5mo" path="res://prefabs/Inventory/gem.tscn" id="9_yiagv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s60js"]
 size = Vector2(101, 114.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t2cw0"]
 
-[node name="StaticBody2D" type="StaticBody2D"]
+[node name="StaticBody2D" type="StaticBody2D" groups=["Resources"]]
 script = ExtResource("1_lgjix")
 
 [node name="Dirt" type="Sprite2D" parent="."]
@@ -94,6 +95,9 @@ visible = false
 position = Vector2(8, 15)
 scale = Vector2(1.88074, 1.36938)
 texture = ExtResource("3_eulpu")
+
+[node name="Gem" parent="." instance=ExtResource("9_yiagv")]
+position = Vector2(10, 17)
 
 [connection signal="body_entered" from="TreeArea" to="." method="_on_tree_area_body_entered"]
 [connection signal="body_entered" from="TreeArea" to="SubViewportContainer/SubViewport/RhythmGame" method="_on_tree_area_body_entered"]
