@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://cwurdrhqotynf"]
+
+[ext_resource type="PackedScene" uid="uid://8j6pyft4p6wt" path="res://prefabs/player.tscn" id="1_ntj77"]
+[ext_resource type="Script" path="res://scripts/HUD.gd" id="2_j5jdw"]
+[ext_resource type="PackedScene" uid="uid://7cw827esn822" path="res://prefabs/ResourceTemplate.tscn" id="3_wqlsc"]
+[ext_resource type="Script" path="res://scripts/Spawner.gd" id="4_313v4"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_ntj77")]
+position = Vector2(496, 271)
+
+[node name="HUD" type="CanvasGroup" parent="."]
+script = ExtResource("2_j5jdw")
+
+[node name="Sticks" type="Label" parent="HUD"]
+offset_left = 4.0
+offset_top = 6.0
+offset_right = 44.0
+offset_bottom = 29.0
+
+[node name="Rocks" type="Label" parent="HUD"]
+offset_left = 4.0
+offset_top = 27.0
+offset_right = 44.0
+offset_bottom = 50.0
+
+[node name="Rock" parent="." instance=ExtResource("3_wqlsc")]
+position = Vector2(185, 239)
+scale = Vector2(0.25, 0.296875)
+
+[node name="Stick" parent="." instance=ExtResource("3_wqlsc")]
+position = Vector2(367.75, 162.25)
+scale = Vector2(0.222656, 0.207031)
+
+[node name="Spawner" type="Node" parent="."]
+script = ExtResource("4_313v4")
+resource_node = ExtResource("3_wqlsc")

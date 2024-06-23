@@ -1,0 +1,43 @@
+[gd_scene load_steps=5 format=3 uid="uid://cwurdrhqotynf"]
+
+[ext_resource type="PackedScene" uid="uid://8j6pyft4p6wt" path="res://prefabs/player.tscn" id="1_ntj77"]
+[ext_resource type="Script" path="res://scripts/HUD.gd" id="2_j5jdw"]
+[ext_resource type="Texture2D" uid="uid://ob14c8jbg45y" path="res://icon.svg" id="3_tqqks"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e72r5"]
+size = Vector2(128, 125.909)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_ntj77")]
+position = Vector2(496, 271)
+
+[node name="HUD" type="CanvasGroup" parent="."]
+script = ExtResource("2_j5jdw")
+
+[node name="Sticks" type="Label" parent="HUD"]
+offset_left = 4.0
+offset_top = 6.0
+offset_right = 44.0
+offset_bottom = 29.0
+
+[node name="Rocks" type="Label" parent="HUD"]
+offset_left = 4.0
+offset_top = 27.0
+offset_right = 44.0
+offset_bottom = 50.0
+
+[node name="Rock" type="Sprite2D" parent="."]
+position = Vector2(189.5, 225.5)
+scale = Vector2(0.0859375, 0.0859375)
+texture = ExtResource("3_tqqks")
+
+[node name="Area2D" type="Area2D" parent="Rock"]
+scale = Vector2(1, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rock/Area2D"]
+position = Vector2(0, 1.04565)
+shape = SubResource("RectangleShape2D_e72r5")
+
+[connection signal="area_entered" from="Rock/Area2D" to="Player" method="_on_area_2d_area_entered"]
+[connection signal="body_entered" from="Rock/Area2D" to="Player" method="_on_area_2d_body_entered"]

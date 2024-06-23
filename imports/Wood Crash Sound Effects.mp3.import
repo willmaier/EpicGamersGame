@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bx30idrbacg80"
+path="res://.godot/imported/Wood Crash Sound Effects.mp3-a4e8332e112d5058de90e7ee443c0f2a.mp3str"
+
+[deps]
+
+source_file="res://imports/Wood Crash Sound Effects.mp3"
+dest_files=["res://.godot/imported/Wood Crash Sound Effects.mp3-a4e8332e112d5058de90e7ee443c0f2a.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

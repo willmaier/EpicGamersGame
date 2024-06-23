@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://crelnuyhoj3lb"]
+
+[ext_resource type="Script" path="res://prefabs/Inventory/Slot_data/inventory_panel.gd" id="1_1lnni"]
+[ext_resource type="Texture2D" uid="uid://cdb3lvvrvyxw1" path="res://imports/inventory-slot.png" id="2_a4vvm"]
+
+[node name="Inventory_slot" type="Panel"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(16, 16)
+offset_right = 16.0
+offset_bottom = 16.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_1lnni")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("2_a4vvm")
+centered = false
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 16.0
+
+[node name="Panel" type="Panel" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="item_display" type="Sprite2D" parent="CenterContainer/Panel"]
+texture_filter = 1
