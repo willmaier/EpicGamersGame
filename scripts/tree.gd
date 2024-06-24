@@ -66,7 +66,7 @@ func _process(_delta):
 			gem.visible = true
 		# For larger cooldown times
 		# "%d:%02d" % [floor(harvest_cooldown.time_left / 60), int(harvest_cooldown.time_left) % 60]
-		temp_instructions.text = "Can't harvest for" + "%2d seconds" % [int(harvest_cooldown.time_left) % 60]
+		temp_instructions.text = "Can't harvest for " + "%2d seconds" % [int(harvest_cooldown.time_left) % 60]
 
 func try_harvesting():
 	tree_timer.wait_time = Globals.harvest_speed
