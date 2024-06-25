@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Inv_Item" load_steps=3 format=3 uid="uid://1y5ru37ge4wk"]
+
+[ext_resource type="Script" path="res://prefabs/Inventory/InventoryItem.gd" id="1_mv4sj"]
+[ext_resource type="Texture2D" uid="uid://bc8evsnh8ghnc" path="res://imports/HoneyComb16.png" id="2_3f5kv"]
+
+[resource]
+script = ExtResource("1_mv4sj")
+item_name = "Beehive"
+description = ""
+texture = ExtResource("2_3f5kv")
+item_path = "res://prefabs/Inventory/Items/Beehive.tres"

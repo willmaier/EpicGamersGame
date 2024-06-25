@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bf66or7jdcs0g"
-path="res://.godot/imported/Bear_Sprite_POST_DIGITIZATION3.png-91635b73707a1e2ff0556021e48353c0.ctex"
+uid="uid://b1aclea0vlbsa"
+path="res://.godot/imported/beehive1.png-8b54170eb1e080d83c3dbc7060e9471d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/Bear/Bear_Sprite_POST_DIGITIZATION3.png"
-dest_files=["res://.godot/imported/Bear_Sprite_POST_DIGITIZATION3.png-91635b73707a1e2ff0556021e48353c0.ctex"]
+source_file="res://imports/beehive1.png"
+dest_files=["res://.godot/imported/beehive1.png-8b54170eb1e080d83c3dbc7060e9471d.ctex"]
 
 [params]
 
