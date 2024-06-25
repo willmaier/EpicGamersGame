@@ -21,15 +21,15 @@ var is_crafting: bool = false
 func _physics_process(_delta):
 	# Get the input direction and handle the movement/deceleration
 	# When player is interacting movement is disabled
-	if(!Input.is_action_pressed("interact")):
+	
+	if(!Input.is_action_pressed("interact") and Globals.is_playing == false):
 		var input_direction = Vector2(
 			Input.get_action_strength("move_right") - Input.get_action_strength("move_left"),
 			Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
 		)
 		set_animation(input_direction)
-		player_walk_sound.play()
 		velocity = input_direction * speed
-		if (!Globals.is_crafting):
+		if (Globals.is_crafting == false):
 				velocity = input_direction * speed
 	# Player is pressing e
 	else:
@@ -38,6 +38,9 @@ func _physics_process(_delta):
 		toggle_crafting()
 	move_and_slide()
 	pick_new_state()
+
+	if (velocity == Vector2.ZERO):
+		player_walk_sound.play()
 
 # TODO Use this when more states are added into the animation tree if we decide to use it
 func set_animation(move_input : Vector2):

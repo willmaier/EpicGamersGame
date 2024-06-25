@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://cwurdrhqotynf"]
+[gd_scene load_steps=23 format=3 uid="uid://cwurdrhqotynf"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_f36um"]
 [ext_resource type="PackedScene" uid="uid://8j6pyft4p6wt" path="res://prefabs/player.tscn" id="1_ntj77"]
@@ -15,6 +15,7 @@
 [ext_resource type="AudioStream" uid="uid://coh4vcnqprn4l" path="res://assets/sounds/Bears_1_All.mp3" id="11_epcsa"]
 [ext_resource type="AudioStream" uid="uid://bx30idrbacg80" path="res://imports/Wood Crash Sound Effects.mp3" id="12_ixoiq"]
 [ext_resource type="Texture2D" uid="uid://r211le2s4yeg" path="res://imports/pixel-art-blank-wood-sign-plate-4-png.webp" id="13_25376"]
+[ext_resource type="Texture2D" uid="uid://ds47w5q8cofqb" path="res://assets/art/Hammer1.png" id="16_x1a7s"]
 
 [sub_resource type="GDScript" id="GDScript_4u1jf"]
 script/source = "extends CanvasGroup
@@ -382,8 +383,9 @@ autoplay = true
 
 [node name="Player" parent="." node_paths=PackedStringArray("crafting_table") instance=ExtResource("1_ntj77")]
 top_level = true
-position = Vector2(-1000, 1300)
+position = Vector2(305, 182)
 crafting_table = NodePath("../CraftingTable2")
+metadata/_edit_group_ = true
 
 [node name="UI" parent="Player" instance=ExtResource("9_ry8mk")]
 offset_left = -577.0
@@ -456,6 +458,14 @@ offset_bottom = -29.0
 text = "The forest has lost all of its sound so all the wildlife has fled. Is there anyway to restore it?"
 autowrap_mode = 2
 
+[node name="CheatButton" type="Button" parent="."]
+offset_left = 68.0
+offset_top = -11.0
+offset_right = 140.0
+offset_bottom = 61.0
+icon = ExtResource("16_x1a7s")
+
 [connection signal="body_entered" from="BridgeBreak" to="." method="_on_bridge_break_body_entered"]
 [connection signal="body_entered" from="TutorialArea" to="." method="_on_tutorial_area_body_entered"]
 [connection signal="body_exited" from="TutorialArea" to="." method="_on_tutorial_area_body_exited"]
+[connection signal="pressed" from="CheatButton" to="." method="_on_cheat_button_pressed"]

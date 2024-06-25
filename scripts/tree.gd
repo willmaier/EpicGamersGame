@@ -73,8 +73,14 @@ func try_harvesting():
 	pb.value = tree_timer.time_left * (100/Globals.harvest_speed)
 	if Input.is_action_just_pressed("interact") && can_harvest: 
 		tree_timer.start()
+		if (_type == "Stick"):
+			chop_sound.play()
+		if (_type == "Rock"):
+			mine_sound.play()
 	elif Input.is_action_just_released("interact") || !can_harvest:
-		tree_timer.stop() 
+		tree_timer.stop()
+		chop_sound.stop()
+		mine_sound.stop() 
 
 func _on_tree_area_body_entered(body):
 	if body.name == "Player":
