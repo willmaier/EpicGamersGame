@@ -66,7 +66,16 @@ func _process(_delta):
 			gem.visible = true
 		# For larger cooldown times
 		# "%d:%02d" % [floor(harvest_cooldown.time_left / 60), int(harvest_cooldown.time_left) % 60]
-		temp_instructions.text = "Can't harvest for " + "%2d seconds" % [int(harvest_cooldown.time_left) % 60]
+		if _type != "Rock":
+			if(int(harvest_cooldown.time_left < 1)):
+				temp_instructions.text = "Try watering (Press e)"
+			else:
+				temp_instructions.text = "Can't harvest for " + "%2d seconds" % [int(harvest_cooldown.time_left) % 60]
+			if Input.is_action_just_pressed("interact"):
+				try_watering()
+		else:
+			temp_instructions.visible = false
+			pb.visible = false
 
 func try_harvesting():
 	tree_timer.wait_time = Globals.harvest_speed
@@ -98,10 +107,12 @@ func _on_tree_area_body_exited(body):
 
 # Restart timer each harvest and add to globals
 func _on_harvest_timer_timeout():
+	chop_sound.stop()
+	mine_sound.stop()
 	#print("harvested")
 	
 	# TODO add a visual cue so players know they can't harvest
-	harvest_cooldown.start()
+	#harvest_cooldown.start()
 	off_cooldown = false
 	
 	# Restart harvesting timer
@@ -122,6 +133,8 @@ func _on_harvest_timer_timeout():
 			Globals.stick_count+=resource_amount
 			inventory.add_item(stick_inventory.item_path,harvest_amount)
 			inventory.print_inventory()
+			# TODO need to change this behavior
+			Globals.can_plant = true 
 			# TODO Works but image needs to be smaller
 			if has_hive:
 				print("harvested hive")
@@ -149,3 +162,9 @@ func collect_gem():
 		has_gem = false
 		gem.visible = false
 		inventory.add_item(gem_inventory.item_path,1)
+		
+func try_watering():
+	if(harvest_cooldown.is_stopped()):
+		print("watering")
+		harvest_cooldown.start()
+	
