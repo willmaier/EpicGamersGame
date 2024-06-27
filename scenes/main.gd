@@ -21,6 +21,10 @@ func _ready():
 	crash_sound = $MissingBridge/CrashSound
 
 func _process(_delta):
+	if (Globals.is_playing):
+		$Music/StartingTrack.volume_db = -80
+		$StartingTrack.volume_db = -80
+		
 	if (Globals.structure_count == 1): 
 		$Music/StartingTrack.volume_db = -80
 		$Music/SecondTrack.volume_db = 0

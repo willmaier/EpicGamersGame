@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://cc73s84erwdak" path="res://prefabs/RhythmGame/rhythm_game.tscn" id="7_2m6hp"]
 [ext_resource type="Texture2D" uid="uid://qmm4oq0bksdq" path="res://assets/art/Dam2.png" id="8_ahhqw"]
 
-[node name="Crafting_UI" type="Control" node_paths=PackedStringArray("crafting_bg", "crafting_window", "game_bg", "game_window", "tool1", "tool2", "struct1", "struct2", "game_timer")]
+[node name="Crafting_UI" type="Control" node_paths=PackedStringArray("crafting_bg", "crafting_window", "game_bg", "game_window", "tool1", "tool2", "struct1", "game_timer")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -25,7 +25,6 @@ game_window = NodePath("RhythmGame")
 tool1 = NodePath("CraftingWindow/VBoxContainer/Tools/Tools/Tool1")
 tool2 = NodePath("CraftingWindow/VBoxContainer/Tools/Tools/Tool2")
 struct1 = NodePath("CraftingWindow/VBoxContainer/Structures/Structure1")
-struct2 = NodePath("")
 game_timer = NodePath("GameTimer")
 
 [node name="CraftingBackground" type="ColorRect" parent="."]
