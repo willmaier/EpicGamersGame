@@ -295,7 +295,7 @@ grow_horizontal = 1
 grow_vertical = 1
 
 [node name="GameTimer" type="Timer" parent="."]
-wait_time = 15.0
+wait_time = 30.0
 one_shot = true
 
 [connection signal="pressed" from="CraftingBackground/Hammer" to="." method="_on_hammer_pressed"]
