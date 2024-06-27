@@ -1,7 +1,8 @@
-[gd_scene load_steps=29 format=3 uid="uid://8j6pyft4p6wt"]
+[gd_scene load_steps=30 format=3 uid="uid://8j6pyft4p6wt"]
 
 [ext_resource type="Script" path="res://scripts/playercontroller.gd" id="1_dytxa"]
 [ext_resource type="Texture2D" uid="uid://bf66or7jdcs0g" path="res://assets/art/Bear/Bear_Sprite_POST_DIGITIZATION3.png" id="2_7gl87"]
+[ext_resource type="PackedScene" uid="uid://bocjanvn67sv5" path="res://prefabs/ResourceEntity.tscn" id="2_vkntn"]
 [ext_resource type="AudioStream" uid="uid://yu87kqpokjiy" path="res://assets/sounds/LeafFootsteps2.mp3" id="4_m7a6p"]
 [ext_resource type="PackedScene" uid="uid://cf2utc5r7rmnc" path="res://prefabs/Inventory/inv_ui.tscn" id="5_euid1"]
 
@@ -268,6 +269,7 @@ transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_dytxa")
+tree_node = ExtResource("2_vkntn")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, 1)

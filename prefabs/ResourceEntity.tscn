@@ -17,6 +17,7 @@ size = Vector2(101, 114.5)
 
 [node name="StaticBody2D" type="StaticBody2D" groups=["Resources"]]
 script = ExtResource("1_lgjix")
+_type = "Stick"
 
 [node name="Dirt" type="Sprite2D" parent="."]
 visible = false
