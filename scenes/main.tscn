@@ -285,7 +285,6 @@ visible = false
 script = SubResource("GDScript_4u1jf")
 
 [node name="Sticks" type="Label" parent="HUD"]
-visible = false
 offset_left = 4.0
 offset_top = 6.0
 offset_right = 44.0
@@ -294,7 +293,6 @@ theme_override_font_sizes/font_size = 30
 metadata/_edit_use_anchors_ = true
 
 [node name="Rocks" type="Label" parent="HUD"]
-visible = false
 offset_left = 4.0
 offset_top = 44.0
 offset_right = 44.0
@@ -303,7 +301,6 @@ theme_override_font_sizes/font_size = 30
 metadata/_edit_use_anchors_ = true
 
 [node name="Hammers" type="Label" parent="HUD"]
-visible = false
 offset_left = 4.0
 offset_top = 82.0
 offset_right = 44.0
@@ -352,11 +349,9 @@ polygon = PackedVector2Array(2, 2, 514, 5, 517, 128, 1474, 132, 1476, -125, 1431
 
 [node name="Resource2" parent="Resources" instance=ExtResource("8_rsxhu")]
 position = Vector2(815, 198)
-_type = "Stick"
 
 [node name="Resource3" parent="Resources" instance=ExtResource("8_rsxhu")]
 position = Vector2(225, 494)
-_type = "Stick"
 
 [node name="Resource4" parent="Resources" instance=ExtResource("8_rsxhu")]
 position = Vector2(796, 474)
@@ -364,11 +359,9 @@ _type = "Rock"
 
 [node name="Resource5" parent="Resources" instance=ExtResource("8_rsxhu")]
 position = Vector2(107, 264)
-_type = "Stick"
 
 [node name="Resource6" parent="Resources" instance=ExtResource("8_rsxhu")]
 position = Vector2(530, 115)
-_type = "Stick"
 
 [node name="Resource7" parent="Resources" instance=ExtResource("8_rsxhu")]
 position = Vector2(-746, 971)

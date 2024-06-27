@@ -11,6 +11,7 @@ var beehive_inventory = preload("res://prefabs/Inventory/Items/Beehive.tres")
 var gem_inventory = preload("res://prefabs/Inventory/Items/Gem.tres")
 var inventory = preload("res://prefabs/Inventory/Player_Inv.tres")
 
+# Planting new trees
 @export var tree_node: PackedScene
 @onready var player = $Player
 
@@ -50,8 +51,11 @@ func _on_cheat_button_pressed():
 
 
 func _on_player_plant_tree():
-	var tree = tree_node.instantiate()
-	tree.position = player.position
-	tree.get_node("Dirt").visible = true
-	add_child(tree)
-	print(tree.name)
+	if(Globals.can_plant == true):
+		var tree = tree_node.instantiate()
+		tree.position = player.position
+		tree.get_node("Dirt").visible = true
+		add_child(tree)
+		Globals.can_plant = false
+	else:
+		print("Can't plant")
