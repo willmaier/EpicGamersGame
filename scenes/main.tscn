@@ -278,6 +278,7 @@ size = Vector2(136, 146)
 [node name="Main" type="Node2D" node_paths=PackedStringArray("bridge")]
 script = ExtResource("1_f36um")
 bridge = NodePath("Bridge")
+tree_node = ExtResource("8_rsxhu")
 
 [node name="HUD" type="CanvasGroup" parent="."]
 visible = false
@@ -465,6 +466,7 @@ offset_right = 140.0
 offset_bottom = 61.0
 icon = ExtResource("16_x1a7s")
 
+[connection signal="plant_tree" from="Player" to="." method="_on_player_plant_tree"]
 [connection signal="body_entered" from="BridgeBreak" to="." method="_on_bridge_break_body_entered"]
 [connection signal="body_entered" from="TutorialArea" to="." method="_on_tutorial_area_body_entered"]
 [connection signal="body_exited" from="TutorialArea" to="." method="_on_tutorial_area_body_exited"]

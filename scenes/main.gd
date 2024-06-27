@@ -11,6 +11,9 @@ var beehive_inventory = preload("res://prefabs/Inventory/Items/Beehive.tres")
 var gem_inventory = preload("res://prefabs/Inventory/Items/Gem.tres")
 var inventory = preload("res://prefabs/Inventory/Player_Inv.tres")
 
+@export var tree_node: PackedScene
+@onready var player = $Player
+
 
 func _ready():
 	missing_bridge = $MissingBridge/CollisionShape2D
@@ -44,3 +47,11 @@ func _on_cheat_button_pressed():
 	inventory.add_item(gem_inventory.item_path,50)
 	Globals.stick_count += 50
 	Globals.rock_count += 50
+
+
+func _on_player_plant_tree():
+	var tree = tree_node.instantiate()
+	tree.position = player.position
+	tree.get_node("Dirt").visible = true
+	add_child(tree)
+	print(tree.name)

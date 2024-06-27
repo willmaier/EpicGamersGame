@@ -2,6 +2,8 @@ extends CharacterBody2D
 
 const speed = 300.0
 
+signal plant_tree
+
 # Player tree animation
 @onready var animated_sprite = $AnimationPlayer
 @onready var animated_tree = $AnimationTree
@@ -36,6 +38,8 @@ func _physics_process(_delta):
 		velocity = Vector2.ZERO
 	if (crafting_table.player_present and Input.is_action_just_pressed("interact") and !Globals.is_playing):
 		toggle_crafting()
+	if(Input.is_action_just_pressed("plant")):
+		plant_tree.emit()
 	move_and_slide()
 	pick_new_state()
 
