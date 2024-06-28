@@ -3,6 +3,7 @@ extends StaticBody2D
 var is_crafting: bool = false
 var player_present: bool = false
 var instructions: Label
+@export_enum("Crafting") var _type: String
 
 func _ready():
 	instructions = $Instructions

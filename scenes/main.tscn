@@ -331,9 +331,6 @@ texture = ExtResource("6_c8r2q")
 script = ExtResource("7_gi2ll")
 metadata/_edit_group_ = true
 
-[node name="CraftingTable2" parent="." instance=ExtResource("8_1nnd7")]
-position = Vector2(103, 96)
-
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
@@ -371,6 +368,10 @@ _type = "Rock"
 position = Vector2(-1104, 952)
 _type = "Rock"
 
+[node name="CraftingTable2" parent="Resources" instance=ExtResource("8_1nnd7")]
+position = Vector2(103, 96)
+_type = "Crafting"
+
 [node name="StartingTrack" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("8_3ry6t")
 autoplay = true
@@ -378,7 +379,7 @@ autoplay = true
 [node name="Player" parent="." node_paths=PackedStringArray("crafting_table") instance=ExtResource("1_ntj77")]
 top_level = true
 position = Vector2(-950, 1195)
-crafting_table = NodePath("../CraftingTable2")
+crafting_table = NodePath("../Resources/CraftingTable2")
 metadata/_edit_group_ = true
 
 [node name="UI" parent="Player" instance=ExtResource("9_ry8mk")]
