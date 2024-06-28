@@ -4,6 +4,7 @@ extends Node2D
 @export var missing_bridge: CollisionShape2D
 var crash_sound
 var bridge_broken = false
+var bridge_break
 
 var rock_inventory = load("res://prefabs/Inventory/Items/Rock.tres")
 var stick_inventory = load("res://prefabs/Inventory/Items/Stick.tres")
@@ -19,6 +20,7 @@ var inventory = preload("res://prefabs/Inventory/Player_Inv.tres")
 func _ready():
 	missing_bridge = $MissingBridge/CollisionShape2D
 	crash_sound = $MissingBridge/CrashSound
+	bridge_break = $BridgeBreak
 
 func _process(_delta):
 	if (Globals.is_playing):
@@ -38,6 +40,13 @@ func _on_bridge_break_body_entered(_body):
 		#play sound effect
 		crash_sound.play()
 		bridge_broken = true
+		bridge_break.queue_free()
+
+func rebuild_bridge():
+	if bridge_broken: 
+		print("bridge fixed")
+		bridge.visible = true
+		missing_bridge.set_deferred("disabled", true)
 
 func _on_tutorial_area_body_entered(_body):
 	$TutorialArea/Intro.visible = true

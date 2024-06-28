@@ -51,6 +51,7 @@ func _on_structure_1_button_pressed():
 		game_window.game_start()
 		game_timer.start()
 		Globals.is_playing = true
+		$"../../../..".rebuild_bridge()
 
 func _on_game_timer_timeout():
 		print("game timer over")
