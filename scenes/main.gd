@@ -33,14 +33,15 @@ func _process(_delta):
 
 
 func _on_bridge_break_body_entered(_body):
-	if (!bridge_broken):
-		print("bridge broken")
-		bridge.visible = false
-		missing_bridge.set_deferred("disabled", false)
-		#play sound effect
-		crash_sound.play()
-		bridge_broken = true
-		bridge_break.queue_free()
+	if (_body.name == "Player"):
+		if (!bridge_broken):
+			print("bridge broken")
+			bridge.visible = false
+			missing_bridge.set_deferred("disabled", false)
+			#play sound effect
+			crash_sound.play()
+			bridge_broken = true
+			bridge_break.queue_free()
 
 func rebuild_bridge():
 	if bridge_broken: 
