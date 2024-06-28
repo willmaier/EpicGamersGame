@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://bd0wccvt7gdqx"]
+
+[ext_resource type="Texture2D" uid="uid://ob14c8jbg45y" path="res://icon.svg" id="1_8g02x"]
+[ext_resource type="Script" path="res://prefabs/animal.gd" id="1_xkwm5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lly4r"]
+radius = 350.397
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1wa8f"]
+size = Vector2(130, 126.667)
+
+[node name="Animal" type="CharacterBody2D"]
+scale = Vector2(0.3, 0.3)
+script = ExtResource("1_xkwm5")
+
+[node name="NPC roam area" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NPC roam area"]
+shape = SubResource("CircleShape2D_lly4r")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_8g02x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1.66667, -3.17891e-06)
+shape = SubResource("RectangleShape2D_1wa8f")
+
+[connection signal="body_entered" from="NPC roam area" to="." method="_on_npc_roam_area_body_entered"]
+[connection signal="body_exited" from="NPC roam area" to="." method="_on_npc_roam_area_body_exited"]
