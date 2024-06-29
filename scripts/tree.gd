@@ -107,6 +107,8 @@ func _on_tree_area_body_exited(body):
 
 # Restart timer each harvest and add to globals
 func _on_harvest_timer_timeout():
+	chop_sound.stop()
+	mine_sound.stop()
 	#print("harvested")
 	
 	# TODO add a visual cue so players know they can't harvest
