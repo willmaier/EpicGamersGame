@@ -453,6 +453,7 @@ text = "The forest has lost all of its sound so all the wildlife has fled. Is th
 autowrap_mode = 2
 
 [node name="CheatButton" type="Button" parent="."]
+visible = false
 offset_left = 68.0
 offset_top = -11.0
 offset_right = 140.0
