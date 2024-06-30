@@ -462,5 +462,7 @@ icon = ExtResource("16_x1a7s")
 [connection signal="plant_tree" from="Player" to="." method="_on_player_plant_tree"]
 [connection signal="body_entered" from="BridgeBreak" to="." method="_on_bridge_break_body_entered"]
 [connection signal="body_entered" from="TutorialArea" to="." method="_on_tutorial_area_body_entered"]
+[connection signal="body_entered" from="TutorialArea" to="Player" method="_on_tutorial_area_body_entered"]
 [connection signal="body_exited" from="TutorialArea" to="." method="_on_tutorial_area_body_exited"]
+[connection signal="body_exited" from="TutorialArea" to="Player" method="_on_tutorial_area_body_exited"]
 [connection signal="pressed" from="CheatButton" to="." method="_on_cheat_button_pressed"]

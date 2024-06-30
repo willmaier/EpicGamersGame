@@ -67,3 +67,11 @@ func toggle_crafting():
 	player_walk_sound.stop()
 	#crafting_UI.visible = !crafting_UI.visible
 	Globals.is_crafting = !Globals.is_crafting
+
+
+func _on_tutorial_area_body_entered(body):
+	DialogueManager.show_example_dialogue_balloon(load("res://dialogue/main.dialogue"), "start1")
+
+# TODO behavior when player leaves
+func _on_tutorial_area_body_exited(body):
+	pass

@@ -19,3 +19,6 @@ var structure_count: int = 0
 # Planting
 var can_plant = true
 
+# Dialogue
+var has_enough = false
+
