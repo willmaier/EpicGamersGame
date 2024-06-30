@@ -364,7 +364,7 @@ position = Vector2(107, 264)
 position = Vector2(530, 115)
 
 [node name="Resource7" parent="Resources" instance=ExtResource("8_rsxhu")]
-position = Vector2(-1096, 1318)
+position = Vector2(-746, 971)
 _type = "Rock"
 
 [node name="Resource8" parent="Resources" instance=ExtResource("8_rsxhu")]
@@ -430,7 +430,7 @@ scale = Vector2(0.641962, 1.56826)
 stream = ExtResource("12_ixoiq")
 
 [node name="TutorialArea" type="Area2D" parent="."]
-position = Vector2(-716, 1090)
+position = Vector2(-958, 1032)
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TutorialArea"]

@@ -91,6 +91,10 @@ func try_harvesting():
 
 func _on_tree_area_body_entered(body):
 	if body.name == "Player":
+		if Globals.first_interact:
+			Globals.first_interact = false
+			DialogueManager.show_example_dialogue_balloon(load("res://dialogue/main.dialogue"), "farm")
+			await DialogueManager.dialogue_ended
 		#print("entered harvest area")
 		pb.visible = true # Show progress bar
 		can_harvest = true

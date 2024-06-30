@@ -1,24 +1,20 @@
-~ start1
+~ start
 
-Nathan: [[Hi|Hello|Howdy]], this is some dialogue.
+The Forest: [[Hi|Hello|Howdy]], the forest has lost all of its sound so all the wildlife has fled. Is there anyway to restore it?
 if State.has_enough == false
-	Bro: Go farm
+	The Forest: You need to save the forest and then come back to me!
 else:
-	Bro: You have farmed enough
-
-=> END
-
-~ example
-
-Nathan: [[Hi|Hello|Howdy]], this is some dialogue.
-Nathan: Here are some choices.
-- First one
-	Nathan: You picked the first one.
-- Second one
-	Nathan: You picked the second one.
-- Start again => start1
+	The Forest: You have farmed enough now reap your rewards!
+	set State.finished = true
+if State.finished == true
+	The Forest: Game over
+- Start again => start
 - End the conversation => END
-Nathan: For more information see the online documentation.
-
 => END
 
+~ farm
+The Forest: Approach resources and press E to farm. 
+The Forest: Press escape to see your inventory.
+The Forest: Upgrade your equipment to save the forest
+
+=> END

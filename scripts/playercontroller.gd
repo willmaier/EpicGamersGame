@@ -70,8 +70,10 @@ func toggle_crafting():
 
 
 func _on_tutorial_area_body_entered(body):
-	DialogueManager.show_example_dialogue_balloon(load("res://dialogue/main.dialogue"), "start1")
-
+	if Globals.finished == false:
+		DialogueManager.show_example_dialogue_balloon(load("res://dialogue/main.dialogue"), "start")
+	if Globals.finished == true:
+		print("Game over congrats")
 # TODO behavior when player leaves
 func _on_tutorial_area_body_exited(body):
 	pass
