@@ -24,7 +24,7 @@ func _physics_process(_delta):
 	# Get the input direction and handle the movement/deceleration
 	# When player is interacting movement is disabled
 	
-	if(!Input.is_action_pressed("interact") and Globals.is_playing == false):
+	if(!Input.is_action_pressed("interact") and Globals.is_playing == false and Globals.can_move == true):
 		var input_direction = Vector2(
 			Input.get_action_strength("move_right") - Input.get_action_strength("move_left"),
 			Input.get_action_strength("move_down") - Input.get_action_strength("move_up")
@@ -72,6 +72,9 @@ func toggle_crafting():
 func _on_tutorial_area_body_entered(body):
 	if Globals.finished == false:
 		DialogueManager.show_example_dialogue_balloon(load("res://dialogue/main.dialogue"), "start")
+		Globals.can_move = false
+		await DialogueManager.dialogue_ended
+		Globals.can_move = true
 	if Globals.finished == true:
 		print("Game over congrats")
 # TODO behavior when player leaves

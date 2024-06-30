@@ -94,7 +94,9 @@ func _on_tree_area_body_entered(body):
 		if Globals.first_interact:
 			Globals.first_interact = false
 			DialogueManager.show_example_dialogue_balloon(load("res://dialogue/main.dialogue"), "farm")
+			Globals.can_move = false
 			await DialogueManager.dialogue_ended
+			Globals.can_move = true
 		#print("entered harvest area")
 		pb.visible = true # Show progress bar
 		can_harvest = true

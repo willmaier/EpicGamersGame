@@ -23,3 +23,4 @@ var can_plant = true
 var has_enough: bool = false
 var finished: bool = false
 var first_interact: bool = true
+var can_move: bool = true
