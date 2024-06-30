@@ -77,6 +77,3 @@ func _on_tutorial_area_body_entered(body):
 		Globals.can_move = true
 	if Globals.finished == true:
 		print("Game over congrats")
-# TODO behavior when player leaves
-func _on_tutorial_area_body_exited(body):
-	pass
