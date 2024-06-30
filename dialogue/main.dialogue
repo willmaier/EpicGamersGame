@@ -1,0 +1,29 @@
+~ start
+if State.finished == true
+	The Forest: Game over
+elif State.has_enough == true
+	set State.finished = true
+	The Forest: You have farmed enough now reap your rewards! 
+	=> END
+The Forest: [[Hi|Hello|Howdy]], the forest has lost all of its sound so all the wildlife has fled. Is there anyway to restore it?
+~ restart
+The Forest: What say you traveler?
+- What do I need to do?
+	The Forest: You need to save the forest and then come back to me!
+- How do I do it?
+	The Forest: Approach resources and press E to farm. 
+	The Forest: Press ESCAPE to see your inventory.
+	The Forest: Upgrade your equipment at the bench.
+	The Forest: And when you are done saving the forest come back to me to celebrate!
+- Say that again? => start
+- I accept the challenge! => END
+=> restart
+=> END
+
+~ farm
+The Forest: Approach resources and press E to farm. 
+=> END
+
+~ inv
+The Forest: Press ESCAPE to see your inventory.
+=> END

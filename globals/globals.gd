@@ -19,3 +19,9 @@ var structure_count: int = 0
 # Planting
 var can_plant = true
 
+# Dialogue
+var has_enough: bool = false
+var finished: bool = false
+var first_interact: bool = true
+var first_interact_inv: bool = true
+var can_move: bool = true

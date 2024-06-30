@@ -91,6 +91,10 @@ func try_harvesting():
 
 func _on_tree_area_body_entered(body):
 	if body.name == "Player":
+		if Globals.first_interact:
+			Globals.first_interact = false
+			start_dialogue("farm")
+			await DialogueManager.dialogue_ended
 		#print("entered harvest area")
 		pb.visible = true # Show progress bar
 		can_harvest = true
@@ -107,6 +111,9 @@ func _on_tree_area_body_exited(body):
 func _on_harvest_timer_timeout():
 	chop_sound.stop()
 	mine_sound.stop()
+	if Globals.first_interact_inv:
+		Globals.first_interact_inv = false
+		start_dialogue("inv")
 	#print("harvested")
 	
 	# TODO add a visual cue so players know they can't harvest
@@ -125,6 +132,8 @@ func _on_harvest_timer_timeout():
 			Globals.rock_count+=resource_amount
 			inventory.add_item(rock_inventory.item_path,harvest_amount)
 			inventory.print_inventory()
+			# TODO need to change this behavior
+			Globals.has_enough = true
 			
 		"Stick":
 			print("harvested Stick")
@@ -165,4 +174,10 @@ func try_watering():
 	if(harvest_cooldown.is_stopped()):
 		print("watering")
 		harvest_cooldown.start()
+		
+func start_dialogue(title):
+	DialogueManager.show_example_dialogue_balloon(load("res://dialogue/main.dialogue"), title)
+	Globals.can_move = false
+	await DialogueManager.dialogue_ended
+	Globals.can_move = true
 	
