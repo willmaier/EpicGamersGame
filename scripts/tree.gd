@@ -66,16 +66,14 @@ func _process(_delta):
 			gem.visible = true
 		# For larger cooldown times
 		# "%d:%02d" % [floor(harvest_cooldown.time_left / 60), int(harvest_cooldown.time_left) % 60]
-		if _type != "Rock":
-			if(int(harvest_cooldown.time_left < 1)):
-				temp_instructions.text = "Try watering (Press e)"
-			else:
-				temp_instructions.text = "Can't harvest for " + "%2d seconds" % [int(harvest_cooldown.time_left) % 60]
+		
+		if(int(harvest_cooldown.time_left < 1)) and _type != "Rock":
+			temp_instructions.text = "Try watering (Press e)"
 			if Input.is_action_just_pressed("interact"):
 				try_watering()
 		else:
-			temp_instructions.visible = false
-			pb.visible = false
+			temp_instructions.text = "Can't harvest for " + "%2d seconds" % [int(harvest_cooldown.time_left) % 60]
+			try_watering()
 
 func try_harvesting():
 	tree_timer.wait_time = Globals.harvest_speed
