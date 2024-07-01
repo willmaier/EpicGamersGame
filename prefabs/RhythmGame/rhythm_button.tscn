@@ -1,13 +1,13 @@
 [gd_scene load_steps=4 format=3 uid="uid://cbiaipalfovc"]
 
-[ext_resource type="Texture2D" uid="uid://dacbsybkrdshm" path="res://imports/ArrowPlayer.png" id="1_1f5qy"]
+[ext_resource type="Texture2D" uid="uid://bmccaom8m6nt7" path="res://assets/art/NotesSprites.png" id="1_itc8s"]
 [ext_resource type="Script" path="res://prefabs/RhythmGame/rhythm_button.gd" id="2_mjv8f"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v6nkn"]
 size = Vector2(32, 32)
 
 [node name="RhythmButton" type="Sprite2D"]
-texture = ExtResource("1_1f5qy")
+texture = ExtResource("1_itc8s")
 hframes = 2
 vframes = 2
 script = ExtResource("2_mjv8f")

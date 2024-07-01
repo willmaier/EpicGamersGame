@@ -1,0 +1,43 @@
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://6q865d6ds303"]
+
+[ext_resource type="FontFile" uid="uid://dv183nrqbplk2" path="res://imports/Wild Nature.ttf" id="1_wdvte"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y1uqr"]
+bg_color = Color(0.513726, 0.901961, 0.94902, 1)
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.164706, 0.537255, 0.572549, 1)
+border_blend = true
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tjpns"]
+bg_color = Color(0.223529, 0.670588, 0.717647, 1)
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.164706, 0.537255, 0.572549, 1)
+border_blend = true
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_32c10"]
+bg_color = Color(0.141176, 0.47451, 0.509804, 1)
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.164706, 0.537255, 0.572549, 1)
+border_blend = true
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[resource]
+default_font = ExtResource("1_wdvte")
+default_font_size = 48
+Button/styles/hover = SubResource("StyleBoxFlat_y1uqr")
+Button/styles/normal = SubResource("StyleBoxFlat_tjpns")
+Button/styles/pressed = SubResource("StyleBoxFlat_32c10")

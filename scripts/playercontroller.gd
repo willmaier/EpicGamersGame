@@ -17,6 +17,9 @@ signal plant_tree
 @export var crafting_table: StaticBody2D
 var is_crafting: bool = false
 
+# Pause
+@onready var pause_UI = $PauseMenu
+
 #@export var inv: Inv
 
 # TODO if delta is use just remove the _
@@ -45,6 +48,12 @@ func _physics_process(_delta):
 
 	if (velocity == Vector2.ZERO):
 		player_walk_sound.play()
+	
+	if (Input.is_action_just_pressed("pause")):
+		player_walk_sound.stop()
+		get_tree().paused = true
+		pause_UI.show()
+		
 
 # TODO Use this when more states are added into the animation tree if we decide to use it
 func set_animation(move_input : Vector2):
