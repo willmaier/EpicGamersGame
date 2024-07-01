@@ -377,7 +377,7 @@ autoplay = true
 
 [node name="Player" parent="." node_paths=PackedStringArray("crafting_table") instance=ExtResource("1_ntj77")]
 top_level = true
-position = Vector2(-945, 1149)
+position = Vector2(-923, 1128)
 crafting_table = NodePath("../Resources/CraftingTable2")
 metadata/_edit_group_ = true
 

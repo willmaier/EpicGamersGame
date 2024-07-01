@@ -127,15 +127,16 @@ func _on_harvest_timer_timeout():
 	match _type:
 		"Rock":
 			print("harvested Rock")
-			Globals.rock_count+harvest_amount
+			Globals.rock_count+=harvest_amount
 			inventory.add_item(rock_inventory.item_path,harvest_amount)
 			inventory.print_inventory()
 			# TODO need to change this behavior
 			Globals.has_enough = true
+			print(Globals.rock_count)
 			
 		"Stick":
 			print("harvested Stick")
-			Globals.stick_count+harvest_amount
+			Globals.stick_count+=harvest_amount
 			inventory.add_item(stick_inventory.item_path,harvest_amount)
 			inventory.print_inventory()
 			# TODO need to change this behavior
@@ -144,6 +145,7 @@ func _on_harvest_timer_timeout():
 			if has_hive:
 				print("harvested hive")
 				inventory.add_item(beehive_inventory.item_path,1)
+			print(Globals.stick_count)
 
 # Players must wait to harvest again
 func _on_harvest_cooldown_timeout():
