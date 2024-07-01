@@ -51,7 +51,7 @@ func _physics_process(_delta):
 	
 	if (Input.is_action_just_pressed("pause")):
 		# Fixes bug with crafting and dialogue UI
-		if Globals.can_move == true:
+		if Globals.can_move == true and Globals.can_pause == true:
 			player_walk_sound.stop()
 			get_tree().paused = true
 			pause_UI.show()

@@ -17,6 +17,7 @@ func _on_crafting_area_body_entered(body):
 		print("entered crafting area")
 		player_present = true
 		instructions.visible = true
+		Globals.can_pause = false
 
 
 func _on_crafting_area_body_exited(body):
@@ -25,3 +26,4 @@ func _on_crafting_area_body_exited(body):
 		player_present = false
 		instructions.visible = false
 		Globals.is_crafting = false
+		Globals.can_pause = true
