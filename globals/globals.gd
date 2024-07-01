@@ -6,6 +6,7 @@ var is_crafting: bool = false
 var in_inventory: bool = false
 var is_playing: bool = false
 var harvest_speed: int = 5
+var can_pause: bool = true
 
 # Inventory
 var stick_count: int = 0

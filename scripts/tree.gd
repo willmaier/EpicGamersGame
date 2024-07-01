@@ -35,7 +35,6 @@ var inventory = preload("res://prefabs/Inventory/Player_Inv.tres")
 # TODO add new resources to this
 @export_enum("Stick", "Rock", "Random") var _type: String
 var types = ["Rock", "Stick"]# Array can't be file locations as preload() requires a constant string
-var resource_amount = 1
 var random = RandomNumberGenerator.new()
 
 
@@ -43,7 +42,6 @@ func _ready():
 	pb.visible = false
 	temp_instructions.visible = false
 	# Resources each have a random value
-	resource_amount = random.randi_range(1, 5)
 	
 	# Gets a random string from types array
 	var size = types.size()
@@ -129,7 +127,7 @@ func _on_harvest_timer_timeout():
 	match _type:
 		"Rock":
 			print("harvested Rock")
-			Globals.rock_count+=resource_amount
+			Globals.rock_count+harvest_amount
 			inventory.add_item(rock_inventory.item_path,harvest_amount)
 			inventory.print_inventory()
 			# TODO need to change this behavior
@@ -137,7 +135,7 @@ func _on_harvest_timer_timeout():
 			
 		"Stick":
 			print("harvested Stick")
-			Globals.stick_count+=resource_amount
+			Globals.stick_count+harvest_amount
 			inventory.add_item(stick_inventory.item_path,harvest_amount)
 			inventory.print_inventory()
 			# TODO need to change this behavior
