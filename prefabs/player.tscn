@@ -1,8 +1,9 @@
-[gd_scene load_steps=29 format=3 uid="uid://8j6pyft4p6wt"]
+[gd_scene load_steps=30 format=3 uid="uid://8j6pyft4p6wt"]
 
 [ext_resource type="Script" path="res://scripts/playercontroller.gd" id="1_dytxa"]
 [ext_resource type="Texture2D" uid="uid://bf66or7jdcs0g" path="res://assets/art/Bear/Bear_Sprite_POST_DIGITIZATION3.png" id="2_7gl87"]
 [ext_resource type="AudioStream" uid="uid://yu87kqpokjiy" path="res://assets/sounds/LeafFootsteps2.mp3" id="4_m7a6p"]
+[ext_resource type="PackedScene" uid="uid://hlao7yperpfq" path="res://scenes/pause.tscn" id="5_7n3s6"]
 [ext_resource type="PackedScene" uid="uid://cf2utc5r7rmnc" path="res://prefabs/Inventory/inv_ui.tscn" id="5_euid1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dso7y"]
@@ -321,3 +322,10 @@ offset_bottom = -204.0
 scale = Vector2(4, 4)
 
 [node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="PauseMenu" parent="." instance=ExtResource("5_7n3s6")]
+visible = false
+offset_left = -600.0
+offset_top = -300.0
+offset_right = -600.0
+offset_bottom = -300.0

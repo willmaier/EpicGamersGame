@@ -42,9 +42,11 @@ layout_mode = 2
 text = "Master Volume"
 horizontal_alignment = 1
 
-[node name="HSlider" type="HSlider" parent="ColorRect/VBoxContainer"]
+[node name="Volume" type="HSlider" parent="ColorRect/VBoxContainer"]
 layout_mode = 2
-value = 100.0
+max_value = 1.0
+step = 0.001
+value = 0.5
 
 [node name="Resume" type="Button" parent="ColorRect/VBoxContainer"]
 layout_mode = 2
