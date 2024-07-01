@@ -4,6 +4,8 @@ var spawner
 var click_area: CollisionShape2D
 var dead_area: CollisionShape2D
 var timer: Timer
+var intro_timer: Timer
+var music: AudioStreamPlayer2D
 @onready var sub_viewport_container = $"../.."
 
 @export var button = preload("res://prefabs/RhythmGame/rhythm_button.tscn")
@@ -15,8 +17,15 @@ func _ready():
 	click_area = $VBoxContainer/NinePatchRect/GameBar/ClickArea/ClickArea2D/CollisionShape2D
 	dead_area = $VBoxContainer/NinePatchRect/GameBar/DeadArea/DeadArea2D/CollisionShape2D
 	timer = $SpawnTimer
+	intro_timer = $IntroTimer
+	music = $GameMusic
+
 
 func game_start():
+	intro_timer.start()
+	music.play()
+
+func _on_intro_timer_timeout():
 	timer.start()
 
 func _on_spawn_timer_timeout():
@@ -56,4 +65,7 @@ func _on_harvest_timer_timeout():
 	#sub_viewport_container.visible = false
 	#timer.stop()
 	pass
+
+
+
 

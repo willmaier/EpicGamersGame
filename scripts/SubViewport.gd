@@ -3,6 +3,7 @@ extends SubViewport
 @onready var camera = $Camera2D
 var tree_texture = preload("res://prefabs/tree.tscn")
 var rock_texture = preload("res://prefabs/rock.tscn")
+var crafting_table = preload("res://prefabs/Crafting/crafting_table.tscn")
 var entity
 
 func _ready():
@@ -16,10 +17,15 @@ func updateMap():
 	var resource_entity_path = get_tree().get_root().get_node("Main/Resources")
 	# For all instances in the Resources node
 	for i in resource_entity_path.get_child_count():
+	
 		if resource_entity_path.get_child(i)._type == "Stick":
 			entity = tree_texture.instantiate()
 		if resource_entity_path.get_child(i)._type == "Rock":
 			entity = rock_texture.instantiate()
+		if resource_entity_path.get_child(i)._type == "Crafting":
+			print("table icon")
+			entity = crafting_table.instantiate()
+		
 		else:
 			entity = tree_texture.instantiate()
 		add_child(entity)
