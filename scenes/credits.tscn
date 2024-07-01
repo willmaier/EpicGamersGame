@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://hdkxk5038fa4"]
+[gd_scene load_steps=6 format=3 uid="uid://hdkxk5038fa4"]
 
 [ext_resource type="Texture2D" uid="uid://cipm46yoyujf6" path="res://assets/art/New_Test_Environments_3.jpg" id="1_dj5xi"]
 [ext_resource type="Script" path="res://scenes/credits.gd" id="1_fdowe"]
+[ext_resource type="AudioStream" uid="uid://522m7mcylcqo" path="res://assets/sounds/Bears (Menu).mp3" id="3_wojul"]
 
 [sub_resource type="Gradient" id="Gradient_hsqm2"]
 colors = PackedColorArray(0, 0, 0, 0.694118, 0.282353, 0.282353, 0.282353, 0.627451)
@@ -68,5 +69,9 @@ horizontal_alignment = 1
 [node name="MainMenu" type="Button" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
 text = "Main Menu"
+
+[node name="MenuMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_wojul")
+autoplay = true
 
 [connection signal="pressed" from="CenterContainer/VBoxContainer/MainMenu" to="." method="_on_main_menu_pressed"]

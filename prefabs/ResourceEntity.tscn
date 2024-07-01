@@ -3,9 +3,9 @@
 [ext_resource type="Texture2D" uid="uid://x3kktmxxmuht" path="res://imports/tree.png" id="1_j2dd2"]
 [ext_resource type="Script" path="res://scripts/tree.gd" id="1_lgjix"]
 [ext_resource type="Texture2D" uid="uid://8o1xycg2udx2" path="res://imports/dirt.jpg" id="2_pwq8q"]
+[ext_resource type="AudioStream" uid="uid://deqfwlp3nyav6" path="res://assets/sounds/ChoppingWood2.mp3" id="3_clldi"]
 [ext_resource type="Texture2D" uid="uid://baclvdxhilqw6" path="res://imports/Rock1.png" id="3_eulpu"]
-[ext_resource type="AudioStream" uid="uid://1vb74hobartf" path="res://globals/ChoppingWood.mp3" id="3_j34nb"]
-[ext_resource type="AudioStream" uid="uid://cm7ul2g30qwwo" path="res://globals/MiningStone.mp3" id="4_cd5nm"]
+[ext_resource type="AudioStream" uid="uid://c0tix8e6u7ruh" path="res://assets/sounds/MiningStone2.mp3" id="4_epi76"]
 [ext_resource type="PackedScene" uid="uid://cc73s84erwdak" path="res://prefabs/RhythmGame/rhythm_game.tscn" id="5_rouqv"]
 [ext_resource type="Texture2D" uid="uid://b1aclea0vlbsa" path="res://imports/beehive1.png" id="6_q45qn"]
 [ext_resource type="PackedScene" uid="uid://xfnx8gdcb5mo" path="res://prefabs/Inventory/gem.tscn" id="9_yiagv"]
@@ -60,10 +60,10 @@ wait_time = 60.0
 one_shot = true
 
 [node name="TreeSound" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("3_j34nb")
+stream = ExtResource("3_clldi")
 
 [node name="MiningSound" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("4_cd5nm")
+stream = ExtResource("4_epi76")
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="."]
 visible = false
