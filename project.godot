@@ -21,6 +21,10 @@ Globals="*res://globals/globals.gd"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 State="*res://dialogue/state.gd"
 
+[display]
+
+window/stretch/mode="canvas_items"
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg", "res://addons/dialogue_manager/plugin.cfg")
