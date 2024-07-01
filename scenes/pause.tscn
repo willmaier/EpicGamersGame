@@ -1,5 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://hlao7yperpfq"]
+[gd_scene load_steps=4 format=3 uid="uid://hlao7yperpfq"]
 
+[ext_resource type="Theme" uid="uid://6q865d6ds303" path="res://globals/new_theme.tres" id="1_003af"]
 [ext_resource type="Script" path="res://scenes/pause.gd" id="1_afjoh"]
 [ext_resource type="Texture2D" uid="uid://di06nnhkcma57" path="res://assets/art/PauseButton128.png" id="2_17eee"]
 
@@ -11,6 +12,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_003af")
 script = ExtResource("1_afjoh")
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -55,5 +57,6 @@ layout_mode = 2
 theme_override_constants/icon_max_width = 150
 icon = ExtResource("2_17eee")
 flat = true
+icon_alignment = 1
 
 [connection signal="pressed" from="ColorRect/VBoxContainer/Resume" to="." method="_on_resume_pressed"]

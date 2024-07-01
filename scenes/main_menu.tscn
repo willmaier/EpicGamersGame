@@ -1,11 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://btgo1j00uqt1l"]
+[gd_scene load_steps=12 format=3 uid="uid://btgo1j00uqt1l"]
 
 [ext_resource type="Script" path="res://scenes/main_menu.gd" id="1_giurf"]
+[ext_resource type="Theme" uid="uid://6q865d6ds303" path="res://globals/new_theme.tres" id="1_ner2l"]
 [ext_resource type="Texture2D" uid="uid://cipm46yoyujf6" path="res://assets/art/New_Test_Environments_3.jpg" id="2_imhw7"]
-[ext_resource type="Texture2D" uid="uid://cn0ia5l71fy63" path="res://imports/playText.png" id="2_rqg1w"]
-[ext_resource type="Texture2D" uid="uid://dc0ru7t3h216i" path="res://imports/creditsText.png" id="3_3p0eo"]
-[ext_resource type="Texture2D" uid="uid://egi758sph2nd" path="res://imports/quitText.png" id="4_r8p3m"]
-[ext_resource type="Texture2D" uid="uid://dupmxuahg2ojq" path="res://imports/rock.webp" id="5_0d6c3"]
+[ext_resource type="Texture2D" uid="uid://cyuvfhh3s0v1" path="res://assets/art/Bear/BearSpritesheet64x64.png" id="4_lycyh"]
+[ext_resource type="Texture2D" uid="uid://2ox2ade2jc51" path="res://assets/art/Bear/Dance Sprites/spritesheet.png" id="5_p3act"]
 
 [sub_resource type="Gradient" id="Gradient_l0y7x"]
 colors = PackedColorArray(0.301961, 0.301961, 0.301961, 0.490196, 0.301961, 0.301961, 0.301961, 0.490196)
@@ -13,12 +12,69 @@ colors = PackedColorArray(0.301961, 0.301961, 0.301961, 0.490196, 0.301961, 0.30
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_vrkpm"]
 gradient = SubResource("Gradient_l0y7x")
 
+[sub_resource type="Animation" id="Animation_dpm7q"]
+resource_name = "dance_right"
+length = 30.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3, 3.5, 4.4, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [1, 0, 2, 5, 0, 1, 9, 6, 9, 6, 9, 6, 9, 6, 9, 6, 9, 6, 9, 6, 9, 6, 9, 6, 9, 6, 1]
+}
+
+[sub_resource type="Animation" id="Animation_32cnl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_h26wn"]
+resource_name = "dance_left"
+length = 30.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3, 3.5, 4.4, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [1, 4, 8, 7, 4, 1, 6, 9, 6, 9, 6, 9, 6, 9, 6, 9, 6, 9, 6, 9, 6, 9, 6, 9, 6, 9, 1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ss07u"]
+_data = {
+"RESET": SubResource("Animation_32cnl"),
+"dance_left": SubResource("Animation_h26wn"),
+"dance_right": SubResource("Animation_dpm7q")
+}
+
 [node name="MainMenu" type="MarginContainer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_ner2l")
 script = ExtResource("1_giurf")
 
 [node name="BackgroundImage" type="Sprite2D" parent="."]
@@ -27,6 +83,7 @@ scale = Vector2(1.2096, 1.19841)
 texture = ExtResource("2_imhw7")
 
 [node name="TextureRect" type="TextureRect" parent="."]
+visible = false
 layout_mode = 2
 texture = SubResource("GradientTexture1D_vrkpm")
 
@@ -34,31 +91,75 @@ texture = SubResource("GradientTexture1D_vrkpm")
 layout_mode = 2
 alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+[node name="CenterContainer" type="CenterContainer" parent="HBoxContainer"]
+custom_minimum_size = Vector2(256, 256)
 layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Logo" type="TextureRect" parent="HBoxContainer/CenterContainer"]
+visible = false
+layout_mode = 2
+texture = ExtResource("4_lycyh")
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/CenterContainer"]
+layout_mode = 2
+
+[node name="AnimatedSprite2D" type="Sprite2D" parent="HBoxContainer/CenterContainer"]
+position = Vector2(128, 128)
+scale = Vector2(3, 3)
+texture = ExtResource("5_p3act")
+hframes = 10
+frame = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="HBoxContainer/CenterContainer"]
+libraries = {
+"": SubResource("AnimationLibrary_ss07u")
+}
+autoplay = "dance_right"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 2
+theme_override_constants/separation = 50
 alignment = 1
 
 [node name="PlayButton" type="Button" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2
-icon = ExtResource("2_rqg1w")
-flat = true
+text = "Play"
 
 [node name="OptionsButton" type="Button" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2
-icon = ExtResource("3_3p0eo")
-flat = true
+text = "Credits"
 
 [node name="QuitButton" type="Button" parent="HBoxContainer/VBoxContainer"]
 layout_mode = 2
-icon = ExtResource("4_r8p3m")
-flat = true
+text = "Quit"
 
-[node name="CenterContainer" type="CenterContainer" parent="HBoxContainer"]
+[node name="CenterContainer3" type="CenterContainer" parent="HBoxContainer"]
+custom_minimum_size = Vector2(256, 256)
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Logo" type="TextureRect" parent="HBoxContainer/CenterContainer3"]
+visible = false
+layout_mode = 2
+texture = ExtResource("4_lycyh")
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/CenterContainer3"]
 layout_mode = 2
 
-[node name="Logo" type="TextureRect" parent="HBoxContainer/CenterContainer"]
-layout_mode = 2
-texture = ExtResource("5_0d6c3")
+[node name="AnimatedSprite2D" type="Sprite2D" parent="HBoxContainer/CenterContainer3"]
+position = Vector2(128, 128)
+scale = Vector2(3, 3)
+texture = ExtResource("5_p3act")
+hframes = 10
+frame = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="HBoxContainer/CenterContainer3"]
+libraries = {
+"": SubResource("AnimationLibrary_ss07u")
+}
+autoplay = "dance_left"
 
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="HBoxContainer/VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
