@@ -1,0 +1,64 @@
+[gd_scene load_steps=3 format=3 uid="uid://dx4cbvhsityyy"]
+
+[ext_resource type="Texture2D" uid="uid://cipm46yoyujf6" path="res://assets/art/New_Test_Environments_3.jpg" id="1_tfon5"]
+
+[sub_resource type="GDScript" id="GDScript_f5eke"]
+script/source = "extends CanvasGroup
+
+@onready var sticks = $Sticks
+@onready var rocks = $Rocks
+@onready var hammers = $Hammers
+
+func _process(_delta):
+	sticks.text = \"Sticks: \" +  str(Globals.stick_count_final)
+	rocks.text = \"Rocks: \" +  str(Globals.rock_count_final)
+"
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BackgroundImage" type="Sprite2D" parent="."]
+position = Vector2(568, 312)
+scale = Vector2(1.2096, 1.19841)
+texture = ExtResource("1_tfon5")
+
+[node name="HUD" type="CanvasGroup" parent="BackgroundImage"]
+script = SubResource("GDScript_f5eke")
+
+[node name="Congrats" type="Label" parent="BackgroundImage/HUD"]
+offset_left = -305.06
+offset_top = -167.722
+offset_right = 308.94
+offset_bottom = -84.7222
+theme_override_font_sizes/font_size = 60
+text = "You saved the forest!"
+metadata/_edit_use_anchors_ = true
+
+[node name="Sticks" type="Label" parent="BackgroundImage/HUD"]
+offset_left = -42.9894
+offset_top = 7.50995
+offset_right = -2.98943
+offset_bottom = 49.5099
+theme_override_font_sizes/font_size = 30
+metadata/_edit_use_anchors_ = true
+
+[node name="Rocks" type="Label" parent="BackgroundImage/HUD"]
+offset_left = -44.6429
+offset_top = 55.073
+offset_right = -4.64287
+offset_bottom = 97.073
+theme_override_font_sizes/font_size = 30
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="BackgroundImage/HUD"]
+offset_left = -175.265
+offset_top = -75.0995
+offset_right = 161.735
+offset_bottom = -17.0995
+theme_override_font_sizes/font_size = 30
+text = "You collected a total of:"

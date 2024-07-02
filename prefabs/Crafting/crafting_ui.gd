@@ -16,6 +16,12 @@ extends Control
 
 @export var game_timer: Timer
 
+var inventory = preload("res://prefabs/Inventory/Player_Inv.tres")
+var rock_inventory = load("res://prefabs/Inventory/Items/Rock.tres")
+var stick_inventory = load("res://prefabs/Inventory/Items/Stick.tres")
+var beehive_inventory = preload("res://prefabs/Inventory/Items/Beehive.tres")
+var gem_inventory = preload("res://prefabs/Inventory/Items/Gem.tres")
+
 func _process(_delta):
 	if Globals.is_crafting:
 		visible = true
@@ -30,11 +36,15 @@ func _on_tool_1_button_pressed():
 		Globals.harvest_speed = 3
 		tool1.queue_free()
 		print("hammer made")
+		inventory.add_item(stick_inventory.item_path,-2)
+		inventory.add_item(rock_inventory.item_path,-1)
 
 func _on_tool_2_button_pressed():
 	if (Globals.stick_count >= 10 and Globals.rock_count >= 10):
 		Globals.stick_count -= 10
 		Globals.rock_count -= 10
+		inventory.add_item(stick_inventory.item_path,-10)
+		inventory.add_item(rock_inventory.item_path,-10)
 		Globals.pickaxe_tool = true
 		tool2.queue_free()
 		print("Pickaxe made")
@@ -44,6 +54,8 @@ func _on_structure_1_button_pressed():
 	if (Globals.stick_count >= 25 and Globals.rock_count >= 25):
 		Globals.stick_count -= 25
 		Globals.rock_count -= 25
+		inventory.add_item(stick_inventory.item_path,-25)
+		inventory.add_item(rock_inventory.item_path,-25)
 		crafting_bg.visible = false
 		crafting_window.visible = false
 		game_bg.visible = true
@@ -51,6 +63,8 @@ func _on_structure_1_button_pressed():
 		game_window.game_start()
 		game_timer.start()
 		Globals.is_playing = true
+		Globals.has_enough = true
+		$"../../../..".rebuild_bridge()
 
 func _on_game_timer_timeout():
 		print("game timer over")
@@ -61,3 +75,4 @@ func _on_game_timer_timeout():
 		struct1.queue_free()
 		Globals.is_playing = false
 		Globals.structure_count += 1
+		Globals.has_enough = true

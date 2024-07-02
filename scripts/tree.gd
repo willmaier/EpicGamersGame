@@ -35,7 +35,6 @@ var inventory = preload("res://prefabs/Inventory/Player_Inv.tres")
 # TODO add new resources to this
 @export_enum("Stick", "Rock", "Random") var _type: String
 var types = ["Rock", "Stick"]# Array can't be file locations as preload() requires a constant string
-var resource_amount = 1
 var random = RandomNumberGenerator.new()
 
 
@@ -43,7 +42,6 @@ func _ready():
 	pb.visible = false
 	temp_instructions.visible = false
 	# Resources each have a random value
-	resource_amount = random.randi_range(1, 5)
 	
 	# Gets a random string from types array
 	var size = types.size()
@@ -66,18 +64,38 @@ func _process(_delta):
 			gem.visible = true
 		# For larger cooldown times
 		# "%d:%02d" % [floor(harvest_cooldown.time_left / 60), int(harvest_cooldown.time_left) % 60]
-		temp_instructions.text = "Can't harvest for" + "%2d seconds" % [int(harvest_cooldown.time_left) % 60]
+		
+		if(int(harvest_cooldown.time_left < 1)) and _type != "Rock":
+			temp_instructions.text = "Try watering (Press e)"
+			if Input.is_action_just_pressed("interact"):
+				try_watering()
+		else:
+			temp_instructions.text = "Can't harvest for " + "%2d seconds" % [int(harvest_cooldown.time_left) % 60]
+			try_watering()
+		# Win condition for testing
+		#if Globals.stick_count > 0:
+			#Globals.has_enough = true
 
 func try_harvesting():
 	tree_timer.wait_time = Globals.harvest_speed
 	pb.value = tree_timer.time_left * (100/Globals.harvest_speed)
 	if Input.is_action_just_pressed("interact") && can_harvest: 
 		tree_timer.start()
+		if (_type == "Stick"):
+			chop_sound.play()
+		if (_type == "Rock"):
+			mine_sound.play()
 	elif Input.is_action_just_released("interact") || !can_harvest:
-		tree_timer.stop() 
+		tree_timer.stop()
+		chop_sound.stop()
+		mine_sound.stop() 
 
 func _on_tree_area_body_entered(body):
 	if body.name == "Player":
+		if Globals.first_interact:
+			Globals.first_interact = false
+			start_dialogue("farm")
+			await DialogueManager.dialogue_ended
 		#print("entered harvest area")
 		pb.visible = true # Show progress bar
 		can_harvest = true
@@ -92,10 +110,15 @@ func _on_tree_area_body_exited(body):
 
 # Restart timer each harvest and add to globals
 func _on_harvest_timer_timeout():
+	chop_sound.stop()
+	mine_sound.stop()
+	if Globals.first_interact_inv:
+		Globals.first_interact_inv = false
+		start_dialogue("inv")
 	#print("harvested")
 	
 	# TODO add a visual cue so players know they can't harvest
-	harvest_cooldown.start()
+	#harvest_cooldown.start()
 	off_cooldown = false
 	
 	# Restart harvesting timer
@@ -107,19 +130,25 @@ func _on_harvest_timer_timeout():
 	match _type:
 		"Rock":
 			print("harvested Rock")
-			Globals.rock_count+=resource_amount
+			Globals.rock_count+=harvest_amount
+			Globals.rock_count_final+=harvest_amount
 			inventory.add_item(rock_inventory.item_path,harvest_amount)
 			inventory.print_inventory()
+			print(Globals.rock_count)
 			
 		"Stick":
 			print("harvested Stick")
-			Globals.stick_count+=resource_amount
+			Globals.stick_count+=harvest_amount
+			Globals.stick_count_final+=harvest_amount
 			inventory.add_item(stick_inventory.item_path,harvest_amount)
 			inventory.print_inventory()
+			# TODO need to change this behavior
+			Globals.can_plant = true 
 			# TODO Works but image needs to be smaller
 			if has_hive:
 				print("harvested hive")
 				inventory.add_item(beehive_inventory.item_path,1)
+			print(Globals.stick_count)
 
 # Players must wait to harvest again
 func _on_harvest_cooldown_timeout():
@@ -143,3 +172,15 @@ func collect_gem():
 		has_gem = false
 		gem.visible = false
 		inventory.add_item(gem_inventory.item_path,1)
+		
+func try_watering():
+	if(harvest_cooldown.is_stopped()):
+		print("watering")
+		harvest_cooldown.start()
+		
+func start_dialogue(title):
+	DialogueManager.show_example_dialogue_balloon(load("res://dialogue/main.dialogue"), title)
+	Globals.can_move = false
+	await DialogueManager.dialogue_ended
+	Globals.can_move = true
+	

@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://cc73s84erwdak"]
+[gd_scene load_steps=5 format=3 uid="uid://cc73s84erwdak"]
 
 [ext_resource type="Script" path="res://prefabs/RhythmGame/rhythm_game.gd" id="1_uc616"]
+[ext_resource type="AudioStream" uid="uid://bhp2y1uhikpjf" path="res://assets/sounds/Bears (Reconstruction).mp3" id="2_fql7n"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w2ebt"]
 size = Vector2(30, 100)
@@ -85,9 +86,16 @@ shape = SubResource("RectangleShape2D_p2vcg")
 position = Vector2(600, 50)
 
 [node name="SpawnTimer" type="Timer" parent="."]
-wait_time = 1.5
+wait_time = 0.7
+
+[node name="IntroTimer" type="Timer" parent="."]
+wait_time = 3.2
+
+[node name="GameMusic" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_fql7n")
 
 [connection signal="area_entered" from="VBoxContainer/NinePatchRect/GameBar/ClickArea/ClickArea2D" to="." method="_on_click_area_2d_area_entered"]
 [connection signal="area_exited" from="VBoxContainer/NinePatchRect/GameBar/ClickArea/ClickArea2D" to="." method="_on_click_area_2d_area_exited"]
 [connection signal="area_entered" from="VBoxContainer/NinePatchRect/GameBar/DeadArea/DeadArea2D" to="." method="_on_dead_area_2d_area_entered"]
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
+[connection signal="timeout" from="IntroTimer" to="." method="_on_intro_timer_timeout"]
