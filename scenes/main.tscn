@@ -827,19 +827,6 @@ texture = ExtResource("6_c8r2q")
 script = ExtResource("7_gi2ll")
 metadata/_edit_group_ = true
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-visible = false
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
-position = Vector2(-2511, -540)
-polygon = PackedVector2Array(-76, -67, -78, 770, 270, 762, 317, 762, 317, 648, -1, 643, 1, -4, 1150, 1, 1151, 640, 445, 646, 443, 764, 558, 764, 1259, 766, 1246, -78)
-
-[node name="StaticBody2D2" type="StaticBody2D" parent="."]
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D2"]
-position = Vector2(-1158, 891)
-polygon = PackedVector2Array(2, 2, 514, 5, 517, 128, 1474, 132, 1476, -125, 1431, -125, 1431, 89, 610, 75, 610, -91, -83, -77, -90, 568, 375, 561, 376, 442, 560, 442, 583, 347, 1731, 360, 1715, -123, 1602, -119, 1608, 260, 521, 265, 517, 387, 327, 390, 328, 513, 2, 513)
-
 [node name="Resources" type="Node" parent="."]
 
 [node name="Resource2" parent="Resources" instance=ExtResource("8_rsxhu")]
