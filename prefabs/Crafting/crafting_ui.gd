@@ -1,7 +1,7 @@
 extends Control
 
 # UI elements
-@export var crafting_bg: ColorRect
+@export var crafting_bg: Panel
 @export var crafting_window: MarginContainer
 @export var game_bg: ColorRect
 @export var game_window: MarginContainer
@@ -15,6 +15,7 @@ extends Control
 @export var struct2: HBoxContainer
 
 @export var game_timer: Timer
+@export var game2_timer: Timer
 
 func _process(_delta):
 	if Globals.is_crafting:
@@ -53,6 +54,24 @@ func _on_structure_1_button_pressed():
 		Globals.is_playing = true
 		$"../../../..".rebuild_bridge()
 
+func _on_structure_2_button_pressed():
+	if (Globals.stick_count >= 25 and Globals.rock_count >= 25
+	and Globals.honey_count >= 10 and Globals.gem_count >= 10
+	):
+		print("play dam game")
+		Globals.stick_count -= 25
+		Globals.rock_count -= 25
+		Globals.honey_count -= 10
+		Globals.gem_count -= 10
+		crafting_bg.visible = false
+		crafting_window.visible = false
+		game_bg.visible = true
+		game_window.visible = true
+		game_window.game_start()
+		game2_timer.start()
+		Globals.is_playing = true
+		$"../../../..".build_dam()
+
 func _on_game_timer_timeout():
 		print("game timer over")
 		crafting_bg.visible = true
@@ -60,5 +79,15 @@ func _on_game_timer_timeout():
 		game_bg.visible = false
 		game_window.visible = false
 		struct1.queue_free()
+		Globals.is_playing = false
+		Globals.structure_count += 1
+
+func _on_game_1_timer_2_timeout():
+		print("game timer over")
+		crafting_bg.visible = true
+		crafting_window.visible = true
+		game_bg.visible = false
+		game_window.visible = false
+		struct2.queue_free()
 		Globals.is_playing = false
 		Globals.structure_count += 1

@@ -49,6 +49,9 @@ func rebuild_bridge():
 		bridge.visible = true
 		missing_bridge.set_deferred("disabled", true)
 
+func build_dam():
+	print("dam son")
+
 func _on_tutorial_area_body_entered(_body):
 	$TutorialArea/Intro.visible = true
 
@@ -62,6 +65,8 @@ func _on_cheat_button_pressed():
 	inventory.add_item(gem_inventory.item_path,50)
 	Globals.stick_count += 50
 	Globals.rock_count += 50
+	Globals.honey_count += 50
+	Globals.gem_count += 50
 
 
 func _on_player_plant_tree():

@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://cc73s84erwdak" path="res://prefabs/RhythmGame/rhythm_game.tscn" id="7_2m6hp"]
 [ext_resource type="Texture2D" uid="uid://qmm4oq0bksdq" path="res://assets/art/Dam2.png" id="8_ahhqw"]
 
-[node name="Crafting_UI" type="Control" node_paths=PackedStringArray("crafting_window", "game_bg", "game_window", "tool1", "tool2", "struct1", "game_timer")]
+[node name="Crafting_UI" type="Control" node_paths=PackedStringArray("crafting_bg", "crafting_window", "game_bg", "game_window", "tool1", "tool2", "struct1", "game_timer", "game2_timer")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -20,13 +20,15 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_7oaby")
 script = ExtResource("1_68tcj")
+crafting_bg = NodePath("CraftingBackground")
 crafting_window = NodePath("CraftingWindow")
 game_bg = NodePath("RhythmBackground")
 game_window = NodePath("RhythmGame")
 tool1 = NodePath("CraftingWindow/VBoxContainer/Tools/Tools/Tool1")
 tool2 = NodePath("CraftingWindow/VBoxContainer/Tools/Tools/Tool2")
 struct1 = NodePath("CraftingWindow/VBoxContainer/Structures/Structure1")
-game_timer = NodePath("GameTimer")
+game_timer = NodePath("Game1Timer")
+game2_timer = NodePath("Game1Timer2")
 
 [node name="CraftingBackground" type="Panel" parent="."]
 layout_mode = 1
@@ -299,7 +301,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.9
 
-[node name="Structure1Button" type="Button" parent="CraftingWindow/VBoxContainer/Structures/Structure2"]
+[node name="Structure2Button" type="Button" parent="CraftingWindow/VBoxContainer/Structures/Structure2"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 icon = ExtResource("8_ahhqw")
@@ -391,7 +393,11 @@ offset_bottom = -45.0
 grow_horizontal = 1
 grow_vertical = 1
 
-[node name="GameTimer" type="Timer" parent="."]
+[node name="Game1Timer" type="Timer" parent="."]
+wait_time = 30.0
+one_shot = true
+
+[node name="Game1Timer2" type="Timer" parent="."]
 wait_time = 30.0
 one_shot = true
 
@@ -399,6 +405,7 @@ one_shot = true
 [connection signal="pressed" from="CraftingWindow/VBoxContainer/Tools/Tools/Tool1/Tool1Button" to="." method="_on_tool_1_button_pressed"]
 [connection signal="pressed" from="CraftingWindow/VBoxContainer/Tools/Tools/Tool2/Tool2Button" to="." method="_on_tool_2_button_pressed"]
 [connection signal="pressed" from="CraftingWindow/VBoxContainer/Structures/Structure1/Structure1Button" to="." method="_on_structure_1_button_pressed"]
-[connection signal="pressed" from="CraftingWindow/VBoxContainer/Structures/Structure2/Structure1Button" to="." method="_on_structure_1_button_pressed"]
+[connection signal="pressed" from="CraftingWindow/VBoxContainer/Structures/Structure2/Structure2Button" to="." method="_on_structure_2_button_pressed"]
 [connection signal="pressed" from="RhythmBackground/Hammer" to="." method="_on_hammer_pressed"]
-[connection signal="timeout" from="GameTimer" to="." method="_on_game_timer_timeout"]
+[connection signal="timeout" from="Game1Timer" to="." method="_on_game_timer_timeout"]
+[connection signal="timeout" from="Game1Timer2" to="." method="_on_game_1_timer_2_timeout"]
