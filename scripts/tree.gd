@@ -72,6 +72,9 @@ func _process(_delta):
 		else:
 			temp_instructions.text = "Can't harvest for " + "%2d seconds" % [int(harvest_cooldown.time_left) % 60]
 			try_watering()
+		# Win condition for testing
+		#if Globals.stick_count > 0:
+			#Globals.has_enough = true
 
 func try_harvesting():
 	tree_timer.wait_time = Globals.harvest_speed
@@ -128,6 +131,7 @@ func _on_harvest_timer_timeout():
 		"Rock":
 			print("harvested Rock")
 			Globals.rock_count+=harvest_amount
+			Globals.rock_count_final+=harvest_amount
 			inventory.add_item(rock_inventory.item_path,harvest_amount)
 			inventory.print_inventory()
 			print(Globals.rock_count)
@@ -135,6 +139,7 @@ func _on_harvest_timer_timeout():
 		"Stick":
 			print("harvested Stick")
 			Globals.stick_count+=harvest_amount
+			Globals.stick_count_final+=harvest_amount
 			inventory.add_item(stick_inventory.item_path,harvest_amount)
 			inventory.print_inventory()
 			# TODO need to change this behavior
