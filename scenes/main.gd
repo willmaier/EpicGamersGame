@@ -30,6 +30,8 @@ func _process(_delta):
 	if (Globals.structure_count == 1): 
 		$Music/StartingTrack.volume_db = -80
 		$Music/SecondTrack.volume_db = 0
+	if (Globals.structure_count >= 2): 
+		Globals.has_enough = true
 
 
 func _on_bridge_break_body_entered(_body):

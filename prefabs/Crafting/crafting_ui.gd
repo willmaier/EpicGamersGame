@@ -95,7 +95,6 @@ func _on_game_timer_timeout():
 		struct1.queue_free()
 		Globals.is_playing = false
 		Globals.structure_count += 1
-		Globals.has_enough = true
 
 func _on_game_1_timer_2_timeout():
 		print("game timer over")
