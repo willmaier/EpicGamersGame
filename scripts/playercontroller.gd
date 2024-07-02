@@ -50,10 +50,9 @@ func _physics_process(_delta):
 		player_walk_sound.play()
 	
 	if (Input.is_action_just_pressed("pause")):
-		player_walk_sound.stop()
-		get_tree().paused = true
-		pause_UI.show()
-		
+			player_walk_sound.stop()
+			get_tree().paused = true
+			pause_UI.show()
 
 # TODO Use this when more states are added into the animation tree if we decide to use it
 func set_animation(move_input : Vector2):
