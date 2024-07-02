@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dsxknrs14oyt1"]
 
 [ext_resource type="Script" path="res://CharacterBody2D.gd" id="1_temoi"]
-[ext_resource type="Texture2D" uid="uid://ob14c8jbg45y" path="res://icon.svg" id="2_02aro"]
+[ext_resource type="Texture2D" uid="uid://68b5uwmu73cl" path="res://assets/art/beaver sprite sheet.png" id="2_kaptu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tqijf"]
 size = Vector2(81, 83)
@@ -23,7 +23,9 @@ shape = SubResource("RectangleShape2D_tqijf")
 shape = SubResource("CircleShape2D_uxq37")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_02aro")
+texture = ExtResource("2_kaptu")
+hframes = 4
+vframes = 5
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
