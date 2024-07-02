@@ -1,0 +1,125 @@
+[gd_scene load_steps=9 format=3 uid="uid://4y34hc353o42"]
+
+[ext_resource type="Script" path="res://prefabs/beaver.gd" id="1_nu3ob"]
+[ext_resource type="Texture2D" uid="uid://68b5uwmu73cl" path="res://assets/art/beaver sprite sheet.png" id="1_ocamt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p07cm"]
+size = Vector2(81, 50)
+
+[sub_resource type="Animation" id="Animation_l7x5y"]
+resource_name = "beaver_down"
+length = 2.1
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.2, 1.5, 1.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [1, 5, 9, 5, 13, 17, 13]
+}
+
+[sub_resource type="Animation" id="Animation_o2jpk"]
+resource_name = "beaver_left"
+length = 2.1
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.2, 1.5, 1.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [2, 6, 10, 6, 14, 18, 14]
+}
+
+[sub_resource type="Animation" id="Animation_vvavu"]
+resource_name = "beaver_right"
+length = 2.1
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.2, 1.5, 1.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 4, 8, 4, 12, 16, 12]
+}
+
+[sub_resource type="Animation" id="Animation_b1xkw"]
+resource_name = "beaver_up"
+length = 2.1
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.2, 1.5, 1.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [3, 7, 11, 7, 15, 19, 15]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_spenq"]
+_data = {
+"beaver_down": SubResource("Animation_l7x5y"),
+"beaver_left": SubResource("Animation_o2jpk"),
+"beaver_right": SubResource("Animation_vvavu"),
+"beaver_up": SubResource("Animation_b1xkw")
+}
+
+[node name="Beaver" type="CharacterBody2D"]
+script = ExtResource("1_nu3ob")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_ocamt")
+hframes = 4
+vframes = 5
+frame = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, -2)
+shape = SubResource("RectangleShape2D_p07cm")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_spenq")
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -87.0
+offset_top = -50.0
+offset_right = 92.0
+offset_bottom = -22.0
+
+[node name="Chat" type="Label" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 174.0
+offset_bottom = 23.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "DAM IT DAM IT DAM IT!"
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

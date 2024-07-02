@@ -1,10 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://cc73s84erwdak"]
+[gd_scene load_steps=6 format=3 uid="uid://cc73s84erwdak"]
 
+[ext_resource type="Theme" uid="uid://cf2uo2q4htym5" path="res://prefabs/RhythmGame/rhythm_theme.tres" id="1_pu846"]
 [ext_resource type="Script" path="res://prefabs/RhythmGame/rhythm_game.gd" id="1_uc616"]
 [ext_resource type="AudioStream" uid="uid://bhp2y1uhikpjf" path="res://assets/sounds/Bears (Reconstruction).mp3" id="2_fql7n"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w2ebt"]
-size = Vector2(30, 100)
+size = Vector2(30, 91)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p2vcg"]
 size = Vector2(10, 100)
@@ -19,6 +20,7 @@ offset_right = -576.0
 offset_bottom = -324.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_pu846")
 script = ExtResource("1_uc616")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
@@ -31,14 +33,14 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="VBoxContainer/MarginContainer"]
 layout_mode = 2
-text = "Tap to the beat!
-(music available with season pass purchase)"
+theme_override_font_sizes/font_size = 36
+text = "Tap to the beat!"
 horizontal_alignment = 1
 
 [node name="NinePatchRect" type="NinePatchRect" parent="VBoxContainer"]
 layout_mode = 2
 
-[node name="GameBar" type="ColorRect" parent="VBoxContainer/NinePatchRect"]
+[node name="GameBar" type="Panel" parent="VBoxContainer/NinePatchRect"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -55,8 +57,9 @@ grow_vertical = 2
 [node name="ClickArea" type="ColorRect" parent="VBoxContainer/NinePatchRect/GameBar"]
 layout_mode = 0
 offset_left = 125.0
+offset_top = 5.0
 offset_right = 155.0
-offset_bottom = 100.0
+offset_bottom = 95.0
 color = Color(0.427451, 1, 0.533333, 0.823529)
 
 [node name="ClickArea2D" type="Area2D" parent="VBoxContainer/NinePatchRect/GameBar/ClickArea"]
@@ -65,13 +68,15 @@ collision_mask = 2
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="VBoxContainer/NinePatchRect/GameBar/ClickArea/ClickArea2D"]
-position = Vector2(15, 50)
+position = Vector2(15, 45.5)
 shape = SubResource("RectangleShape2D_w2ebt")
 
 [node name="DeadArea" type="ColorRect" parent="VBoxContainer/NinePatchRect/GameBar"]
 layout_mode = 0
-offset_right = 10.0
-offset_bottom = 100.0
+offset_left = 5.5
+offset_top = 2.0
+offset_right = 15.5
+offset_bottom = 99.0
 color = Color(0, 0, 0, 1)
 
 [node name="DeadArea2D" type="Area2D" parent="VBoxContainer/NinePatchRect/GameBar/DeadArea"]
@@ -87,6 +92,7 @@ position = Vector2(600, 50)
 
 [node name="SpawnTimer" type="Timer" parent="."]
 wait_time = 0.7
+autostart = true
 
 [node name="IntroTimer" type="Timer" parent="."]
 wait_time = 3.2
