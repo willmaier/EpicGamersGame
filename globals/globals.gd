@@ -11,6 +11,8 @@ var can_pause: bool = true
 # Inventory
 var stick_count: int = 0
 var rock_count: int = 0
+var stick_count_final: int = 0
+var rock_count_final: int = 0
 var hammer_tool = false
 var pickaxe_tool = false
 
