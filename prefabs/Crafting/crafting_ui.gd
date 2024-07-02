@@ -74,6 +74,7 @@ func _on_structure_2_button_pressed():
 
 func _on_game_timer_timeout():
 		print("game timer over")
+		game_window.game_end()
 		crafting_bg.visible = true
 		crafting_window.visible = true
 		game_bg.visible = false

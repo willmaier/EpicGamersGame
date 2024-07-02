@@ -1,0 +1,21 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://cf2uo2q4htym5"]
+
+[ext_resource type="FontFile" uid="uid://dv183nrqbplk2" path="res://imports/Wild Nature.ttf" id="1_x3480"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jonb2"]
+bg_color = Color(0.666667, 0.886275, 0.933333, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.282353, 0.211765, 0.290196, 1)
+border_blend = true
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[resource]
+Label/font_sizes/font_size = 16
+Label/fonts/font = ExtResource("1_x3480")
+Panel/styles/panel = SubResource("StyleBoxFlat_jonb2")

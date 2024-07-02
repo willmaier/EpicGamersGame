@@ -14,7 +14,6 @@ func _ready():
 		dir = "move_up"
 	elif frame == 3:
 		dir = "move_down"
-	print(dir)
 
 func _process(_delta):
 	position.x -= speed

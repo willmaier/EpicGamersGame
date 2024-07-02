@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://hdkxk5038fa4"]
+[gd_scene load_steps=8 format=3 uid="uid://hdkxk5038fa4"]
 
 [ext_resource type="Texture2D" uid="uid://cipm46yoyujf6" path="res://assets/art/New_Test_Environments_3.jpg" id="1_dj5xi"]
 [ext_resource type="Script" path="res://scenes/credits.gd" id="1_fdowe"]
+[ext_resource type="FontFile" uid="uid://dv183nrqbplk2" path="res://imports/Wild Nature.ttf" id="3_e8lil"]
 [ext_resource type="AudioStream" uid="uid://522m7mcylcqo" path="res://assets/sounds/Bears (Menu).mp3" id="3_wojul"]
+[ext_resource type="Theme" uid="uid://6q865d6ds303" path="res://globals/new_theme.tres" id="4_cb8e1"]
 
 [sub_resource type="Gradient" id="Gradient_hsqm2"]
 colors = PackedColorArray(0, 0, 0, 0.694118, 0.282353, 0.282353, 0.282353, 0.627451)
@@ -43,31 +45,35 @@ theme_override_constants/separation = 50
 [node name="Credits" type="Label" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/line_spacing = -3
+theme_override_fonts/font = ExtResource("3_e8lil")
+theme_override_font_sizes/font_size = 24
 text = "Bear With Us
 
 Project Lead
 Walbo
 
 Design
-William Maier aka Walbo - Irish Trolls - TMD2
+Walbo - Irish Trolls - trumasterdragon2
 
 Programming
-Walbo - Irish Trolls
-Michael Corduroy - TMD2
+Walbo - Colby Sullivan
+Michael Corduroy - trumasterdragon2
 
 Art
 BozosBros - Phoenix 4 Aldaes
 Ember Kitsu - Dylan
 
 Sound
-LymaGreen - Turles - Swiji
+Jonathan \"Lyma Green\" Jackson - Turles - Swiji
 
 Production
-Walbo - NateMarinho - Jako"
+Walbo - Nathan Marinho - Jako"
 horizontal_alignment = 1
 
 [node name="MainMenu" type="Button" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("4_cb8e1")
+theme_override_fonts/font = ExtResource("3_e8lil")
 text = "Main Menu"
 
 [node name="MenuMusic" type="AudioStreamPlayer" parent="."]
