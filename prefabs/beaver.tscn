@@ -6,23 +6,6 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p07cm"]
 size = Vector2(81, 50)
 
-[sub_resource type="Animation" id="Animation_vvavu"]
-resource_name = "beaver_right"
-length = 2.1
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.2, 1.5, 1.8),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 4, 8, 4, 12, 16, 12]
-}
-
 [sub_resource type="Animation" id="Animation_l7x5y"]
 resource_name = "beaver_down"
 length = 2.1
@@ -55,6 +38,23 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [2, 6, 10, 6, 14, 18, 14]
+}
+
+[sub_resource type="Animation" id="Animation_vvavu"]
+resource_name = "beaver_right"
+length = 2.1
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.2, 1.5, 1.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 4, 8, 4, 12, 16, 12]
 }
 
 [sub_resource type="Animation" id="Animation_b1xkw"]
