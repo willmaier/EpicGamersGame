@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://cwurdrhqotynf"]
+[gd_scene load_steps=24 format=3 uid="uid://cwurdrhqotynf"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_f36um"]
 [ext_resource type="PackedScene" uid="uid://8j6pyft4p6wt" path="res://prefabs/player.tscn" id="1_ntj77"]
@@ -16,6 +16,7 @@
 [ext_resource type="AudioStream" uid="uid://bx30idrbacg80" path="res://imports/Wood Crash Sound Effects.mp3" id="12_ixoiq"]
 [ext_resource type="Texture2D" uid="uid://r211le2s4yeg" path="res://imports/pixel-art-blank-wood-sign-plate-4-png.webp" id="13_25376"]
 [ext_resource type="Texture2D" uid="uid://ds47w5q8cofqb" path="res://assets/art/Hammer1.png" id="16_x1a7s"]
+[ext_resource type="PackedScene" uid="uid://dsxknrs14oyt1" path="res://Enemy.tscn" id="17_6x7dv"]
 
 [sub_resource type="GDScript" id="GDScript_4u1jf"]
 script/source = "extends CanvasGroup
@@ -904,6 +905,7 @@ crafting_table = NodePath("../Resources/CraftingTable2")
 metadata/_edit_group_ = true
 
 [node name="UI" parent="Player" instance=ExtResource("9_ry8mk")]
+visible = false
 offset_left = -577.0
 offset_top = -328.0
 offset_right = -577.0
@@ -983,6 +985,9 @@ offset_top = -11.0
 offset_right = 140.0
 offset_bottom = 61.0
 icon = ExtResource("16_x1a7s")
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("17_6x7dv")]
+position = Vector2(568, 383)
 
 [connection signal="plant_tree" from="Player" to="." method="_on_player_plant_tree"]
 [connection signal="body_entered" from="BridgeBreak" to="." method="_on_bridge_break_body_entered"]
