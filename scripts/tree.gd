@@ -130,8 +130,6 @@ func _on_harvest_timer_timeout():
 			Globals.rock_count+=harvest_amount
 			inventory.add_item(rock_inventory.item_path,harvest_amount)
 			inventory.print_inventory()
-			# TODO need to change this behavior
-			Globals.has_enough = true
 			print(Globals.rock_count)
 			
 		"Stick":
