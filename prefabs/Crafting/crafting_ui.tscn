@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://cc73s84erwdak" path="res://prefabs/RhythmGame/rhythm_game.tscn" id="7_2m6hp"]
 [ext_resource type="Texture2D" uid="uid://qmm4oq0bksdq" path="res://assets/art/Dam2.png" id="8_ahhqw"]
 
-[node name="Crafting_UI" type="Control" node_paths=PackedStringArray("crafting_bg", "crafting_window", "game_bg", "game_window", "tool1", "tool2", "struct1", "game_timer", "game2_timer")]
+[node name="Crafting_UI" type="Control" node_paths=PackedStringArray("crafting_bg", "crafting_window", "game_bg", "game_window", "mat1", "mat2", "tool1", "tool2", "struct1", "struct2", "game_timer", "game2_timer")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -25,9 +25,12 @@ crafting_bg = NodePath("CraftingBackground")
 crafting_window = NodePath("CraftingWindow")
 game_bg = NodePath("RhythmBackground")
 game_window = NodePath("RhythmGame")
+mat1 = NodePath("CraftingWindow/VBoxContainer/Tools/Materials/Material1")
+mat2 = NodePath("CraftingWindow/VBoxContainer/Tools/Materials/Material2")
 tool1 = NodePath("CraftingWindow/VBoxContainer/Tools/Tools/Tool1")
 tool2 = NodePath("CraftingWindow/VBoxContainer/Tools/Tools/Tool2")
 struct1 = NodePath("CraftingWindow/VBoxContainer/Structures/Structure1")
+struct2 = NodePath("CraftingWindow/VBoxContainer/Structures/Structure2")
 game_timer = NodePath("Game1Timer")
 game2_timer = NodePath("Game1Timer2")
 
@@ -144,7 +147,7 @@ layout_mode = 2
 [node name="Material2" type="HBoxContainer" parent="CraftingWindow/VBoxContainer/Tools/Materials"]
 layout_mode = 2
 
-[node name="Sprite2D" type="Button" parent="CraftingWindow/VBoxContainer/Tools/Materials/Material2"]
+[node name="Material2Button" type="Button" parent="CraftingWindow/VBoxContainer/Tools/Materials/Material2"]
 layout_mode = 2
 icon = ExtResource("6_jk6i6")
 
@@ -403,6 +406,8 @@ wait_time = 30.0
 one_shot = true
 
 [connection signal="pressed" from="CraftingBackground/Hammer" to="." method="_on_hammer_pressed"]
+[connection signal="pressed" from="CraftingWindow/VBoxContainer/Tools/Materials/Material1/Material1Button" to="." method="_on_material_1_button_pressed"]
+[connection signal="pressed" from="CraftingWindow/VBoxContainer/Tools/Materials/Material2/Material2Button" to="." method="_on_material_2_button_pressed"]
 [connection signal="pressed" from="CraftingWindow/VBoxContainer/Tools/Tools/Tool1/Tool1Button" to="." method="_on_tool_1_button_pressed"]
 [connection signal="pressed" from="CraftingWindow/VBoxContainer/Tools/Tools/Tool2/Tool2Button" to="." method="_on_tool_2_button_pressed"]
 [connection signal="pressed" from="CraftingWindow/VBoxContainer/Structures/Structure1/Structure1Button" to="." method="_on_structure_1_button_pressed"]

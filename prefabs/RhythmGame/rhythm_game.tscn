@@ -91,11 +91,12 @@ shape = SubResource("RectangleShape2D_p2vcg")
 position = Vector2(600, 50)
 
 [node name="SpawnTimer" type="Timer" parent="."]
-wait_time = 0.7
+wait_time = 0.75
 autostart = true
 
 [node name="IntroTimer" type="Timer" parent="."]
 wait_time = 3.2
+one_shot = true
 
 [node name="GameMusic" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("2_fql7n")

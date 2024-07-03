@@ -29,6 +29,24 @@ func _process(_delta):
 	else:
 		visible = false
 
+func _on_material_1_button_pressed():
+	if (Globals.stick_count >= 5 and Globals.honey_count >= 3):
+		Globals.stick_count -= 5
+		Globals.honey_count -= 3
+		mat1.queue_free()
+		print("got honey")
+		inventory.add_item(stick_inventory.item_path,-5)
+		inventory.add_item(beehive_inventory.item_path,-3)
+
+func _on_material_2_button_pressed():
+	if (Globals.rock_count >= 5 and Globals.gem_count >= 3):
+		Globals.rock_count -= 5
+		Globals.gem_count -= 3
+		mat2.queue_free()
+		print("got magnet")
+		inventory.add_item(rock_inventory.item_path,-5)
+		inventory.add_item(gem_inventory.item_path,-3)
+
 func _on_tool_1_button_pressed():
 	if (Globals.stick_count >= 2 && Globals.rock_count >= 1):
 		Globals.stick_count -= 2
@@ -76,6 +94,10 @@ func _on_structure_2_button_pressed():
 		Globals.rock_count -= 25
 		Globals.honey_count -= 10
 		Globals.gem_count -= 10
+		inventory.add_item(stick_inventory.item_path,-25)
+		inventory.add_item(rock_inventory.item_path,-25)
+		inventory.add_item(beehive_inventory.item_path,-10)
+		inventory.add_item(gem_inventory.item_path,-10)
 		crafting_bg.visible = false
 		crafting_window.visible = false
 		game_bg.visible = true
@@ -105,3 +127,9 @@ func _on_game_1_timer_2_timeout():
 		struct2.queue_free()
 		Globals.is_playing = false
 		Globals.structure_count += 1
+
+
+
+
+
+

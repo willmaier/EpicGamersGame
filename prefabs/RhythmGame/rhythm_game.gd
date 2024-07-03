@@ -7,6 +7,7 @@ var timer: Timer
 var intro_timer: Timer
 var music: AudioStreamPlayer2D
 var game_active: bool = false
+var notes: int = 0
 
 @onready var sub_viewport_container = $"../.."
 @export var button = preload("res://prefabs/RhythmGame/rhythm_button.tscn")
@@ -28,14 +29,16 @@ func game_start():
 func game_end():
 	timer.stop()
 	game_active = false
+	notes = 0
 
 func _on_intro_timer_timeout():
 	timer.start()
 
 func _on_spawn_timer_timeout():
-	if (game_active):
-		timer.start()
+	if (game_active and notes < 32):
+		#timer.start()
 		spawner.add_child(button.instantiate())
+		notes += 1
 	
 
 func _on_click_area_2d_area_entered(area):
